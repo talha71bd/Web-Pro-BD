@@ -1,0 +1,6 @@
+{
+  "name": "Web Pro BD - Websites & Web Apps Marketplace",
+  "description": "Premium ready-made websites, custom web apps, e-commerce solutions, and digital agency services for Bangladeshi and global businesses.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

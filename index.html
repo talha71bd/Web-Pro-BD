@@ -1,18 +1,779 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-    <meta name="description" content="An application built with Google AI Studio." />
-    <meta property="og:title" content="My Google AI Studio App" />
-    <meta property="og:description" content="An application built with Google AI Studio." />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Pro BD - আবু তালহা খান | রেডিমেড ওয়েবসাইট ও কাস্টম ওয়েব অ্যাপ মার্কেটপ্লেস</title>
+  <meta name="description" content="রেডিমেড ওয়েবসাইট ও কাস্টম ওয়েব অ্যাপ্লিকেশন মার্কেটপ্লেস। ডোমেন ও হোস্টিং সারাজীবন ১০০% ফ্রি। প্রতিষ্ঠাতা: আবু তালহা খান, ফার্মগেট, ঢাকা - 01516513987">
+  
+  <!-- Tailwind CSS & Font Awesome 6 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Google Fonts: Hind Siliguri, Plus Jakarta Sans & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
 
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Hind Siliguri', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          },
+          animation: {
+            'float': 'float 4s ease-in-out infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'gradient-x': 'gradient-x 8s ease infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Hind Siliguri', sans-serif; }
+    .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(51, 65, 85, 0.6); }
+    .glass-card-hover:hover { background: rgba(30, 41, 59, 0.85); border-color: rgba(16, 185, 129, 0.5); transform: translateY(-4px); box-shadow: 0 20px 30px -10px rgba(16, 185, 129, 0.15); }
+    .glow-box { box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3); }
+    .radial-bg { background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.12) 0%, rgba(2, 6, 23, 0) 70%); }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #020617; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #10b981; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-950 radial-bg">
+
+  <!-- 1. TOP ANNOUNCEMENT & CONTACT BAR -->
+  <div class="bg-gradient-to-r from-emerald-800 via-teal-800 to-cyan-800 text-white text-xs py-2 px-4 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2 font-medium">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
+        </span>
+        <span class="font-bold">🎉 লাইফটাইম অফার:</span>
+        <span class="hidden sm:inline">ডোমেন ও ক্লাউড হোস্টিং সারাজীবন ১০০% ফ্রি! কোনো মাসিক বা বাৎসরিক রিনিউয়াল চার্জ নেই।</span>
+        <span class="sm:hidden">আজীবন হোস্টিং ১০০% ফ্রি!</span>
+      </div>
+      <div class="flex items-center gap-3 text-xs font-semibold">
+        <a href="https://wa.me/8801516513987" target="_blank" class="hover:text-emerald-200 flex items-center gap-1.5 bg-emerald-950/70 hover:bg-emerald-900 px-3 py-1 rounded-full border border-emerald-400/40 transition-colors">
+          <i class="fa-brands fa-whatsapp text-emerald-400 text-sm"></i>
+          <span>০১৫১৬৫১৩৯৮৭ (আবু তালহা খান)</span>
+        </a>
+        <span class="hidden md:inline text-slate-300"><i class="fa-solid fa-location-dot text-cyan-400 mr-1"></i> ফার্মগেট, ঢাকা</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. MAIN NAVIGATION HEADER -->
+  <header class="sticky top-9 z-40 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 shadow-xl transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo & Mobile Menu Trigger -->
+      <div class="flex items-center gap-3">
+        <button onclick="toggleDrawer()" class="p-2.5 rounded-xl bg-slate-800 hover:bg-emerald-600/20 text-emerald-400 border border-slate-700 flex items-center gap-2 cursor-pointer transition-all">
+          <i class="fa-solid fa-bars-staggered text-lg"></i>
+          <span class="text-xs font-bold hidden sm:inline">মেনুবার</span>
+        </button>
+
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-500 flex items-center justify-center text-slate-950 font-black text-2xl shadow-lg shadow-emerald-500/25 group-hover:scale-105 transition-transform">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <div>
+            <div class="text-xl font-black text-white font-mono leading-tight tracking-tight flex items-center gap-1.5">
+              WEB PRO <span class="text-emerald-400">BD</span>
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-300 font-sans font-bold px-1.5 py-0.5 rounded border border-emerald-500/30">Verified</span>
+            </div>
+            <p class="text-xs text-slate-400 font-semibold leading-none mt-0.5">আবু তালহা খান • ফার্মগেট, ঢাকা</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation Links (Connected to all user pages) -->
+      <nav class="hidden lg:flex items-center gap-5 text-sm font-semibold text-slate-300">
+        <a href="index.html" class="text-emerald-400 font-bold flex items-center gap-1.5 hover:text-emerald-300 transition-colors">
+          <i class="fa-solid fa-house"></i> হোম
+        </a>
+        <a href="#websites" class="hover:text-emerald-400 transition-colors">রেডি ওয়েবসাইট শপ</a>
+        <a href="#custom-app" class="hover:text-emerald-400 transition-colors">কাস্টম সফটওয়্যার ও API</a>
+        <a href="#free-hosting" class="hover:text-emerald-400 transition-colors">ফ্রি হোস্টিং গ্যারান্টি</a>
+        <a href="memo.html" class="hover:text-emerald-400 transition-colors flex items-center gap-1.5">
+          <i class="fa-solid fa-receipt text-emerald-400"></i> ক্যাশ মেমো ও ইনভয়েস
+        </a>
+        <a href="about.html" class="hover:text-emerald-400 transition-colors">আমাদের কথা</a>
+        <a href="faq.html" class="hover:text-emerald-400 transition-colors">প্রশ্নোত্তর (FAQ)</a>
+        <a href="contact.html" class="hover:text-emerald-400 transition-colors">যোগাযোগ</a>
+      </nav>
+
+      <!-- WhatsApp CTA Button -->
+      <div class="flex items-center gap-3">
+        <a href="https://wa.me/8801516513987?text=নমস্কার%20আবু%20তালহা%20খান,%20আমি%20একটি%20রেডিমেড%20ওয়েবসাইট%20অর্ডার%20করতে%20চাই" target="_blank" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black text-xs sm:text-sm flex items-center gap-2 shadow-xl shadow-emerald-950/60 cursor-pointer transition-all transform active:scale-95 hover:scale-105">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>অর্ডার হেল্পলাইন</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- 3. SLIDING LEFT DRAWER NAVIGATION -->
+  <div id="drawerOverlay" onclick="toggleDrawer()" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden transition-opacity"></div>
+  <aside id="sideDrawer" class="fixed top-0 left-0 bottom-0 w-80 max-w-[85vw] bg-slate-900 border-r border-slate-800 z-50 transform -translate-x-full transition-transform duration-300 flex flex-col justify-between p-6 shadow-2xl overflow-y-auto">
+    <div class="space-y-6">
+      
+      <!-- Drawer Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-code"></i></div>
+          <div>
+            <h3 class="font-black text-white font-mono text-base leading-tight">WEB PRO BD</h3>
+            <p class="text-[11px] text-emerald-400 font-semibold">আবু তালহা খান (ফার্মগেট, ঢাকা)</p>
+          </div>
+        </div>
+        <button onclick="toggleDrawer()" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <!-- Navigation Links to All Pages -->
+      <div class="space-y-1.5 text-xs sm:text-sm font-semibold">
+        <p class="text-[11px] font-bold text-slate-500 uppercase px-2 mb-1.5">সাইট নেভিগেশন:</p>
+        
+        <a href="index.html" class="flex items-center gap-3 p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-bold">
+          <i class="fa-solid fa-house w-5 text-emerald-400"></i> হোম পেজ (Home)
+        </a>
+        <a href="#websites" onclick="toggleDrawer()" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 text-slate-200 transition-colors">
+          <i class="fa-solid fa-cart-shopping text-cyan-400 w-5"></i> রেডিমেড ওয়েবসাইট শপ
+        </a>
+        <a href="#custom-app" onclick="toggleDrawer()" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 text-slate-200 transition-colors">
+          <i class="fa-solid fa-laptop-code text-purple-400 w-5"></i> কাস্টম সফটওয়্যার ও API
+        </a>
+        <a href="#free-hosting" onclick="toggleDrawer()" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 text-slate-200 transition-colors">
+          <i class="fa-solid fa-server text-emerald-400 w-5"></i> আজীবন ফ্রি হোস্টিং গ্যারান্টি
+        </a>
+        <a href="memo.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 text-slate-200 transition-colors">
+          <i class="fa-solid fa-receipt text-amber-400 w-5"></i> ক্যাশ মেমো ও ডিজিটাল ইনভয়েস
+        </a>
+        <a href="about.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 text-slate-200 transition-colors">
+          <i class="fa-solid fa-circle-info text-blue-400 w-5"></i> আমাদের সম্পর্কে ও লক্ষ্য
+        </a>
+        <a href="faq.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 text-slate-200 transition-colors">
+          <i class="fa-solid fa-circle-question text-teal-400 w-5"></i> সাধারণ প্রশ্নোত্তর (FAQ)
+        </a>
+        <a href="contact.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 text-slate-200 transition-colors">
+          <i class="fa-solid fa-envelope text-rose-400 w-5"></i> সরাসরি যোগাযোগ ও সাপোর্ট
+        </a>
+        <a href="terms-privacy.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-800 text-slate-300 transition-colors">
+          <i class="fa-solid fa-shield-halved text-slate-400 w-5"></i> শর্তাবলী ও গোপনীয়তা নীতি
+        </a>
+      </div>
+
+      <!-- Quick Founder Desk inside Drawer -->
+      <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-2 text-xs">
+        <p class="font-bold text-white flex items-center gap-1.5"><i class="fa-solid fa-headset text-emerald-400"></i> সরাসরি হেল্পলাইন:</p>
+        <a href="https://wa.me/8801516513987" target="_blank" class="block font-mono text-emerald-400 font-bold hover:underline text-sm">📞 01516513987 (WhatsApp/IMO)</a>
+        <p class="text-slate-400 text-[11px]"><i class="fa-solid fa-location-dot text-cyan-400 mr-1"></i> ফার্মগেট, ঢাকা, বাংলাদেশ</p>
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer Social Links -->
+    <div class="pt-4 border-t border-slate-800 space-y-2 text-xs">
+      <a href="https://www.facebook.com/Abu.talha017467" target="_blank" class="flex items-center justify-between p-2.5 rounded-xl bg-blue-950/40 hover:bg-blue-900/60 text-blue-300 border border-blue-800/40 transition-colors">
+        <span><i class="fa-brands fa-facebook mr-2"></i> ফেসবুক প্রোফাইল</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61593558263889" target="_blank" class="flex items-center justify-between p-2.5 rounded-xl bg-blue-950/40 hover:bg-blue-900/60 text-blue-300 border border-blue-800/40 transition-colors">
+        <span><i class="fa-solid fa-flag mr-2"></i> অফিসিয়াল ফেসবুক পেইজ</span>
+        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+      </a>
+    </div>
+  </aside>
+
+  <!-- 4. HERO SECTION -->
+  <main class="flex-1">
+    
+    <section class="py-16 sm:py-24 text-center px-4 max-w-6xl mx-auto relative">
+      
+      <!-- Glowing Animated Floating Badge -->
+      <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-bold mb-8 glow-box animate-float">
+        <i class="fa-solid fa-bolt text-amber-400 animate-bounce"></i>
+        <span>ডোমেন ও ক্লাউড হোস্টিং সারাজীবন ১০০% ফ্রি • কোনো বাৎসরিক নবায়ন চার্জ নেই!</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-3xl sm:text-5xl lg:text-7xl font-black text-white leading-tight tracking-tight mb-8">
+        আপনার বিজনেসের জন্য <br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">রেডিমেড ওয়েবসাইট</span> ও কাস্টম সফটওয়্যার
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-slate-300 text-sm sm:text-lg lg:text-xl max-w-3xl mx-auto mb-10 leading-relaxed font-normal">
+        বিকাশ ও নগদ পেমেন্ট গেটওয়ে, সম্পূর্ণ অ্যাডমিন ড্যাশবোর্ড, ইনস্ট্যান্ট ক্যাশ মেমো জেনারেটর এবং আজীবন ফ্রি ক্লাউড হোস্টিং সহ আপনার ওয়েবসাইট লাইভ করুন মাত্র ২৪ থেকে ৪৮ ঘণ্টায়।
+      </p>
+
+      <!-- Primary Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+        <a href="#websites" class="px-8 py-4 sm:px-10 sm:py-4.5 rounded-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 hover:from-emerald-400 hover:to-cyan-400 text-slate-950 font-black text-sm sm:text-base shadow-2xl shadow-emerald-950/80 flex items-center gap-3 cursor-pointer transition-all transform active:scale-95 hover:scale-105">
+          <i class="fa-solid fa-bag-shopping text-lg"></i>
+          <span>রেডি ওয়েবসাইট ক্যাটালগ দেখুন (৳৩,৯৯৯ থেকে)</span>
+        </a>
+
+        <a href="https://wa.me/8801516513987?text=নমস্কার%20আবু%20তালহা%20খান,%20আমি%20একটি%20ওয়েবসাইট%20সম্পর্কে%20জানতে%20চাই" target="_blank" class="px-8 py-4 sm:px-10 sm:py-4.5 rounded-2xl bg-slate-900/90 hover:bg-slate-800 border border-emerald-500/40 text-emerald-400 font-bold text-sm sm:text-base flex items-center gap-3 transition-all hover:scale-105 shadow-xl">
+          <i class="fa-brands fa-whatsapp text-2xl text-emerald-400"></i>
+          <span>সরাসরি হোয়াটসঅ্যাপে কথা বলুন</span>
+        </a>
+      </div>
+
+      <!-- Trust Metrics Counter Row -->
+      <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 text-center">
+          <div class="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">১০০% ফ্রি</div>
+          <p class="text-xs text-slate-400 font-semibold mt-1">আজীবন ডোমেন ও হোস্টিং</p>
+        </div>
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 text-center">
+          <div class="text-2xl sm:text-3xl font-black text-cyan-400 font-mono">২৪-৪৮ ঘণ্টা</div>
+          <p class="text-xs text-slate-400 font-semibold mt-1">সুপার ফাস্ট লাইভ ডেলিভারি</p>
+        </div>
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 text-center">
+          <div class="text-2xl sm:text-3xl font-black text-purple-400 font-mono">১০০% কোড</div>
+          <p class="text-xs text-slate-400 font-semibold mt-1">ফুল সোর্স কোড ও অ্যাডমিন</p>
+        </div>
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 text-center">
+          <div class="text-2xl sm:text-3xl font-black text-amber-400 font-mono">২৪/৭ সাপোর্ট</div>
+          <p class="text-xs text-slate-400 font-semibold mt-1">আবু তালহা খান সরাসরি</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 5. READY WEBSITES CATALOG -->
+    <section id="websites" class="py-20 bg-slate-900/50 border-y border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-12">
+          <span class="px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-xs uppercase tracking-wider border border-emerald-500/30">
+            রেডিমেড ওয়েবসাইট শপ
+          </span>
+          <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white mt-3 mb-3">
+            আপনার পছন্দের রেডিমেড ওয়েবসাইট বেছে নিন
+          </h2>
+          <p class="text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto">
+            প্রতিটি ওয়েবসাইটের সাথে পাচ্ছেন আজীবন ১০০% ফ্রি ক্লাউড হোস্টিং, ফুল অ্যাডমিন ড্যাশবোর্ড, বিকাশ পেমেন্ট ও সম্পূর্ণ সোর্স কোডের মালিকানা।
+          </p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap items-center justify-center gap-2.5 mb-12" id="filterButtons">
+          <button onclick="filterCategory('all')" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 cursor-pointer shadow-lg transition-all" data-cat="all">সবগুলো (All)</button>
+          <button onclick="filterCategory('ecom')" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer transition-all" data-cat="ecom">🛍️ ই-কমার্স অনলাইন শপ</button>
+          <button onclick="filterCategory('pos')" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer transition-all" data-cat="pos">🏪 পিওএস ও ইনভেন্টরি</button>
+          <button onclick="filterCategory('news')" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer transition-all" data-cat="news">📰 নিউজ পোর্টাল ও ই-পেপার</button>
+          <button onclick="filterCategory('school')" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer transition-all" data-cat="school">🎓 স্কুল ও মাদ্রাসা LMS</button>
+          <button onclick="filterCategory('restaurant')" class="filter-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer transition-all" data-cat="restaurant">🍔 রেস্তোরাঁ ডিজিটাল QR মেনু</button>
+        </div>
+
+        <!-- Product Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="productsGrid">
+          
+          <!-- Card 1: Ecommerce -->
+          <div class="product-card glass-card glass-card-hover p-7 rounded-3xl border border-slate-800 flex flex-col justify-between transition-all" data-category="ecom">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[11px] bg-emerald-500/20 text-emerald-400 px-3 py-1 rounded-full font-bold">বেস্ট সেলার প্যাকেজ 🔥</span>
+                <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-clock text-amber-400 mr-1"></i> ২৪ ঘণ্টায় রেডি</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">প্রো ই-কমার্স অনলাইন শপ</h3>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                বিকাশ/নগদ অটো পেমেন্ট গেটওয়ে, কুপন ডিসকাউন্ট, ইনভয়েস জেনারেটর এবং ফুল অ্যাডমিন ড্যাশবোর্ড সহ সম্পূর্ণ অনলাইন স্টোর।
+              </p>
+              
+              <div class="space-y-2 py-3 border-y border-slate-800/80 text-xs text-slate-300">
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> বিকাশ, নগদ, রকেট ও সিওডি সিস্টেম</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> প্রোডাক্ট ও স্টক ম্যানেজমেন্ট প্যানেল</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> আজীবন ১০০% ফ্রি ক্লাউড হোস্টিং</div>
+              </div>
+            </div>
+
+            <div class="pt-5 mt-4">
+              <div class="flex items-baseline justify-between mb-4">
+                <div>
+                  <span class="text-2xl font-black text-emerald-400 font-mono">৳৬,৯৯৯</span>
+                  <span class="text-xs text-slate-500 line-through ml-2">৳১২,০০০</span>
+                </div>
+                <span class="text-[11px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">০৳ রিনিউয়াল</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="openLiveDemo('প্রো ই-কমার্স অনলাইন শপ', 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800')" class="py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-all cursor-pointer">লাইভ প্রিভিউ</button>
+                <button onclick="openOrderModal('প্রো ই-কমার্স অনলাইন শপ', 6999)" class="py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-xs font-black transition-all cursor-pointer">অর্ডার করুন</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: POS -->
+          <div class="product-card glass-card glass-card-hover p-7 rounded-3xl border border-slate-800 flex flex-col justify-between transition-all" data-category="pos">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[11px] bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full font-bold">দোকান ও শোরুম স্পেশাল 🏬</span>
+                <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-clock text-amber-400 mr-1"></i> ২৪ ঘণ্টায় রেডি</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">স্মার্ট পিওএস ও ইনভেন্টরি সফটওয়্যার</h3>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                বারকোড স্ক্যানার সাপোর্ট, মেমো প্রিন্টিং, লাভ-ক্ষতির হিসাব এবং দৈনিক ক্যাশ কালেকশন ট্র্যাকিং।
+              </p>
+              
+              <div class="space-y-2 py-3 border-y border-slate-800/80 text-xs text-slate-300">
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> থার্মাল পিওএস ক্যাশ মেমো প্রিন্টিং</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> লাভ-ক্ষতি ও দৈনিক বাকি হিসাব খাতা</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> মোবাইল ও কম্পিউটার দুটোতেই চলবে</div>
+              </div>
+            </div>
+
+            <div class="pt-5 mt-4">
+              <div class="flex items-baseline justify-between mb-4">
+                <div>
+                  <span class="text-2xl font-black text-cyan-400 font-mono">৳৮,৯৯৯</span>
+                  <span class="text-xs text-slate-500 line-through ml-2">৳১৫,০০০</span>
+                </div>
+                <span class="text-[11px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">০৳ রিনিউয়াল</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="openLiveDemo('স্মার্ট পিওএস ও ইনভেন্টরি সফটওয়্যার', 'https://images.unsplash.com/photo-1556742049-0a67c5574f73?w=800')" class="py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-all cursor-pointer">লাইভ প্রিভিউ</button>
+                <button onclick="openOrderModal('স্মার্ট পিওএস ও ইনভেন্টরি সফটওয়্যার', 8999)" class="py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 text-xs font-black transition-all cursor-pointer">অর্ডার করুন</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: News -->
+          <div class="product-card glass-card glass-card-hover p-7 rounded-3xl border border-slate-800 flex flex-col justify-between transition-all" data-category="news">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-[11px] bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full font-bold">মিডিয়া ও জার্নালিজম 📰</span>
+                <span class="text-xs text-slate-400 font-mono"><i class="fa-solid fa-clock text-amber-400 mr-1"></i> ২৪ ঘণ্টায় রেডি</span>
+              </div>
+              <h3 class="text-xl font-bold text-white mb-2">অনলাইন নিউজ পোর্টাল ও ই-পেপার</h3>
+              <p class="text-slate-400 text-xs leading-relaxed mb-4">
+                ব্রেকিং নিউজ স্ক্রলার, ক্যাটাগরি অনুসারে সংবাদ সাজানো, ফেসবুক ইনস্ট্যান্ট আর্টিকেল ও গুগল অ্যাডসেন্স রেডি।
+              </p>
+              
+              <div class="space-y-2 py-3 border-y border-slate-800/80 text-xs text-slate-300">
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> আল্ট্রা-ফাস্ট মোবাইল স্পিড ও এসইও</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> আনলিমিটেড নিউজ ক্যাটাগরি ও এডিটর</div>
+                <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> আজীবন আনলিমিটেড ভিজিটর ব্যান্ডউইথ</div>
+              </div>
+            </div>
+
+            <div class="pt-5 mt-4">
+              <div class="flex items-baseline justify-between mb-4">
+                <div>
+                  <span class="text-2xl font-black text-purple-400 font-mono">৳৫,৪৯৯</span>
+                  <span class="text-xs text-slate-500 line-through ml-2">৳১০,০০০</span>
+                </div>
+                <span class="text-[11px] text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800">০৳ রিনিউয়াল</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="openLiveDemo('অনলাইন নিউজ পোর্টাল ও ই-পেপার', 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800')" class="py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-all cursor-pointer">লাইভ প্রিভিউ</button>
+                <button onclick="openOrderModal('অনলাইন নিউজ পোর্টাল ও ই-পেপার', 5499)" class="py-2.5 rounded-xl bg-purple-500 hover:bg-purple-400 text-white text-xs font-black transition-all cursor-pointer">অর্ডার করুন</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. WHY LIFETIME FREE HOSTING SECTION -->
+    <section id="free-hosting" class="py-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-xs uppercase tracking-wider border border-emerald-500/30">
+          হোস্টিং গ্যারান্টি
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3 mb-2">
+          আমাদের ডোমেন ও হোস্টিং কেন সারাজীবন ১০০% ফ্রি?
+        </h2>
+        <p class="text-slate-400 text-xs sm:text-sm max-w-2xl mx-auto">
+          সাধারণ হোস্টিং কোম্পানিতে প্রতি বছর ৩,০০০ থেকে ৬,০০০ টাকা রিনিউয়াল ফি লাগে। কিন্তু Web Pro BD তে আপনার কোনো মাসিক বা বাৎসরিক ফি দিতে হবে না।
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Ordinary Hosting Card -->
+        <div class="glass-card p-8 rounded-3xl border border-rose-900/40 bg-slate-900/40 space-y-4">
+          <div class="flex items-center gap-2.5 text-rose-400 font-bold text-lg">
+            <i class="fa-solid fa-circle-xmark text-xl"></i>
+            <span>সাধারণ হোস্টিং প্যাকেজ</span>
+          </div>
+          <ul class="space-y-3 text-xs sm:text-sm text-slate-300">
+            <li class="flex items-start gap-2 text-slate-400"><i class="fa-solid fa-xmark text-rose-500 mt-1"></i> <span>প্রতি বছর ৩,০০০ - ৬,০০০ টাকা বাৎসরিক চার্জ।</span></li>
+            <li class="flex items-start gap-2 text-slate-400"><i class="fa-solid fa-xmark text-rose-500 mt-1"></i> <span>টাকা না দিলে ওয়েবসাইট সাময়িক বন্ধ বা সাসপেন্ড হয়ে যায়।</span></li>
+            <li class="flex items-start gap-2 text-slate-400"><i class="fa-solid fa-xmark text-rose-500 mt-1"></i> <span>SSL সার্টিফিকেটের জন্য আলাদা টাকা দিতে হয়।</span></li>
+            <li class="flex items-start gap-2 text-slate-400"><i class="fa-solid fa-xmark text-rose-500 mt-1"></i> <span>সার্ভার ডাউন ও স্পিড কমে যাওয়ার সমস্যা থাকে।</span></li>
+          </ul>
+        </div>
+
+        <!-- Web Pro BD Lifetime Free Hosting Card -->
+        <div class="glass-card p-8 rounded-3xl border-2 border-emerald-500/60 bg-emerald-950/20 space-y-4 glow-box relative">
+          <span class="absolute -top-3 right-6 bg-emerald-500 text-slate-950 font-black text-[10px] uppercase px-3 py-1 rounded-full shadow-md">আমাদের সুবিধা</span>
+          <div class="flex items-center gap-2.5 text-emerald-400 font-bold text-lg">
+            <i class="fa-solid fa-circle-check text-xl"></i>
+            <span>Web Pro BD আজীবন ফ্রি ক্লাউড হোস্টিং</span>
+          </div>
+          <ul class="space-y-3 text-xs sm:text-sm text-slate-200">
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span><strong>০ টাকা রিনিউয়াল:</strong> সারাজীবন কোনো মাসিক বা বাৎসরিক বিল নেই।</span></li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span><strong>লাইফটাইম আপটাইম:</strong> ক্লাউড সিডিএন অবকাঠামোয় সাইট কখনো ডাউন হবে না।</span></li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span><strong>ফ্রি লাইফটাইম SSL:</strong> সর্বোচ্চ লেভেলের সিকিউরিটি লক আজীবন ফ্রি।</span></li>
+            <li class="flex items-start gap-2"><i class="fa-solid fa-check text-emerald-400 mt-1"></i> <span><strong>১০০% ফুল সোর্স কোড:</strong> আপনার সাইটের কোড থাকবে আপনার নিয়ন্ত্রণে।</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 7. CUSTOM WEB APP & BACKEND ARCHITECTURE -->
+    <section id="custom-app" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-12 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          
+          <div class="space-y-5">
+            <span class="px-3.5 py-1.5 rounded-full bg-purple-500/10 text-purple-400 font-bold text-xs uppercase tracking-wider border border-purple-500/30">
+              <i class="fa-solid fa-code mr-1.5"></i> কাস্টম সফটওয়্যার ও ব্যাকএন্ড আর্কিটেকচার
+            </span>
+            <h2 class="text-2xl sm:text-4xl font-black text-white leading-tight">
+              আপনার ব্যবসার বিশেষ নিয়মে তৈরি করুন কাস্টম সফটওয়্যার ও API
+            </h2>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              যদি আপনার কোনো বিশেষ হিসাব, কাস্টম লজিক, মাল্টি-ভেন্ডর সিস্টেম, অথবা নির্দিষ্ট এপিআই প্রয়োজন হয়—তবে আমরা আপনার প্রয়োজন অনুযায়ী ফুল-স্ট্যাক নোড জেএস/এক্সপ্রেস ও ডাটাবেজ সমন্বয়ে শক্তিশালী সফটওয়্যার ডেভেলপ করে দেই।
+            </p>
+
+            <div class="grid grid-cols-2 gap-3 text-xs text-slate-300">
+              <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-800"><i class="fa-solid fa-bolt text-amber-400 mr-1.5"></i> দ্রুত রেসপন্স API</div>
+              <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-800"><i class="fa-solid fa-database text-cyan-400 mr-1.5"></i> নিরাপদ ডাটাবেজ ব্যাকআপ</div>
+              <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-800"><i class="fa-solid fa-lock text-emerald-400 mr-1.5"></i> ব্যাংক-গ্রেড সিকিউরিটি</div>
+              <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-800"><i class="fa-solid fa-headset text-purple-400 mr-1.5"></i> লাইভ মনিটরিং ও হেল্প</div>
+            </div>
+
+            <div class="pt-3 flex flex-wrap gap-3">
+              <a href="https://wa.me/8801516513987?text=নমস্কার%20আবু%20তালহা%20খান,%20আমি%20একটি%20কাস্টম%20সফটওয়্যার%20বানাতে%20চাই" target="_blank" class="px-6 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs sm:text-sm flex items-center gap-2 shadow-lg cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-lg"></i> কাস্টম সফটওয়্যার আলোচনা করুন
+              </a>
+            </div>
+          </div>
+
+          <!-- Code Preview Box -->
+          <div class="bg-slate-950 rounded-2xl border border-slate-800 p-5 font-mono text-xs text-slate-300 overflow-x-auto shadow-2xl">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800 text-[11px] text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+                <span class="font-bold text-white ml-2">Node.js Express Controller API</span>
+              </div>
+              <span class="text-emerald-400 font-bold">Active</span>
+            </div>
+            <pre class="leading-relaxed"><code class="text-slate-500">// Web Pro BD - Abu Talha Khan (01516513987)</code>
+<code class="text-purple-400">const</code> express = <code class="text-cyan-300">require</code>(<code class="text-amber-300">'express'</code>);
+<code class="text-purple-400">const</code> app = express();
+
+<code class="text-slate-500">// Automated bKash & Cash Memo Webhook</code>
+app.<code class="text-blue-400">post</code>(<code class="text-amber-300">'/api/orders/create'</code>, (req, res) => {
+  <code class="text-purple-400">const</code> memoNo = <code class="text-amber-300">'WPBD-'</code> + Date.now();
+  res.json({
+    status: <code class="text-emerald-400">'SUCCESS'</code>,
+    memoNo: memoNo,
+    hostingStatus: <code class="text-amber-300">'Lifetime 100% Free'</code>,
+    developer: <code class="text-amber-300">'Abu Talha Khan (01516513987)'</code>
+  });
+});</pre>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. HOW IT WORKS (3 SIMPLE STEPS) -->
+    <section class="py-16 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-12">
+        <span class="px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-xs uppercase tracking-wider border border-emerald-500/30">
+          ডেলিভারি প্রসেস
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-3 mb-2">
+          মাত্র ৩টি সহজ ধাপে ওয়েবসাইট বুঝে নিন
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+        
+        <div class="glass-card p-6 rounded-3xl border border-slate-800 relative">
+          <span class="w-10 h-10 rounded-2xl bg-emerald-500 text-slate-950 font-black text-lg flex items-center justify-center mb-4">১</span>
+          <h3 class="text-lg font-bold text-white mb-2">ওয়েবসাইট প্যাকেজ নির্বাচন</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">আমাদের রেডি ক্যাটালগ থেকে আপনার ব্যবসার জন্য উপযুক্ত ওয়েবসাইট সিলেক্ট করে "অর্ডার করুন" বাটনে চাপ দিন।</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800 relative">
+          <span class="w-10 h-10 rounded-2xl bg-cyan-500 text-slate-950 font-black text-lg flex items-center justify-center mb-4">২</span>
+          <h3 class="text-lg font-bold text-white mb-2">অর্ডার কনফার্ম ও ক্যাশ মেমো</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">বিকাশ বা নগদে ৫০% অগ্রিম দিয়ে অর্ডার নিশ্চিত করুন এবং তাৎক্ষণিক অফিশিয়াল ক্যাশ মেমো সংগ্রহ করুন।</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl border border-slate-800 relative">
+          <span class="w-10 h-10 rounded-2xl bg-purple-500 text-white font-black text-lg flex items-center justify-center mb-4">৩</span>
+          <h3 class="text-lg font-bold text-white mb-2">২৪-৪৮ ঘণ্টায় লাইভ ডেলিভারি</h3>
+          <p class="text-slate-400 text-xs leading-relaxed">আপনার লোগো ও পণ্যসহ সম্পূর্ণ লাইভ সাইট বুঝে নিন এবং অ্যাডমিন ড্যাশবোর্ডের পাসওয়ার্ড ও সোর্স কোড গ্রহণ করুন।</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 9. FOUNDER DESK & DIRECT CONTACT -->
+    <section class="py-16 max-w-4xl mx-auto px-4 text-center">
+      <div class="glass-card p-8 sm:p-12 rounded-3xl border border-slate-800 space-y-5">
+        <div class="w-24 h-24 rounded-3xl bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center text-5xl text-slate-950 font-black mx-auto shadow-2xl shadow-emerald-950/80">
+          <i class="fa-solid fa-user-tie"></i>
+        </div>
+        
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white">আবু তালহা খান (Abu Talha Khan)</h3>
+          <p class="text-emerald-400 text-sm sm:text-base font-bold mt-1">প্রতিষ্ঠাতা ও লিড সফটওয়্যার ডেভেলপার, Web Pro BD</p>
+          <p class="text-xs text-slate-400 mt-1"><i class="fa-solid fa-location-dot text-cyan-400 mr-1.5"></i> ফার্মগেট, ঢাকা, বাংলাদেশ</p>
+        </div>
+
+        <p class="text-slate-300 text-xs sm:text-sm max-w-lg mx-auto leading-relaxed">
+          আপনার ব্যবসার অনলাইন উপস্থিতি নিশ্চিত করতে যেকোনো সহায়তা বা কাস্টমাইজেশনে আমি সরাসরি পাশে আছি।
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-3 pt-3">
+          <a href="https://wa.me/8801516513987" target="_blank" class="px-7 py-3.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs sm:text-sm rounded-xl flex items-center gap-2 shadow-xl cursor-pointer">
+            <i class="fa-brands fa-whatsapp text-lg"></i> 01516513987
+          </a>
+          <a href="https://www.facebook.com/Abu.talha017467" target="_blank" class="px-5 py-3.5 bg-blue-900/60 hover:bg-blue-800 text-blue-200 font-bold text-xs sm:text-sm rounded-xl flex items-center gap-2 border border-blue-700/50">
+            <i class="fa-brands fa-facebook"></i> ফেসবুক প্রোফাইল
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61593558263889" target="_blank" class="px-5 py-3.5 bg-blue-900/60 hover:bg-blue-800 text-blue-300 font-bold text-xs sm:text-sm rounded-xl flex items-center gap-2 border border-blue-700/50">
+            <i class="fa-solid fa-flag"></i> অফিসিয়াল পেইজ
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 10. INTERACTIVE ORDER & CASH MEMO MODAL (POPUP) -->
+  <div id="orderModal" class="fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-md w-full p-6 sm:p-8 shadow-2xl relative">
+      <button onclick="closeOrderModal()" class="absolute top-4 right-4 p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="text-center mb-6">
+        <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-bold text-xs">অর্ডার ফরম ও ক্যাশ মেমো</span>
+        <h3 class="text-xl font-bold text-white mt-2" id="modalProductTitle">প্রো ই-কমার্স অনলাইন শপ</h3>
+        <p class="text-emerald-400 font-mono font-bold text-lg mt-1" id="modalProductPrice">৳৬,৯৯৯</p>
+      </div>
+
+      <form onsubmit="handleOrderSubmit(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">আপনার নাম *</label>
+          <input id="ordName" type="text" required placeholder="আপনার পুরো নাম লিখুন" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-white focus:border-emerald-500 outline-none">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">মোবাইল নম্বর / WhatsApp *</label>
+          <input id="ordPhone" type="tel" required placeholder="017XXXXXXXX" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-white font-mono focus:border-emerald-500 outline-none">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">আপনার বিজনেসের নাম ও অতিরিক্ত তথ্য</label>
+          <textarea id="ordNotes" rows="2" placeholder="লোগো, পণ্যের বিবরণ বা বিশেষ কোনো রিকোয়ারমেন্ট..." class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-white focus:border-emerald-500 outline-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 text-slate-950 font-black text-sm rounded-xl cursor-pointer shadow-lg flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>অর্ডার কনফার্ম করুন (WhatsApp)</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 11. INTERACTIVE LIVE DEMO PREVIEW MODAL -->
+  <div id="demoModal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-3xl w-full p-6 shadow-2xl relative space-y-4">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div>
+          <h3 class="font-bold text-white text-base" id="demoTitle">লাইভ ডেমো প্রিভিউ</h3>
+          <p class="text-xs text-emerald-400 font-semibold">আজীবন ফ্রি হোস্টিং ও সম্পূর্ণ রেসপনসিভ ডেমো</p>
+        </div>
+        <button onclick="closeLiveDemo()" class="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-slate-800 max-h-[400px]">
+        <img id="demoImg" src="" alt="Demo" class="w-full h-full object-cover">
+      </div>
+
+      <div class="flex items-center justify-between pt-2">
+        <p class="text-xs text-slate-400">এই সাইটটি নিতে চাইলে সরাসরি অর্ডার করতে পারেন।</p>
+        <button onclick="closeLiveDemo(); openOrderModal(currentDemoName, 6999);" class="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl cursor-pointer">
+          এই সাইটটি অর্ডার করুন
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 12. FOOTER (CLEAN BENGALI TITLES) -->
+  <footer class="bg-slate-950 border-t border-slate-900 text-slate-400 text-xs py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
+        
+        <!-- Col 1 -->
+        <div>
+          <div class="flex items-center gap-2 mb-3">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500 text-slate-950 flex items-center justify-center font-bold text-base"><i class="fa-solid fa-code"></i></div>
+            <span class="text-lg font-black text-white font-mono">WEB PRO BD</span>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed mb-3">
+            বাংলাদেশের ক্ষুদ্র, মাঝারি ও নতুন উদ্যোক্তাদের জন্য আজীবন ফ্রি ডোমেন-হোস্টিং ও প্রফেশনাল ওয়েবসাইট সল্যুশন।
+          </p>
+          <p class="text-emerald-400 font-bold text-xs">👨‍💻 আবু তালহা খান • ফার্মগেট, ঢাকা</p>
+        </div>
+
+        <!-- Col 2: Site Pages -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3">সাইট পেইজ সমূহ</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="index.html" class="hover:text-emerald-400 transition-colors">হোম পেজ</a></li>
+            <li><a href="about.html" class="hover:text-emerald-400 transition-colors">আমাদের সম্পর্কে ও লক্ষ্য</a></li>
+            <li><a href="faq.html" class="hover:text-emerald-400 transition-colors">সাধারণ প্রশ্নোত্তর (FAQ)</a></li>
+            <li><a href="memo.html" class="hover:text-emerald-400 transition-colors">ক্যাশ মেমো ও ইনভয়েস</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-400 transition-colors">সরাসরি যোগাযোগ ও সাপোর্ট</a></li>
+            <li><a href="terms-privacy.html" class="hover:text-emerald-400 transition-colors">শর্তাবলী ও পলিসি</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Tech & Features -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3">সুবিধাসমূহ</h4>
+          <ul class="space-y-2 text-xs">
+            <li><span class="text-slate-300">✓ আজীবন ১০০% ফ্রি ক্লাউড হোস্টিং</span></li>
+            <li><span class="text-slate-300">✓ bKash, Nagad ও Rocket গেটওয়ে</span></li>
+            <li><span class="text-slate-300">✓ ফুল সোর্স কোড ও অ্যাডমিন ড্যাশবোর্ড</span></li>
+            <li><span class="text-slate-300">✓ ফ্রি লাইফটাইম SSL সিকিউরিটি</span></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact -->
+        <div>
+          <h4 class="text-white font-bold text-sm mb-3">সরাসরি হেল্পলাইন</h4>
+          <div class="space-y-2 text-xs">
+            <p class="text-slate-300 font-semibold"><i class="fa-solid fa-phone text-emerald-400 mr-2"></i> 01516513987 (WhatsApp/IMO)</p>
+            <p class="text-slate-300"><i class="fa-solid fa-location-dot text-cyan-400 mr-2"></i> ফার্মগেট, ঢাকা, বাংলাদেশ</p>
+            <div class="pt-2 flex gap-2">
+              <a href="https://wa.me/8801516513987" target="_blank" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-emerald-600 text-emerald-400 hover:text-white flex items-center justify-center border border-slate-800 transition-colors"><i class="fa-brands fa-whatsapp text-base"></i></a>
+              <a href="https://www.facebook.com/Abu.talha017467" target="_blank" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-blue-600 text-blue-400 hover:text-white flex items-center justify-center border border-slate-800 transition-colors"><i class="fa-brands fa-facebook text-base"></i></a>
+              <a href="https://www.facebook.com/profile.php?id=61593558263889" target="_blank" class="w-9 h-9 rounded-xl bg-slate-900 hover:bg-blue-600 text-blue-300 hover:text-white flex items-center justify-center border border-slate-800 transition-colors"><i class="fa-solid fa-flag text-base"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 border-t border-slate-900 text-center text-slate-500 text-xs flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p>© Web Pro BD - আবু তালহা খান (Abu Talha Khan), ফার্মগেট, ঢাকা। সর্বস্বত্ব সংরক্ষিত।</p>
+        <p class="text-emerald-400 font-semibold">ডোমেন ও হোস্টিং সারাজীবন ১০০% ফ্রি</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 13. JAVASCRIPT LOGIC -->
+  <script>
+    // 1. Drawer Toggle
+    function toggleDrawer() {
+      const drawer = document.getElementById('sideDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      if (drawer.classList.contains('-translate-x-full')) {
+        drawer.classList.remove('-translate-x-full');
+        overlay.classList.remove('hidden');
+      } else {
+        drawer.classList.add('-translate-x-full');
+        overlay.classList.add('hidden');
+      }
+    }
+
+    // 2. Category Filter
+    function filterCategory(cat) {
+      const buttons = document.querySelectorAll('.filter-btn');
+      buttons.forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.className = 'filter-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 cursor-pointer shadow-lg transition-all';
+        } else {
+          btn.className = 'filter-btn px-5 py-2.5 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 cursor-pointer transition-all';
+        }
+      });
+
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 3. Order Modal Logic
+    let currentOrderProduct = 'প্রো ই-কমার্স অনলাইন শপ';
+    let currentOrderPrice = 6999;
+
+    function openOrderModal(title, price) {
+      currentOrderProduct = title;
+      currentOrderPrice = price;
+      document.getElementById('modalProductTitle').textContent = title;
+      document.getElementById('modalProductPrice').textContent = '৳' + price.toLocaleString('en-IN');
+      const modal = document.getElementById('orderModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeOrderModal() {
+      const modal = document.getElementById('orderModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function handleOrderSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('ordName').value.trim();
+      const phone = document.getElementById('ordPhone').value.trim();
+      const notes = document.getElementById('ordNotes').value.trim();
+      
+      const msg = `নমস্কার আবু তালহা খান,\n\nআমি Web Pro BD থেকে ওয়েবসাইট অর্ডার করতে চাই:\n- প্যাকেজ: ${currentOrderProduct}\n- মূল্য: ৳${currentOrderPrice}\n- নাম: ${name}\n- মোবাইল: ${phone}\n- নোট: ${notes || 'প্রযোজ্য নয়'}\n- হোস্টিং: লাইফটাইম ১০০% ফ্রি`;
+      
+      const waUrl = `https://wa.me/8801516513987?text=${encodeURIComponent(msg)}`;
+      window.open(waUrl, '_blank');
+      closeOrderModal();
+    }
+
+    // 4. Live Demo Modal Logic
+    let currentDemoName = '';
+    function openLiveDemo(title, imgUrl) {
+      currentDemoName = title;
+      document.getElementById('demoTitle').textContent = title + ' - লাইভ প্রিভিউ';
+      document.getElementById('demoImg').src = imgUrl;
+      const modal = document.getElementById('demoModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLiveDemo() {
+      const modal = document.getElementById('demoModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+  </script>
+</body>
+</html>

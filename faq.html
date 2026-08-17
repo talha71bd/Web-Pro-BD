@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>সাধারণ জিজ্ঞাসা (FAQ) | Web Pro BD - আপনার সব প্রশ্নের সহজ উত্তর</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#6366f1', secondary: '#a855f7', darkbg: '#090d16', darkcard: '#111827', darkborder: '#1f2937' },
+                    fontFamily: { sans: ['Hind Siliguri', 'Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #090d16; color: #f3f4f6; }
+        
+        /* Floating Background Glow Blobs */
+        .glow-blob {
+            position: absolute;
+            filter: blur(100px);
+            opacity: 0.2;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Accordion Smooth Transition */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease-out, opacity 0.25s ease-out;
+            opacity: 0;
+        }
+        .faq-answer.open {
+            max-height: 500px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white overflow-x-hidden">
+
+    <!-- Ambient Background Glows -->
+    <div class="glow-blob w-[450px] h-[450px] bg-indigo-600 top-0 left-[-100px]"></div>
+    <div class="glow-blob w-[500px] h-[500px] bg-purple-600 top-[30%] right-[-150px]"></div>
+    <div class="glow-blob w-[400px] h-[400px] bg-emerald-600 bottom-[10%] left-[10%]"></div>
+
+    <!-- 1. Sticky Glassmorphism Navbar -->
+    <header class="sticky top-0 z-50 glass-card border-b border-darkborder px-4 md:px-8 py-3.5 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 text-white p-2.5 rounded-2xl shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition">
+                    <i class="fa-solid fa-laptop-code text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black tracking-wider uppercase bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-sans">WEB PRO BD</h1>
+                    <p class="text-[10px] text-gray-400 font-semibold leading-none">Professional Web & Mobile App Agency</p>
+                </div>
+            </a>
+
+            <!-- Quick WhatsApp Action -->
+            <div class="flex items-center space-x-3">
+                <a href="https://wa.me/8801516513987" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow-lg shadow-emerald-500/20 transition flex items-center">
+                    <i class="fa-brands fa-whatsapp text-sm mr-1.5"></i> হোয়াটসঅ্যাপ
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section with Live Search -->
+    <section class="relative z-10 py-12 md:py-20 px-4 md:px-8 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold mb-4">
+            <i class="fa-solid fa-circle-question mr-1"></i>
+            <span>আপনার দ্বিধা ও প্রশ্নের সচ্ছ গাইডলাইন</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4 max-w-3xl mx-auto">
+            আপনার মনের <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">যেকোনো প্রশ্নের উত্তর</span> এক জায়গায়
+        </h1>
+
+        <p class="text-gray-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-8">
+            ওয়েবসাইট বা মোবাইল অ্যাপস কেনা নিয়ে আপনার মনে যত প্রশ্ন রয়েছে, তার বিস্তারিত ব্যাখ্যা নিচে দেওয়া হলো।
+        </p>
+
+        <!-- Live Instant Search Bar -->
+        <div class="relative max-w-xl mx-auto">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-base"></i>
+            <input type="text" id="faqSearchInput" oninput="filterFaqs()" placeholder="প্রশ্ন খুঁজুন (যেমন: রিনিউয়াল, পেমেন্ট, ডেলিভারি, সাপোর্ট, অ্যাপস)..." class="w-full pl-11 pr-4 py-3.5 bg-gray-950 text-sm text-gray-100 rounded-2xl border border-gray-800 focus:outline-none focus:border-indigo-500 shadow-2xl transition">
+        </div>
+    </section>
+
+    <!-- 3. Category Filter Tabs -->
+    <section class="relative z-10 pb-6 px-4 md:px-8 max-w-5xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-2" id="categoryTabs">
+            <button onclick="filterCategory('all')" class="cat-tab px-4 py-2 rounded-xl text-xs font-bold transition bg-indigo-600 text-white shadow-md" data-cat="all">
+                সব প্রশ্ন (All)
+            </button>
+            <button onclick="filterCategory('offer')" class="cat-tab px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-900 hover:bg-slate-800 text-gray-300 border border-gray-800" data-cat="offer">
+                💎 অফার ও রিনিউয়াল ফি
+            </button>
+            <button onclick="filterCategory('delivery')" class="cat-tab px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-900 hover:bg-slate-800 text-gray-300 border border-gray-800" data-cat="delivery">
+                🚀 ডেলিভারি ও প্রসেস
+            </button>
+            <button onclick="filterCategory('support')" class="cat-tab px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-900 hover:bg-slate-800 text-gray-300 border border-gray-800" data-cat="support">
+                🛡️ সাপোর্ট ও সিকিউরিটি
+            </button>
+            <button onclick="filterCategory('domain')" class="cat-tab px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-900 hover:bg-slate-800 text-gray-300 border border-gray-800" data-cat="domain">
+                🌐 ডোমেইন, হোস্টিং ও অ্যাপস
+            </button>
+        </div>
+    </section>
+
+    <!-- 4. Deep Detailed FAQ Accordion Items -->
+    <section class="relative z-10 py-6 px-4 md:px-8 max-w-4xl mx-auto w-full">
+        <div class="space-y-3.5" id="faqList">
+
+            <!-- FAQ Item 1 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="offer" data-keywords="রিনিউয়াল ফি বাৎসরিক চার্জ মাসিক ফ্রি প্রাইজ দাম">
+                <button onclick="toggleFaq(1)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-gift text-indigo-400 mr-3"></i> ১. ওয়েবসাইটের কি প্রতি মাসে বা বছরে কোনো হিডেন সার্ভিস ফি বা রিনিউয়াল চার্জ দেওয়া লাগবে?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-1"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-1">
+                    <b class="text-emerald-400">একদমই না!</b> <b>Web Pro BD</b>-তে কোনো প্রকার বাৎসরিক মেইনটেন্যান্স বা মাসিক সার্ভিস ফিস নেই। আপনি এককালীন নির্দিষ্ট কস্টে ওয়েবসাইট ও অ্যাপস কিনবেন এবং আজীবন কোনো অতিরিক্ত চার্জ ছাড়া ১০০% বিনামূল্যে পরিচালনা করবেন। আমাদের চালানে যে দাম লেখা থাকবে, সেটিই শেষ হিসাব।
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="offer" data-keywords="কীভাবে সম্ভব আজীবন ফ্রি লাইফটাইম সাপোর্ট সার্ভার কস্ট">
+                <button onclick="toggleFaq(2)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-infinity text-purple-400 mr-3"></i> ২. আপনারা কীভাবে বাৎসরিক ফি ছাড়া আজীবন সাপোর্ট ও সার্ভিস দেওয়া সম্ভব করছেন?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-2"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-2">
+                    আমরা অত্যন্ত আধুনিক **গ্লোবাল ক্লাউড ইনফ্রাস্ট্রাকচার** এবং লাইটওয়েট কাস্টম কোডিং ব্যবহার করি, যার ফলে ক্লায়েন্টের ওয়েবসাইটের জন্য প্রতি মাসে বা বছরে কোনো বাড়তি ব্যাকএন্ড সার্ভার কস্ট থাকে না। আমরা ডেভেলপমেন্ট কস্টে প্রজেক্ট হ্যান্ডওভার করে দিই, ফলে আমরা আজীবন ফ্রি সাপোর্ট দিতে পারি।
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="delivery" data-keywords="ডেলিভারি সময় কত দিন সময় লাগবে">
+                <button onclick="toggleFaq(3)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-bolt text-amber-400 mr-3"></i> ৩. ওয়েবসাইট বা মোবাইল অ্যাপস ডেলিভারি হতে কত দিন সময় লাগবে?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-3"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-3">
+                    আমাদের ক্যাটালগের রেডিমেড ই-কমার্স, নিউজ বা পোর্টফোলিও ওয়েবসাইটগুলোর ক্ষেত্রে মাত্র **২৪ থেকে ৪৮ ঘণ্টার মধ্যে** সম্পূর্ণ ডেলিভারি সম্পন্ন করা হয়। তবে কাস্টমারের বিশেষ কোনো কাস্টম রিকোয়ারমেন্ট থাকলে ৩ থেকে ৭ কর্মদিবস সময় লাগতে পারে।
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="support" data-keywords="সাপোর্ট আফটার সেলস সমস্যা টেকনিক্যাল সাহায্য">
+                <button onclick="toggleFaq(4)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-headset text-emerald-400 mr-3"></i> ৪. ওয়েবসাইট হস্তান্তরের পর কোনো সমস্যা হলে কীভাবে সাপোর্ট পাবো?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-4"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-4">
+                    ওয়েবসাইট হস্তান্তরের পর যেকোনো সাপোর্ট বা সহায়তার জন্য আমাদের অফিশিয়াল হোয়াটসঅ্যাপ ও ইমো নম্বর **01516513987** অথবা ইমেইলে নক দেবেন। আমাদের টিম সাথে সাথে রেসপন্স করে টেকনিক্যাল সাপোর্ট নিশ্চিত করবে। এছাড়াও ঢাকার ফার্মগেট অফিসে এসেও সরাসরি সহায়তা নিতে পারেন।
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="delivery" data-keywords="কাস্টমাইজেশন প্রোডাক্ট ছবি এডিট পরিবর্তন এডমিন প্যানেল">
+                <button onclick="toggleFaq(5)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-sliders text-pink-400 mr-3"></i> ৫. আমি কি নিজে নিজে ছবি, ফোন নম্বর বা প্রোডাক্টের দাম পরিবর্তন করতে পারব?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-5"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-5">
+                    হ্যাঁ, ১০০%! আমরা ওয়েবসাইটটির সাথে একটি অত্যন্ত সহজ ও বোধগম্য **এডমিন প্যানেল (Dashboard)** বুঝিয়ে দেব। কোনো কোডিং জ্ঞান ছাড়াই আপনি মোবাইল বা কম্পিউটার দিয়ে ১ ক্লিকে ছবি, দাম, কন্টেন্ট বা ফোন নাম্বার ইচ্ছামতো চেঞ্জ করতে পারবেন।
+                </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="domain" data-keywords="ডোমেইন হোস্টিং ফ্রি আলাদা কিনতে হবে">
+                <button onclick="toggleFaq(6)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-globe text-cyan-400 mr-3"></i> ৬. ডোমেইন ও হোস্টিং কি আপনাদের সাথে ইনক্লুডেড নাকি আলাদা কিনতে হবে?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-6"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-6">
+                    আমাদের প্যাকেজগুলোর সাথেই **ফ্রি ডোমেইন এবং হাই-স্পিড ক্লাউড হোস্টিং** যুক্ত থাকে। আপনার যদি আগে থেকেই কোনো ডোমেইন কেনা থাকে, তবে আমরা আপনার বিদ্যমান ডোমেইনের সাথেই ওয়েবসাইট সেটআপ করে দেব।
+                </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="domain" data-keywords="এন্ড্রয়েড মোবাইল অ্যাপস প্লে স্টোর">
+                <button onclick="toggleFaq(7)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-mobile-screen-button text-orange-400 mr-3"></i> ৭. আমি কি আমার ওয়েবসাইটের জন্য এন্ড্রয়েড মোবাইল অ্যাপস (Android App) বানিয়ে নিতে পারব?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-7"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-7">
+                    হ্যাঁ! Web Pro BD ওয়েবসাইট ও মোবাইল অ্যাপস দুটোই সমান্তরালভাবে তৈরি করে থাকে। আপনার ই-কমার্স বা সার্ভিস ওয়েবসাইটের জন্য আমরা সম্পূর্ণ কাস্টমাইজড এন্ড্রয়েড অ্যাপ (.APK) রেডি করে দেব।
+                </div>
+            </div>
+
+            <!-- FAQ Item 8 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="support" data-keywords="সিকিউরিটি হ্যাক এসএসএল নিরাপদ ডাটা ব্যাকআপ">
+                <button onclick="toggleFaq(8)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-shield-halved text-red-400 mr-3"></i> ৮. ওয়েবসাইট নিরাপত্তা বা ডাটা হ্যাকিংয়ের কোনো ঝুঁকি আছে কি?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-8"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-8">
+                    না, একদমই কোনো ঝুঁকি নেই! প্রতিটি ওয়েবসাইটে আমরা বিনামূল্যে **SSL এনক্রিপশন সিকিউরিটি** এবং ক্লাউড ডাটাবেজ ব্যাকআপ ব্যবস্থা দিয়ে থাকি, যা আপনার ওয়েবসাইট ও কাস্টমারের তথ্য হ্যাকিং থেকে সর্বোচ্চ সুরক্ষিত রাখে।
+                </div>
+            </div>
+
+            <!-- FAQ Item 9 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="offer" data-keywords="পেমেন্ট এডভান্স কত টাকা পেমেন্ট মেথড বিকাশ নগদ">
+                <button onclick="toggleFaq(9)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-wallet text-indigo-400 mr-3"></i> ৯. ওয়েবসাইটের পেমেন্ট প্রসেস কী? কত টাকা এডভান্স করতে হয়?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-9"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-9">
+                    কাজ শুরুর আগে ৫০% এডভান্স পরিশোধ করতে হয় এবং তখনই আমরা আপনার নামে একটি অফিশিয়াল ক্যাশ মেমো জেনারেট করে দিই। বাকি ৫০% পেমেন্ট আপনি ওয়েবসাইট সম্পূর্ণ রেডি দেখে পছন্দ করার পর পরিশোধ করবেন।
+                </div>
+            </div>
+
+            <!-- FAQ Item 10 -->
+            <div class="faq-card glass-card rounded-2xl border border-darkborder overflow-hidden" data-cat="delivery" data-keywords="অফিস সরাসরি আসা ঠিকানা ফার্মগেট টাকা লেনদেন">
+                <button onclick="toggleFaq(10)" class="w-full p-4 md:p-5 text-left font-bold text-sm md:text-base text-gray-100 flex justify-between items-center hover:bg-slate-800/40 transition">
+                    <span class="flex items-center"><i class="fa-solid fa-location-dot text-emerald-400 mr-3"></i> ১০. আপনাদের অফিস কোথায়? আমি কি সরাসরি অফিসে এসে কথা বলতে পারি?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform duration-300" id="faqIcon-10"></i>
+                </button>
+                <div class="faq-answer px-5 pb-5 text-xs md:text-sm text-gray-300 leading-relaxed border-t border-darkborder/50 pt-3" id="faqAns-10">
+                    অবশ্যই! আমাদের অফিশিয়াল ঠিকানা: **ফার্মগেট, ঢাকা-১২১৫**। আপনি যেকোনো কর্মদিবসে সকাল ১০টা থেকে রাত ৮টার মধ্যে অফিসে চলে এসে এক কাপ চায়ের আড্ডায় সরাসরি প্রতিষ্ঠাতা **আবু তালহা খান**-এর সাথে মিটিং করতে পারেন।
+                </div>
+            </div>
+
+        </div>
+
+        <!-- No Search Results Found Notice -->
+        <div id="noResults" class="hidden text-center py-12 glass-card rounded-3xl border border-darkborder mt-4">
+            <i class="fa-solid fa-magnifying-glass text-3xl text-gray-600 mb-2"></i>
+            <p class="text-sm text-gray-400 font-bold">দুঃখিত! আপনার খোঁজা বিষয়টি সম্পর্কিত কোনো প্রশ্ন পাওয়া যায়নি।</p>
+            <p class="text-xs text-gray-500 mt-1">নিচের বক্সে সরাসরি প্রশ্ন লিখে হোয়াটসঅ্যাপে জেনে নিন!</p>
+        </div>
+    </section>
+
+    <!-- 5. Instant Custom Question Ask Box -->
+    <section class="relative z-10 py-10 px-4 md:px-8 max-w-4xl mx-auto w-full">
+        <div class="glass-card rounded-3xl p-6 md:p-8 border border-indigo-500/30 bg-gradient-to-tr from-indigo-950/30 via-slate-900 to-purple-950/30 shadow-2xl text-center space-y-4">
+            <div class="w-14 h-14 bg-indigo-500/20 text-indigo-400 rounded-2xl flex items-center justify-center text-3xl mx-auto">
+                <i class="fa-solid fa-comment-dots"></i>
+            </div>
+            <h3 class="text-xl md:text-2xl font-extrabold text-white">কাঙ্ক্ষিত উত্তর পাননি? সরাসরি প্রশ্ন করুন!</h3>
+            <p class="text-xs text-gray-300 max-w-md mx-auto leading-relaxed">
+                আপনার বিশেষ কোনো প্রশ্ন বা কাস্টম চাহিদা থাকলে নিচে লিখে সাবমিট করুন। আমরা হোয়াটসঅ্যাপে সাথে সাথে বুঝিয়ে দেব।
+            </p>
+
+            <form onsubmit="askDirectQuestion(event)" class="space-y-3 max-w-md mx-auto pt-2">
+                <input type="text" id="askName" placeholder="আপনার নাম *" required class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200">
+                <textarea id="askText" rows="3" placeholder="আপনার প্রশ্নটি এখানে বিস্তারিত লিখুন..." required class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200"></textarea>
+                <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg transition flex items-center justify-center">
+                    <i class="fa-brands fa-whatsapp text-sm mr-2"></i> হোয়াটসঅ্যাপে উত্তর নিন (01516513987)
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- 6. Office Location & Tea Invitation Box -->
+    <section class="relative z-10 py-8 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="glass-card rounded-3xl p-6 md:p-8 border border-darkborder flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="space-y-2 text-center md:text-left">
+                <span class="px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full text-xs font-bold">
+                    <i class="fa-solid fa-mug-hot mr-1"></i> চায়ের নিমন্ত্রণ
+                </span>
+                <h3 class="text-xl font-bold text-white">ফার্মগেট অফিসে চলে আসুন এক কাপ চায়ের আড্ডায়!</h3>
+                <p class="text-xs text-gray-400">ঠিকানা: ফার্মগেট, ঢাকা-১২১৫ | ফোন/হোয়াটসঅ্যাপ: 01516513987 | ইমেইল: abutalha46700@gmail.com</p>
+            </div>
+            <a href="https://wa.me/8801516513987" target="_blank" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-lg transition shrink-0">
+                <i class="fa-solid fa-phone mr-1.5"></i> সরাসরি কল করুন
+            </a>
+        </div>
+    </section>
+
+    <!-- 7. Mega Footer -->
+    <footer class="mt-auto border-t border-darkborder bg-slate-950 px-4 md:px-8 py-8 relative z-10 text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2 rounded-xl">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div>
+                    <p class="font-bold text-white text-sm">WEB PRO BD</p>
+                    <p class="text-[10px] text-gray-500">প্রোপ্রাইটর: আবু তালহা খান | ফার্মগেট, ঢাকা</p>
+                </div>
+            </div>
+
+            <p class="text-center text-gray-500">
+                &copy; 2026 Web Pro BD. সর্বস্বত্ব সংরক্ষিত।
+            </p>
+
+            <div class="flex space-x-4 text-base text-gray-400">
+                <a href="https://wa.me/8801516513987" target="_blank" class="hover:text-emerald-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/share/1Hp8A5Aqgp/" target="_blank" class="hover:text-blue-400 transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="mailto:abutalha46700@gmail.com" class="hover:text-indigo-400 transition"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Engine for FAQ -->
+    <script>
+        // Toggle Accordion Answer
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faqAns-${id}`);
+            const icon = document.getElementById(`faqIcon-${id}`);
+
+            if (ans.classList.contains('open')) {
+                ans.classList.remove('open');
+                icon.classList.remove('rotate-180');
+            } else {
+                // Close all others for accordion feel
+                document.querySelectorAll('.faq-answer').forEach(el => el.classList.remove('open'));
+                document.querySelectorAll('[id^="faqIcon-"]').forEach(el => el.classList.remove('rotate-180'));
+
+                ans.classList.add('open');
+                icon.classList.add('rotate-180');
+            }
+        }
+
+        // Filter Category Tabs
+        function filterCategory(cat) {
+            const cards = document.querySelectorAll('.faq-card');
+            const tabs = document.querySelectorAll('.cat-tab');
+
+            tabs.forEach(tab => {
+                if (tab.getAttribute('data-cat') === cat) {
+                    tab.className = "cat-tab px-4 py-2 rounded-xl text-xs font-bold transition bg-indigo-600 text-white shadow-md";
+                } else {
+                    tab.className = "cat-tab px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-900 hover:bg-slate-800 text-gray-300 border border-gray-800";
+                }
+            });
+
+            let visibleCount = 0;
+            cards.forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-cat') === cat) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('noResults').classList.toggle('hidden', visibleCount > 0);
+        }
+
+        // Live Real-Time Search Bar
+        function filterFaqs() {
+            const query = document.getElementById('faqSearchInput').value.toLowerCase().trim();
+            const cards = document.querySelectorAll('.faq-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const text = card.innerText.toLowerCase();
+                const keywords = card.getAttribute('data-keywords') ? card.getAttribute('data-keywords').toLowerCase() : '';
+
+                if (text.includes(query) || keywords.includes(query)) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            document.getElementById('noResults').classList.toggle('hidden', visibleCount > 0);
+        }
+
+        // Ask Direct Question WhatsApp Redirect
+        function askDirectQuestion(e) {
+            e.preventDefault();
+            const name = document.getElementById('askName').value;
+            const text = document.getElementById('askText').value;
+
+            const msg = `Hello Web Pro BD,\nName: ${name}\nQuestion: ${text}`;
+            const url = `https://wa.me/8801516513987?text=${encodeURIComponent(msg)}`;
+
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>

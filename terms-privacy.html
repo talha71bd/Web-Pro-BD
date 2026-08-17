@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>প্রাইভেসি ও শর্তাবলী | Web Pro BD - আইনি ও সাপোর্ট পলিসি</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#6366f1', secondary: '#a855f7', darkbg: '#090d16', darkcard: '#111827', darkborder: '#1f2937' },
+                    fontFamily: { sans: ['Hind Siliguri', 'Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #090d16; color: #f3f4f6; }
+        
+        /* Floating Background Glow Blobs */
+        .glow-blob {
+            position: absolute;
+            filter: blur(100px);
+            opacity: 0.2;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 15px 30px -10px rgba(99, 102, 241, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white overflow-x-hidden">
+
+    <!-- Ambient Background Glows -->
+    <div class="glow-blob w-[450px] h-[450px] bg-indigo-600 top-0 left-[-100px]"></div>
+    <div class="glow-blob w-[500px] h-[500px] bg-purple-600 top-[35%] right-[-150px]"></div>
+    <div class="glow-blob w-[400px] h-[400px] bg-emerald-600 bottom-[10%] left-[10%]"></div>
+
+    <!-- 1. Sticky Glassmorphism Navbar -->
+    <header class="sticky top-0 z-50 glass-card border-b border-darkborder px-4 md:px-8 py-3.5 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 text-white p-2.5 rounded-2xl shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition">
+                    <i class="fa-solid fa-laptop-code text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black tracking-wider uppercase bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-sans">WEB PRO BD</h1>
+                    <p class="text-[10px] text-gray-400 font-semibold leading-none">Professional Web & Mobile App Agency</p>
+                </div>
+            </a>
+
+            <!-- Quick WhatsApp Action -->
+            <div class="flex items-center space-x-3">
+                <a href="https://wa.me/8801516513987" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow-lg shadow-emerald-500/20 transition flex items-center">
+                    <i class="fa-brands fa-whatsapp text-sm mr-1.5"></i> হোয়াটসঅ্যাপ
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="relative z-10 py-12 md:py-16 px-4 md:px-8 max-w-7xl mx-auto text-center">
+        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold mb-4">
+            <i class="fa-solid fa-scale-balanced mr-1"></i>
+            <span>স্বচ্ছতা ও পারস্পরিক বিশ্বস্ততার আইনি নীতিমালা</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4 max-w-3xl mx-auto">
+            Web Pro BD-এর অফিশিয়াল <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">শর্তাবলী ও প্রাইভেসি পলিসি</span>
+        </h1>
+
+        <p class="text-gray-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-8">
+            আমাদের সার্ভিস গ্রহণ করার পূর্বে সার্ভিস সংক্রান্ত সকল নিয়মাবলী, আজীবন ফ্রি সাপোর্ট নীতি, ডাটা নিরাপত্তা এবং পেমেন্ট শর্ত স্পষ্ট জেনে নিন।
+        </p>
+
+        <!-- Policy Quick Search Bar -->
+        <div class="relative max-w-xl mx-auto">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-base"></i>
+            <input type="text" id="policySearchInput" oninput="filterPolicy()" placeholder="নীতিমালা খুঁজুন (যেমন: রিফান্ড, পেমেন্ট, সিকিউরিটি, সাপোর্ট)..." class="w-full pl-11 pr-4 py-3.5 bg-gray-950 text-sm text-gray-100 rounded-2xl border border-gray-800 focus:outline-none focus:border-indigo-500 shadow-2xl transition">
+        </div>
+    </section>
+
+    <!-- 3. Policy Navigation Tabs -->
+    <section class="relative z-10 pb-8 px-4 md:px-8 max-w-5xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-2" id="policyTabs">
+            <button onclick="scrollToSection('terms')" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-indigo-600 text-white shadow-md">
+                📜 ব্যবহারের শর্তাবলী
+            </button>
+            <button onclick="scrollToSection('privacy')" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-900 hover:bg-slate-800 text-gray-300 border border-gray-800">
+                🔒 প্রাইভেসি পলিসি
+            </button>
+            <button onclick="scrollToSection('refund')" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-900 hover:bg-slate-800 text-gray-300 border border-gray-800">
+                💸 রিফান্ড নীতি
+            </button>
+            <button onclick="scrollToSection('support')" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-900 hover:bg-slate-800 text-gray-300 border border-gray-800">
+                🛠️ আজীবন ফ্রি সাপোর্ট
+            </button>
+            <button onclick="scrollToSection('payment')" class="px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-900 hover:bg-slate-800 text-gray-300 border border-gray-800">
+                💳 পেমেন্ট ও ডেলিভারি
+            </button>
+        </div>
+    </section>
+
+    <!-- 4. Deep Detailed Policy Content Sections -->
+    <section class="relative z-10 py-4 px-4 md:px-8 max-w-5xl mx-auto space-y-8 w-full" id="policyContentArea">
+
+        <!-- SECTION 1: Terms of Service -->
+        <div id="terms" class="policy-section glass-card rounded-3xl p-6 md:p-8 border border-darkborder shadow-2xl space-y-4 hover-lift">
+            <div class="flex items-center space-x-3 border-b border-darkborder pb-4">
+                <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-file-contract"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">১. ওয়েবসাইট ও অ্যাপস ব্যবহারের শর্তাবলী (Terms of Service)</h2>
+                    <p class="text-xs text-gray-400">Web Pro BD এজেন্সির সার্ভিস ব্যবহারের সাধারণ নিয়মাবলী</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-xs md:text-sm text-gray-300 leading-relaxed font-normal">
+                <p>
+                    <b>১.১ স্বত্বাধিকার ও নিয়ন্ত্রণ:</b> আমাদের তৈরি প্রতিটি ওয়েবসাইট বা মোবাইল অ্যাপস সম্পূর্ণভাবে ক্লায়েন্টের নামে রেজিস্টার্ড হবে। প্রজেক্ট কমপ্লিট হওয়ার পর ক্লায়েন্টকে ফুল এডমিন একসেস প্রদান করা হবে।
+                </p>
+                <p>
+                    <b>১.২ বাৎসরিক/মাসিক চার্জ মুক্ত অফার:</b> <b class="text-emerald-400">Web Pro BD</b>-এর বিশেষ নীতি অনুযায়ী আমাদের কোনো সার্ভিসে কোনো প্রকার বাৎসরিক বা মাসিক হিডেন সার্ভিস ফি নেই। ক্লায়েন্ট এককালীন প্রজেক্ট ফি পরিশোধ করে আজীবন সার্ভিস ব্যবহার করতে পারবেন।
+                </p>
+                <p>
+                    <b>১.৩ কন্টেন্ট ও আইনি দায়বদ্ধতা:</b> ওয়েবসাইটের ভেতরের ডাটা, টেক্সট, ছবি বা প্রোডাক্ট কন্টেন্টের সমস্ত দায় কাস্টমারের নিজের। অবৈধ, অনৈতিক বা বাংলাদেশ সরকার কর্তৃক নিষিদ্ধ কোনো কাজের জন্য ওয়েবসাইট ব্যবহার করা যাবে না।
+                </p>
+                <p>
+                    <b>১.৪ ডোমেইন ও হোস্টিং রিনিউয়াল:</b> প্রথম বছর প্যাকেজের সাথে ডোমেইন ও হোস্টিং ফ্রি প্রদান করা হয়। পরবর্তী বছরগুলোতে ডোমেইন প্রোভাইডার বা রেজিস্টারের অফিশিয়াল রিনিউয়াল ফি ক্লায়েন্টকে নিজে বহন করতে হবে।
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Privacy Policy -->
+        <div id="privacy" class="policy-section glass-card rounded-3xl p-6 md:p-8 border border-darkborder shadow-2xl space-y-4 hover-lift">
+            <div class="flex items-center space-x-3 border-b border-darkborder pb-4">
+                <div class="w-12 h-12 bg-purple-500/10 text-purple-400 rounded-2xl flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">২. কাস্টমার ডাটা প্রাইভেসি ও সিকিউরিটি পলিসি (Privacy Policy)</h2>
+                    <p class="text-xs text-gray-400">আপনার ব্যক্তিগত তথ্য ও প্রজেক্ট ডাটা সুরক্ষার প্রতিশ্রুতি</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-xs md:text-sm text-gray-300 leading-relaxed font-normal">
+                <p>
+                    <b>২.১ তথ্যের গোপনীয়তা:</b> অর্ডার করার সময় আপনার নাম, ফোন নম্বর, ইমেইল, ঠিকানা এবং চালানের রসিদ আমাদের এনক্রিপ্টেড ডাটাবেজে সম্পূর্ণ সুরক্ষিত থাকে। আমরা কোনো থার্ড-পার্টি বা কোম্পানির কাছে আপনার তথ্য বিক্রি বা শেয়ার করি না।
+                </p>
+                <p>
+                    <b>২.২ পাসওয়ার্ড ও সিকিউরিটি:</b> আপনার ওয়েবসাইট বা এডমিন প্যানেলের পাসওয়ার্ড কখনোই সাধারণ টেক্সট হিসেবে সেভ থাকে না। হস্তান্তরের পর ক্লায়েন্টকে অবশ্যই পাসওয়ার্ড পরিবর্তন করার পরামর্শ দেওয়া হয়।
+                </p>
+                <p>
+                    <b>২.৩ ক্লাউড ব্যাকআপ:</b> সাইটের দুর্ঘটনাবশত ডাটা লস রোধ করতে আমরা ক্লাউড ব্যাকআপ সিস্টেম প্রয়োগ করি, যাতে আপনার ডাটা যেকোনো পরিস্থিতিতে উদ্ধার করা সম্ভব হয়।
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 3: Refund Policy -->
+        <div id="refund" class="policy-section glass-card rounded-3xl p-6 md:p-8 border border-darkborder shadow-2xl space-y-4 hover-lift">
+            <div class="flex items-center space-x-3 border-b border-darkborder pb-4">
+                <div class="w-12 h-12 bg-red-500/10 text-red-400 rounded-2xl flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">৩. রিফান্ড ও অর্ডার বাতিল নীতি (Refund Policy)</h2>
+                    <p class="text-xs text-gray-400">টাকা ফেরত ও প্রজেক্ট ক্যানসেলেশনের স্পষ্ট গাইডলাইন</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-xs md:text-sm text-gray-300 leading-relaxed font-normal">
+                <p>
+                    <b>৩.১ কাজ শুরুর পূর্বের বাতিল:</b> অর্ডার করার পর যদি কোনো কারণে আমাদের ডেভেলপমেন্ট টিম কাজ শুরু করার আগেই আপনি প্রজেক্ট বাতিল করতে চান, তবে আপনার অ্যাডভান্স পেমেন্টের ৯০% টাকা ফেরত পাবেন।
+                </p>
+                <p>
+                    <b>৩.২ ডোমেইন ও হোস্টিং কেনা সাপেক্ষে:</b> প্রজেক্টের জন্য ডোমেইন ও হোস্টিং রেজিস্টার করা হয়ে গেলে ডোমেইন প্রোভাইডারের নন-রিফান্ডেবল কস্ট কেটে অবশিষ্ট টাকা রিফান্ড দেওয়া হবে।
+                </p>
+                <p>
+                    <b>৩.৩ ১০০% মানি ব্যাক গ্যারান্টি:</b> যদি আমরা আমাদের চুক্তিকৃত ফিচারের বাইরে বা প্রতিশ্রুতি অনুযায়ী ওয়েবসাইট তৈরি করে দিতে ব্যর্থ হই, তবে কাস্টমার ১০০% রিফান্ড দাবি করতে পারবেন।
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 4: Support Policy -->
+        <div id="support" class="policy-section glass-card rounded-3xl p-6 md:p-8 border border-emerald-500/30 bg-gradient-to-tr from-emerald-950/20 via-slate-900 to-indigo-950/20 shadow-2xl space-y-4 hover-lift">
+            <div class="flex items-center space-x-3 border-b border-darkborder pb-4">
+                <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-headset"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">৪. আজীবন ফ্রি টেকনিক্যাল সাপোর্ট নীতি (Lifetime Support Policy)</h2>
+                    <p class="text-xs text-emerald-400 font-semibold">Web Pro BD-এর বিশেষ লাইফটাইম সাপোর্ট সুবিধা</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-xs md:text-sm text-gray-300 leading-relaxed font-normal">
+                <p>
+                    <b>৪.১ ফ্রি সাপোর্ট পরিধি:</b> ওয়েবসাইট ডেলিভারির পরও যেকোনো টেকনিক্যাল বাগ (Bugs), সার্ভার ডাউন সমস্যা, লিংক কাজ না করা বা ফাইল সাপোর্ট ইত্যাদি আমরা আজীবন ফ্রিতে ঠিক করে দেব।
+                </p>
+                <p>
+                    <b>৪.২ সাপোর্টের মাধ্যম:</b> ক্লায়েন্ট আমাদের অফিশিয়াল হোয়াটসঅ্যাপ (<b class="text-emerald-400">01516513987</b>), ইমেইল, ফোন অথবা সরাসরি ফার্মগেট অফিসে এসে সাপোর্ট নিতে পারবেন।
+                </p>
+                <p>
+                    <b>৪.৩ নতুন মেজর ফিচার যুক্ত করা:</b> ওয়েবসাইট হস্তান্তরের পর ক্লায়েন্ট যদি সম্পূর্ণ নতুন কোনো জটিল ফিচার (যেমন: নতুন পেমেন্ট গেটওয়ে, অন্য কাস্টম ফিচার) যুক্ত করতে চান, তবে তার জন্য আলোচনা সাপেক্ষে ডেভেলপমেন্ট কস্ট প্রযোজ্য হবে।
+                </p>
+            </div>
+        </div>
+
+        <!-- SECTION 5: Payment & Delivery Terms -->
+        <div id="payment" class="policy-section glass-card rounded-3xl p-6 md:p-8 border border-darkborder shadow-2xl space-y-4 hover-lift">
+            <div class="flex items-center space-x-3 border-b border-darkborder pb-4">
+                <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-2xl flex items-center justify-center text-2xl">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl md:text-2xl font-bold text-white">৫. পেমেন্ট ও ডেলিভারি শর্তাবলী (Payment Terms)</h2>
+                    <p class="text-xs text-gray-400">টাকা লেনদেন ও অফিশিয়াল চালানের নিয়মাবলী</p>
+                </div>
+            </div>
+
+            <div class="space-y-3 text-xs md:text-sm text-gray-300 leading-relaxed font-normal">
+                <p>
+                    <b>৫.১ অগ্রিম পেমেন্ট:</b> কাজ শুরু করার জন্য ৫০% টাকা অগ্রিম পরিশোধ করতে হবে এবং সাথে সাথে সিস্টেমে আপনার নামে চালানের মেমো তৈরি হয়ে যাবে।
+                </p>
+                <p>
+                    <b>৫.২ পেমেন্ট ক্লিয়ারেন্স ও ফাইল একসেস:</b> ডেমো চেক করে কাজ পছন্দ হওয়ার পর অবশিষ্ট ৫০% পেমেন্ট ক্লিয়ার সাপেক্ষে সম্পূর্ণ একসেস বুঝিয়ে দেওয়া হবে।
+                </p>
+                <p>
+                    <b>৫.৩ অফিশিয়াল চালান:</b> প্রতিটি লেনদেনের জন্য কাস্টমার একটি কিউআর কোড ও স্ট্যাম্পযুক্ত প্রফেশনাল ক্যাশ মেমো পাবেন, যা ভবিষ্যতে যেকোনো রেফারেন্স হিসেবে গ্রহণযোগ্য।
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 5. Contact & Tea Invitation Box -->
+    <section class="relative z-10 py-12 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="glass-card rounded-3xl p-6 md:p-10 border border-indigo-500/30 bg-gradient-to-tr from-indigo-950/40 via-slate-900 to-purple-950/40 shadow-2xl">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <div class="lg:col-span-7 space-y-4">
+                    <span class="px-3 py-1 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold rounded-full">
+                        <i class="fa-solid fa-mug-hot mr-1"></i> চায়ের আমন্ত্রণ
+                    </span>
+                    <h2 class="text-2xl md:text-4xl font-extrabold text-white leading-tight">
+                        পলিসি নিয়ে কোনো প্রশ্ন থাকলে সরাসরি কথা বলুন!
+                    </h2>
+                    <p class="text-gray-300 text-xs md:text-sm leading-relaxed">
+                        আমাদের সার্ভিস বা শর্তাবলী বুঝতে কোনো অসুবিধা হলে সরাসরি ফার্মগেট অফিসে চলে আসুন অথবা ফোন করুন প্রতিষ্ঠাতা <b>আবু তালহা খান</b>-এর সাথে।
+                    </p>
+
+                    <div class="space-y-2 text-xs font-medium text-gray-300 pt-2">
+                        <p><i class="fa-solid fa-location-dot text-indigo-400 mr-2"></i> <b>ঠিকানা:</b> ফার্মগেট, ঢাকা-১২১৫, বাংলাদেশ</p>
+                        <p><i class="fa-brands fa-whatsapp text-emerald-400 mr-2"></i> <b>হোয়াটসঅ্যাপ / ইমো:</b> 01516513987</p>
+                        <p><i class="fa-solid fa-envelope text-indigo-400 mr-2"></i> <b>ইমেইল:</b> abutalha46700@gmail.com</p>
+                    </div>
+
+                    <div class="pt-4 flex flex-wrap gap-3">
+                        <a href="https://wa.me/8801516513987" target="_blank" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-lg transition">
+                            <i class="fa-brands fa-whatsapp mr-1.5 text-sm"></i> হোয়াটসঅ্যাপে কথা বলুন
+                        </a>
+                        <a href="tel:01516513987" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow-lg transition">
+                            <i class="fa-solid fa-phone mr-1.5 text-sm"></i> সরাসরি কল করুন
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 bg-gray-950 p-6 rounded-2xl border border-gray-800 text-center space-y-3">
+                    <div class="w-16 h-16 bg-indigo-500/10 text-indigo-400 rounded-full flex items-center justify-center text-3xl mx-auto">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">স্বচ্ছতা ও বিশ্বস্ততা</h3>
+                    <p class="text-xs text-gray-400">আমরা সততা ও দীর্ঘমেয়াদী সম্পর্কের ভিত্তিতে কাজ করি।</p>
+                    <p class="text-[11px] text-emerald-400 font-semibold"><i class="fa-solid fa-circle-check mr-1"></i> Web Pro BD - সর্বস্বত্ব সংরক্ষিত</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Mega Footer -->
+    <footer class="mt-auto border-t border-darkborder bg-slate-950 px-4 md:px-8 py-8 relative z-10 text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2 rounded-xl">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div>
+                    <p class="font-bold text-white text-sm">WEB PRO BD</p>
+                    <p class="text-[10px] text-gray-500">প্রোপ্রাইটর: আবু তালহা খান | ফার্মগেট, ঢাকা</p>
+                </div>
+            </div>
+
+            <p class="text-center text-gray-500">
+                &copy; 2026 Web Pro BD. সর্বস্বত্ব সংরক্ষিত।
+            </p>
+
+            <div class="flex space-x-4 text-base text-gray-400">
+                <a href="https://wa.me/8801516513987" target="_blank" class="hover:text-emerald-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/share/1Hp8A5Aqgp/" target="_blank" class="hover:text-blue-400 transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="mailto:abutalha46700@gmail.com" class="hover:text-indigo-400 transition"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive JS Engine for Search & Smooth Scroll -->
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Live Real-Time Policy Search
+        function filterPolicy() {
+            const query = document.getElementById('policySearchInput').value.toLowerCase().trim();
+            const sections = document.querySelectorAll('.policy-section');
+
+            sections.forEach(sec => {
+                const text = sec.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    sec.classList.remove('hidden');
+                } else {
+                    sec.classList.add('hidden');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

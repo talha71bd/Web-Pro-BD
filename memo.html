@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Pro BD - Billing & Invoice Studio Pro</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Photo & PDF Download Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        body { font-family: 'Hind Siliguri', 'Inter', sans-serif; }
+        
+        .memo-card {
+            width: 100%;
+            max-width: 820px;
+            margin: 0 auto;
+            background: #ffffff;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .watermark {
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-25deg);
+            font-size: 4.8rem;
+            font-weight: 900;
+            color: rgba(30, 41, 59, 0.035);
+            pointer-events: none;
+            white-space: nowrap;
+            user-select: none;
+            z-index: 0;
+            letter-spacing: 2px;
+        }
+
+        /* Toast Notification Styling */
+        #toast {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @media print {
+            .no-print { display: none !important; }
+            body { background: white !important; padding: 0 !important; margin: 0 !important; }
+            .memo-card { width: 100% !important; max-width: 100% !important; box-shadow: none !important; border: none !important; padding: 0 !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 min-h-screen flex flex-col selection:bg-slate-800 selection:text-white">
+
+    <!-- Top Web Dashboard Navbar -->
+    <header class="bg-slate-900 text-white border-b border-slate-800 sticky top-0 z-40 px-4 md:px-8 py-3.5 no-print shadow-lg">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-tr from-indigo-500 to-purple-600 text-white p-2 rounded-xl shadow-md">
+                    <i class="fa-solid fa-laptop-code text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-black tracking-wider uppercase font-sans leading-none">WEB PRO BD</h1>
+                    <p class="text-[10px] text-slate-400 font-semibold mt-0.5">Billing & Invoice Studio Pro</p>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <span class="hidden sm:inline-flex items-center px-3 py-1 rounded-full text-[11px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <i class="fa-solid fa-cloud-check mr-1.5 text-xs"></i> Google Sheets Live Sync
+                </span>
+                <button onclick="openHistoryModal()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold rounded-xl border border-slate-700 transition flex items-center">
+                    <i class="fa-solid fa-clock-rotate-left mr-1.5 text-indigo-400"></i> চালান হিস্ট্রি
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Workspace -->
+    <main class="flex-1 max-w-7xl mx-auto w-full p-3 sm:p-5 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- বামপাশে: আল্ট্রা-স্মার্ট ইনপুট ফর্ম -->
+        <div class="lg:col-span-4 bg-white p-4 sm:p-5 rounded-3xl shadow-xl border border-slate-200/80 no-print space-y-3.5">
+            
+            <div class="border-b border-slate-100 pb-3 flex justify-between items-center">
+                <div>
+                    <h2 class="text-base font-extrabold text-slate-900 flex items-center">
+                        <i class="fa-solid fa-file-signature text-indigo-600 mr-2"></i> চালান তৈরি করুন
+                    </h2>
+                    <p class="text-[10px] text-slate-400 mt-0.5">ফর্ম পূরণ করলে ডানে লাইভ মেমো প্রিভিউ তৈরি হবে</p>
+                </div>
+                <div class="flex gap-1">
+                    <button type="button" onclick="autoFillSampleData()" title="অটো টেস্ট ডাটা" class="px-2 py-1 bg-purple-50 hover:bg-purple-100 text-purple-700 text-[10px] font-bold rounded-lg border border-purple-200 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> অটো ফিল
+                    </button>
+                    <button type="button" onclick="autoGenerateNewInvoiceNo()" title="নতুন মেমো নম্বর" class="px-2 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-[10px] font-bold rounded-lg border border-indigo-200 transition">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                </div>
+            </div>
+
+            <form id="invoiceForm" onsubmit="handleFormSubmit(event)" class="space-y-3">
+                
+                <!-- ১. মেমো অ্যান্ড ডেট সেকশন -->
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-600 mb-0.5 block">মেমো / চালান নম্বর</label>
+                        <input type="text" id="inNo" readonly required class="w-full p-2 text-xs border border-slate-200 rounded-xl bg-slate-100 font-mono font-bold text-indigo-700">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-600 mb-0.5 block">তারিখ</label>
+                        <input type="date" id="inDate" required onchange="updatePreview()" class="w-full p-2 text-xs border border-slate-200 rounded-xl bg-slate-50 focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+
+                <!-- ২. গ্রাহকের প্রোফাইল সেকশন -->
+                <div class="border-t border-slate-100 pt-2.5 space-y-2">
+                    <p class="text-[11px] font-extrabold text-indigo-600 flex items-center">
+                        <i class="fa-solid fa-id-card mr-1.5"></i> গ্রাহকের প্রোফাইল (Customer Profile)
+                    </p>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="text" id="custName" placeholder="Customer Name *" value="Nure Alam" required oninput="updatePreview()" class="w-full p-2 text-xs border border-slate-200 rounded-xl bg-slate-50 focus:outline-none focus:border-indigo-500">
+                        <input type="text" id="custPhone" placeholder="Phone Number *" value="01306662713" required oninput="updatePreview()" class="w-full p-2 text-xs border border-slate-200 rounded-lg bg-slate-50 focus:outline-none focus:border-indigo-500">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input type="email" id="custEmail" placeholder="Email Address" value="talha46700683@gmail.com" oninput="updatePreview()" class="w-full p-2 text-xs border border-slate-200 rounded-xl bg-slate-50 focus:outline-none focus:border-indigo-500">
+                        <input type="text" id="custAddress" placeholder="Address" value="Dhaka, Mirpur" oninput="updatePreview()" class="w-full p-2 text-xs border border-slate-200 rounded-xl bg-slate-50 focus:outline-none focus:border-indigo-500">
+                    </div>
+                </div>
+
+                <!-- ৩. ডাইনামিক সার্ভিস রো সেকশন -->
+                <div class="border-t border-slate-100 pt-2.5">
+                    <div class="flex justify-between items-center mb-1.5">
+                        <label class="text-[11px] font-extrabold text-indigo-600 flex items-center">
+                            <i class="fa-solid fa-list-check mr-1.5"></i> সার্ভিস বিবরণী
+                        </label>
+                        <button type="button" onclick="addItemRow()" class="text-[10px] bg-slate-100 hover:bg-slate-200 text-slate-800 px-2.5 py-1 rounded-lg font-bold border border-slate-200 transition flex items-center">
+                            <i class="fa-solid fa-plus mr-1 text-indigo-600"></i> আরও আইটেম
+                        </button>
+                    </div>
+                    <div id="itemsContainer" class="space-y-1.5">
+                        <div class="grid grid-cols-12 gap-1.5 item-row">
+                            <input type="text" placeholder="Service Name" value="Marriage management" required oninput="updatePreview()" class="col-span-7 p-2 text-xs border border-slate-200 rounded-lg item-desc bg-slate-50">
+                            <input type="number" placeholder="Price (৳)" value="5700" required oninput="updatePreview()" class="col-span-4 p-2 text-xs border border-slate-200 rounded-lg item-price bg-slate-50">
+                            <button type="button" onclick="removeItemRow(this)" class="col-span-1 text-red-400 hover:text-red-600 text-center"><i class="fa-solid fa-trash-can text-xs"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ৪. ফিন্যান্স ও পেমেন্ট সেকশন -->
+                <div class="grid grid-cols-2 gap-2 border-t border-slate-100 pt-2.5">
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-600 mb-0.5 block">ডিসকাউন্ট (৳)</label>
+                        <input type="number" id="discountAmount" value="0" oninput="updatePreview()" class="w-full p-2 text-xs border border-slate-200 rounded-xl bg-slate-50">
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-600 mb-0.5 block">জমা / পরিশোধ (৳)</label>
+                        <input type="number" id="paidAmount" value="5700" required oninput="updatePreview()" class="w-full p-2 text-xs border border-slate-200 rounded-xl bg-slate-50">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-600 mb-0.5 block">পেমেন্ট মেথড</label>
+                        <select id="payMethod" onchange="updatePreview()" class="w-full p-2 text-xs border border-slate-200 rounded-xl bg-slate-50 font-semibold">
+                            <option value="Cash Payment">Cash Payment</option>
+                            <option value="bKash Personal">bKash (01516513987)</option>
+                            <option value="Nagad Personal">Nagad (01516513987)</option>
+                            <option value="Bank Transfer">Bank Transfer</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-[11px] font-bold text-slate-600 mb-0.5 block">ট্রানজেকশন আইডি</label>
+                        <input type="text" id="trxId" placeholder="TrxID (Optional)" oninput="updatePreview()" class="w-full p-2 text-xs border border-slate-200 rounded-xl bg-slate-50 font-mono">
+                    </div>
+                </div>
+
+                <!-- বকেয়া লাইভ ডিসপ্লে কারেন্সী -->
+                <div class="p-2.5 bg-slate-100/80 rounded-xl border border-slate-200 flex justify-between items-center text-xs font-bold text-slate-800">
+                    <span class="flex items-center"><i class="fa-solid fa-calculator text-indigo-600 mr-1.5"></i> অবশিষ্ট বকেয়া (Due):</span>
+                    <span id="dueDisplay" class="text-red-600 font-extrabold text-sm">৳ 0</span>
+                </div>
+
+                <!-- সাবমিট বাটন -->
+                <button type="submit" id="submitBtn" class="w-full py-3 bg-slate-900 hover:bg-black text-white font-bold rounded-2xl shadow-lg shadow-slate-900/20 transition transform active:scale-[0.99] flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-cloud-arrow-up mr-2 text-sm"></i> গুগল শিটে সেভ ও নিশ্চিত করুন
+                </button>
+            </form>
+        </div>
+
+        <!-- ডানপাশে: ১০০% অরিজিনাল ও ফিক্সড ক্যাশ মেমো -->
+        <div class="lg:col-span-8 flex flex-col items-center">
+            <div id="memoCard" class="memo-card p-6 md:p-8 rounded-3xl shadow-2xl border border-slate-200/90 relative overflow-hidden">
+                
+                <!-- 🌊 হালকা ওয়াটারমার্ক -->
+                <div class="watermark">WEB PRO BD</div>
+
+                <div class="relative z-10 space-y-3">
+                    
+                    <!-- ১. ওপরের সুবিন্যস্ত লাইন-ব্রেকিং মুক্ত হেডার -->
+                    <div class="flex justify-between items-start pb-3 border-b-2 border-slate-800 gap-2">
+                        <!-- বামপাশে: লোগো ও কোম্পানির নাম -->
+                        <div class="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
+                            <div class="bg-slate-900 text-white p-2.5 sm:p-3 rounded-2xl shadow-sm shrink-0">
+                                <i class="fa-solid fa-laptop-code text-xl sm:text-2xl"></i>
+                            </div>
+                            <div class="min-w-0">
+                                <h1 class="text-xl sm:text-2xl font-black text-slate-900 tracking-wider uppercase leading-tight font-sans">WEB PRO BD</h1>
+                                <p class="text-[10px] sm:text-xs font-bold text-slate-700 leading-tight">Professional Website & Mobile App Development</p>
+                                <p class="text-[9px] sm:text-[10px] text-slate-500 font-semibold">Proprietor: Abu Talha Khan</p>
+                            </div>
+                        </div>
+
+                        <!-- ডানপাশে: CASH MEMO, PAID ও চালান নম্বর -->
+                        <div class="text-right space-y-1 shrink-0">
+                            <div class="bg-slate-900 text-white text-center font-black text-[10px] sm:text-xs py-1 px-2.5 rounded uppercase tracking-wider inline-block shadow-sm">
+                                CASH MEMO
+                            </div>
+                            <div class="flex items-center justify-end space-x-1.5 pt-0.5">
+                                <span id="statusStamp" class="inline-flex items-center justify-center px-2 py-0.5 border border-emerald-600 text-emerald-700 font-extrabold text-[9px] sm:text-[10px] rounded uppercase tracking-wider bg-emerald-50 shadow-2xs">
+                                    PAID
+                                </span>
+                                <span class="text-xs font-bold text-slate-900 font-mono" id="prevInNo">WPB-1001</span>
+                            </div>
+                            <p class="text-[9px] sm:text-[10px] text-slate-500 font-semibold" id="prevDate">Date: 2026-08-17</p>
+                        </div>
+                    </div>
+
+                    <!-- ২. এক লাইনে কনট্যাক্ট বার (১০০% ইংরেজি) -->
+                    <div class="py-1.5 border-b border-slate-200 text-[9px] sm:text-[10px] text-slate-600 flex flex-wrap justify-between items-center font-medium gap-1">
+                        <span><i class="fa-solid fa-location-dot text-slate-500 mr-1"></i> Address: Farmgate, Dhaka-1215</span>
+                        <span><i class="fa-brands fa-whatsapp text-emerald-600 mr-1"></i> WhatsApp/IMO: <b class="text-slate-800">+880 1516513987</b></span>
+                        <span><i class="fa-solid fa-envelope text-slate-500 mr-1"></i> abutalha46700@gmail.com</span>
+                    </div>
+
+                    <!-- ৩. অফার ব্যানার (বাংলায়) -->
+                    <div class="my-2 p-2 bg-gradient-to-r from-amber-50 via-orange-50/40 to-amber-50 rounded-lg border border-amber-200/60 text-center">
+                        <p class="text-[10px] font-bold text-amber-900 leading-tight">
+                            🌟 <b>বিশেষ সুবিধা:</b> আমাদের তৈরি ওয়েবসাইট ও অ্যাপসে কোনো বাৎসরিক বা মাসিক সার্ভিস চার্জ নেই — এককালীন ক্রয়ে আজীবন ১০০% ফ্রি ও লাইফটাইম সাপোর্ট!
+                        </p>
+                    </div>
+
+                    <!-- ৪. গ্রাহকের তথ্য ও ওয়ার্কিং কিউআর কোড -->
+                    <div class="my-2 p-3 bg-slate-50/90 rounded-xl border border-slate-100 grid grid-cols-12 gap-2 items-center">
+                        <div class="col-span-8 space-y-0.5">
+                            <p class="text-[9px] text-slate-400 font-extrabold uppercase tracking-wider">CUSTOMER DETAILS</p>
+                            <h3 class="text-xs font-bold text-slate-900" id="prevCustName">Nure Alam</h3>
+                            <p class="text-[10px] text-slate-600" id="prevCustPhone">Phone: 01306662713</p>
+                            <p class="text-[10px] text-slate-500" id="prevCustEmail">Email: talha46700683@gmail.com</p>
+                            <p class="text-[10px] text-slate-500" id="prevCustAddress">Address: Dhaka, Mirpur</p>
+                        </div>
+                        
+                        <div class="col-span-4 text-right space-y-1">
+                            <img id="qrCodeImg" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=WPB-1001" alt="QR Code" class="w-12 h-12 rounded border p-0.5 bg-white shadow-2xs ml-auto block">
+                            <p class="text-[10px] font-bold text-slate-700">Payment: <span id="prevPayMethod">Cash Payment</span></p>
+                            <p class="text-[10px] font-mono text-slate-500" id="prevTrxId">TrxID: N/A</p>
+                        </div>
+                    </div>
+
+                    <!-- ৫. ছোট, সূক্ষ্ম ও পরিচ্ছন্ন টেবিল -->
+                    <div class="my-2">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700 font-bold uppercase text-[10px] border-y border-slate-200">
+                                    <th class="py-1.5 px-2.5 w-10 text-center">#</th>
+                                    <th class="py-1.5 px-2.5">SERVICE DESCRIPTION</th>
+                                    <th class="py-1.5 px-2.5 text-right w-28">PRICE</th>
+                                </tr>
+                            </thead>
+                            <tbody id="memoItemsBody" class="divide-y border-b border-slate-200 font-semibold text-[11px]">
+                                <!-- JS দিয়ে ছোট সাইজে যোগ হবে -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- ৬. মোট হিসাব বিবরণী -->
+                    <div class="flex justify-end pt-1">
+                        <div class="w-52 space-y-0.5 text-[11px]">
+                            <div class="flex justify-between text-slate-600">
+                                <span>Subtotal:</span>
+                                <span class="font-bold text-slate-800" id="sumSubtotal">৳ 5,700</span>
+                            </div>
+                            <div class="flex justify-between text-amber-700">
+                                <span>Discount:</span>
+                                <span class="font-bold" id="sumDiscount">- ৳ 0</span>
+                            </div>
+                            <div class="flex justify-between text-slate-900 font-extrabold text-xs border-t border-slate-200 pt-0.5">
+                                <span>Total:</span>
+                                <span id="sumTotal">৳ 5,700</span>
+                            </div>
+                            <div class="flex justify-between text-emerald-700 font-bold">
+                                <span>Paid / Advance:</span>
+                                <span id="sumPaid">৳ 5,700</span>
+                            </div>
+                            <div class="flex justify-between border-t border-slate-300 pt-0.5 text-xs font-black text-red-600">
+                                <span>Balance Due:</span>
+                                <span id="sumDue">৳ 0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ৭. বাংলা শর্তাবলী ও ইংরেজি ব্যাকগ্রাউন্ড স্বাক্ষর -->
+                    <div class="border-t border-slate-200 pt-3 mt-3 grid grid-cols-2 gap-4 items-end">
+                        <div class="text-[9px] text-slate-500 leading-normal">
+                            <p class="font-bold text-slate-700">নোট ও শর্তাবলী:</p>
+                            <p>১. সম্পূর্ণ পেমেন্ট পরিশোধ সাপেক্ষে প্রজেক্ট একসেস ও ফাইল হস্তান্তর করা হবে।</p>
+                            <p>২. আমাদের তৈরি ওয়েবসাইট ও মোবাইল অ্যাপে কোনো প্রকার মাসিক বা বাৎসরিক চার্জ নেই।</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-28 border-b border-slate-400 ml-auto mb-0.5"></div>
+                            <p class="text-[11px] font-extrabold text-slate-800">Abu Talha Khan</p>
+                            <p class="text-[9px] text-slate-500 font-semibold">Proprietor, Web Pro BD</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ডাউনলোডের বাটনসমূহ -->
+            <div class="w-full max-w-[800px] mt-4 grid grid-cols-3 gap-3 no-print">
+                <button onclick="downloadAsPhoto()" class="py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-2xl shadow transition flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-image mr-1.5 text-sm"></i> Photo (PNG)
+                </button>
+                <button onclick="downloadAsPDF()" class="py-3 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-2xl shadow transition flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-file-pdf mr-1.5 text-sm"></i> A4 PDF Document
+                </button>
+                <button onclick="window.print()" class="py-3 bg-slate-900 hover:bg-black text-white font-bold rounded-2xl shadow transition flex items-center justify-center text-xs">
+                    <i class="fa-solid fa-print mr-1.5 text-sm"></i> Print Memo
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Floating Toast Notification System -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl border border-slate-800 flex items-center space-x-3 text-xs font-bold">
+            <span id="toastIcon" class="text-emerald-400 text-base"><i class="fa-solid fa-circle-check"></i></span>
+            <span id="toastMsg">মেমোর তথ্য গুগল শিটে সেভ হয়েছে!</span>
+        </div>
+    </div>
+
+    <!-- Recent History Modal Drawer -->
+    <div id="historyModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4 no-print">
+        <div class="bg-white rounded-3xl p-6 max-w-lg w-full shadow-2xl space-y-4">
+            <div class="flex justify-between items-center border-b pb-3">
+                <h3 class="font-bold text-base text-slate-800 flex items-center">
+                    <i class="fa-solid fa-clock-rotate-left text-indigo-600 mr-2"></i> সাম্প্রতিক চালানের তালিকা (History)
+                </h3>
+                <button onclick="closeHistoryModal()" class="text-slate-400 hover:text-slate-700 text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="historyList" class="space-y-2 max-h-60 overflow-y-auto text-xs">
+                <!-- JS দিয়ে বিগত চালানের নাম যোগ হবে -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 🔗 আপনার গুগল অ্যাপস স্ক্রিপ্ট লিংক
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby2IlgIui4ai7ZJo4iV9lkh5jc8-b_RdSzo1KpZVH2SqVJ-gDxXGsqYPHyKmqo73IOL/exec";
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById('inDate').valueAsDate = new Date();
+            initInvoiceNumber();
+            updatePreview();
+        });
+
+        function showToast(msg, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.innerText = msg;
+            toastIcon.innerHTML = isSuccess ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : '<i class="fa-solid fa-circle-xmark text-red-400"></i>';
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        function initInvoiceNumber() {
+            let lastNo = localStorage.getItem('wpb_last_inv_no');
+            let nextNo = lastNo ? parseInt(lastNo) + 1 : 1001;
+            document.getElementById('inNo').value = 'WPB-' + nextNo;
+        }
+
+        function autoGenerateNewInvoiceNo() {
+            let lastNo = localStorage.getItem('wpb_last_inv_no');
+            let nextNo = lastNo ? parseInt(lastNo) + 1 : 1001;
+            document.getElementById('inNo').value = 'WPB-' + nextNo;
+            updatePreview();
+            showToast('নতুন মেমো নম্বর জেনারেট করা হয়েছে!');
+        }
+
+        function autoFillSampleData() {
+            document.getElementById('custName').value = "Nure Alam";
+            document.getElementById('custPhone').value = "01306662713";
+            document.getElementById('custEmail').value = "talha46700683@gmail.com";
+            document.getElementById('custAddress').value = "Dhaka, Mirpur";
+            document.getElementById('paidAmount').value = "5700";
+            updatePreview();
+            showToast('স্যাম্পল ডাটা সফলভাবে যোগ হয়েছে!');
+        }
+
+        function addItemRow() {
+            const container = document.getElementById('itemsContainer');
+            const row = document.createElement('div');
+            row.className = 'grid grid-cols-12 gap-1.5 item-row';
+            row.innerHTML = `
+                <input type="text" placeholder="Service Name..." required oninput="updatePreview()" class="col-span-7 p-1.5 text-xs border border-slate-200 rounded item-desc bg-slate-50">
+                <input type="number" placeholder="Price (৳)" value="0" required oninput="updatePreview()" class="col-span-4 p-1.5 text-xs border border-slate-200 rounded item-price bg-slate-50">
+                <button type="button" onclick="removeItemRow(this)" class="col-span-1 text-red-400 hover:text-red-600 text-center"><i class="fa-solid fa-trash-can text-xs"></i></button>
+            `;
+            container.appendChild(row);
+            updatePreview();
+        }
+
+        function removeItemRow(btn) {
+            const rows = document.querySelectorAll('.item-row');
+            if(rows.length > 1) {
+                btn.closest('.item-row').remove();
+                updatePreview();
+            } else {
+                alert("At least one item is required!");
+            }
+        }
+
+        function updatePreview() {
+            const inNo = document.getElementById('inNo').value;
+            const inDate = document.getElementById('inDate').value;
+            const name = document.getElementById('custName').value || 'Nure Alam';
+            const phone = document.getElementById('custPhone').value || '01306662713';
+            const email = document.getElementById('custEmail').value || 'N/A';
+            const address = document.getElementById('custAddress').value || 'N/A';
+            const method = document.getElementById('payMethod').value;
+            const trxId = document.getElementById('trxId').value || 'N/A';
+
+            const descs = document.querySelectorAll('.item-desc');
+            const prices = document.querySelectorAll('.item-price');
+            const tbody = document.getElementById('memoItemsBody');
+            tbody.innerHTML = '';
+
+            let subtotal = 0;
+
+            descs.forEach((descInput, index) => {
+                const desc = descInput.value || 'Marriage management';
+                const price = parseFloat(prices[index].value) || 0;
+                subtotal += price;
+
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="py-1.5 px-2.5 text-slate-400 font-mono text-center">${index + 1}</td>
+                        <td class="py-1.5 px-2.5 font-bold text-slate-800">${desc}</td>
+                        <td class="py-1.5 px-2.5 text-right font-extrabold text-slate-900">৳ ${price.toLocaleString()}</td>
+                    </tr>
+                `;
+            });
+
+            const discount = parseFloat(document.getElementById('discountAmount').value) || 0;
+            const totalPrice = Math.max(0, subtotal - discount);
+            const paid = parseFloat(document.getElementById('paidAmount').value) || 0;
+            const due = Math.max(0, totalPrice - paid);
+
+            document.getElementById('prevInNo').innerText = inNo;
+            document.getElementById('prevDate').innerText = 'Date: ' + inDate;
+            document.getElementById('prevCustName').innerText = name;
+            document.getElementById('prevCustPhone').innerText = 'Phone: ' + phone;
+            document.getElementById('prevCustEmail').innerText = 'Email: ' + email;
+            document.getElementById('prevCustAddress').innerText = 'Address: ' + address;
+            document.getElementById('prevPayMethod').innerText = method;
+            document.getElementById('prevTrxId').innerText = 'TrxID: ' + trxId;
+
+            document.getElementById('sumSubtotal').innerText = '৳ ' + subtotal.toLocaleString();
+            document.getElementById('sumDiscount').innerText = '- ৳ ' + discount.toLocaleString();
+            document.getElementById('sumTotal').innerText = '৳ ' + totalPrice.toLocaleString();
+            document.getElementById('sumPaid').innerText = '৳ ' + paid.toLocaleString();
+            document.getElementById('sumDue').innerText = '৳ ' + due.toLocaleString();
+            document.getElementById('dueDisplay').innerText = '৳ ' + due.toLocaleString();
+
+            // QR Code Generation
+            const qrData = `WEB PRO BD | Invoice: ${inNo} | Customer: ${name} | Total: ৳${totalPrice} | Due: ৳${due}`;
+            document.getElementById('qrCodeImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${encodeURIComponent(qrData)}`;
+
+            // Centered Paid/Due Stamp
+            const stamp = document.getElementById('statusStamp');
+            if (due === 0 && totalPrice > 0) {
+                stamp.innerText = "PAID";
+                stamp.className = "inline-flex items-center justify-center px-2 py-0.5 border border-emerald-600 text-emerald-700 font-extrabold text-[10px] rounded uppercase tracking-wider bg-emerald-50 whitespace-nowrap shadow-2xs";
+            } else {
+                stamp.innerText = "DUE";
+                stamp.className = "inline-flex items-center justify-center px-2 py-0.5 border border-red-600 text-red-700 font-extrabold text-[10px] rounded uppercase tracking-wider bg-red-50 whitespace-nowrap shadow-2xs";
+            }
+        }
+
+        // Photo (PNG) Download
+        function downloadAsPhoto() {
+            const card = document.getElementById('memoCard');
+            html2canvas(card, { scale: 2 }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = document.getElementById('inNo').value + '-WebProBD.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                showToast('ছবি (PNG Photo) ডাউনলোড সম্পন্ন হয়েছে!');
+            });
+        }
+
+        // A4 PDF Download
+        function downloadAsPDF() {
+            const card = document.getElementById('memoCard');
+            const opt = {
+                margin:       0.2,
+                filename:     document.getElementById('inNo').value + '-WebProBD.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(card).save();
+            showToast('A4 PDF ডকুমেন্ট ডাউনলোড সম্পন্ন হয়েছে!');
+        }
+
+        function openHistoryModal() {
+            const list = document.getElementById('historyList');
+            const history = JSON.parse(localStorage.getItem('wpb_history') || '[]');
+            
+            if(history.length === 0) {
+                list.innerHTML = '<p class="text-center text-slate-400 py-4">এখনো কোনো চালানের হিস্ট্রি নেই!</p>';
+            } else {
+                list.innerHTML = history.map(item => `
+                    <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex justify-between items-center">
+                        <div>
+                            <p class="font-bold font-mono text-slate-800">${item.no}</p>
+                            <p class="text-slate-500">${item.name} - ৳${item.total}</p>
+                        </div>
+                        <span class="px-2 py-0.5 ${item.due === 0 ? 'bg-emerald-100 text-emerald-700':'bg-red-100 text-red-700'} font-bold rounded text-[10px]">
+                            ${item.due === 0 ? 'PAID':'DUE'}
+                        </span>
+                    </div>
+                `).join('');
+            }
+            document.getElementById('historyModal').classList.remove('hidden');
+        }
+
+        function closeHistoryModal() {
+            document.getElementById('historyModal').classList.add('hidden');
+        }
+
+        // Save to Google Sheet & Local History
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin mr-2"></i> সেভ হচ্ছে...`;
+
+            const inNoVal = document.getElementById('inNo').value;
+            const descs = document.querySelectorAll('.item-desc');
+            const prices = document.querySelectorAll('.item-price');
+            let subtotal = 0;
+            let summaryList = [];
+
+            descs.forEach((descInput, index) => {
+                const desc = descInput.value || 'Service';
+                const price = parseFloat(prices[index].value) || 0;
+                subtotal += price;
+                summaryList.push(desc + ' (৳' + price + ')');
+            });
+
+            const discount = parseFloat(document.getElementById('discountAmount').value) || 0;
+            const totalPrice = Math.max(0, subtotal - discount);
+            const paid = parseFloat(document.getElementById('paidAmount').value) || 0;
+            const due = Math.max(0, totalPrice - paid);
+
+            const payload = {
+                invoiceNo: inNoVal,
+                date: document.getElementById('inDate').value,
+                customerName: document.getElementById('custName').value,
+                customerPhone: document.getElementById('custPhone').value,
+                customerEmail: document.getElementById('custEmail').value,
+                customerAddress: document.getElementById('custAddress').value,
+                servicesSummary: summaryList.join(', '),
+                subtotal: subtotal,
+                discount: discount,
+                totalPrice: totalPrice,
+                paidAmount: paid,
+                dueAmount: due,
+                paymentMethod: document.getElementById('payMethod').value,
+                trxId: document.getElementById('trxId').value,
+                status: due === 0 ? "PAID" : "DUE"
+            };
+
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                // Save Serial & History
+                let numMatch = inNoVal.replace('WPB-', '');
+                if (!isNaN(numMatch)) {
+                    localStorage.setItem('wpb_last_inv_no', numMatch);
+                }
+
+                let history = JSON.parse(localStorage.getItem('wpb_history') || '[]');
+                history.unshift({ no: inNoVal, name: payload.customerName, total: totalPrice, due: due });
+                localStorage.setItem('wpb_history', JSON.stringify(history.slice(0, 10)));
+
+                showToast(`✅ ${inNoVal} চালানটি গুগল শিটে সফলভাবে সেভ হয়েছে!`);
+                
+                autoGenerateNewInvoiceNo();
+
+            } catch (err) {
+                console.error(err);
+                showToast("❌ মেমো প্রিভিউ প্রস্তুত আছে!", false);
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up mr-2"></i> গুগল শিটে ডাটা সেভ করুন`;
+            }
+        }
+    </script>
+</body>
+</html>

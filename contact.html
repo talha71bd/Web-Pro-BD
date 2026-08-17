@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="bn" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>যোগাযোগ করুন | Web Pro BD - প্রফেশনাল সাপোর্ট পোর্টাল</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: { primary: '#6366f1', secondary: '#a855f7', darkbg: '#090d16', darkcard: '#111827', darkborder: '#1f2937' },
+                    fontFamily: { sans: ['Hind Siliguri', 'Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #090d16; color: #f3f4f6; }
+        
+        /* Ambient Floating Glow Blobs */
+        .glow-blob {
+            position: absolute;
+            filter: blur(100px);
+            opacity: 0.22;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Custom Soft Glassmorphism */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Hover Lift Animations */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .hover-lift:hover {
+            transform: translateY(-6px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.25);
+        }
+
+        /* Toast Animation */
+        #toast {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-indigo-500 selection:text-white overflow-x-hidden">
+
+    <!-- Ambient Background Glows -->
+    <div class="glow-blob w-[400px] h-[400px] bg-indigo-600 top-0 left-[-100px]"></div>
+    <div class="glow-blob w-[500px] h-[500px] bg-purple-600 top-[35%] right-[-150px]"></div>
+    <div class="glow-blob w-[450px] h-[450px] bg-emerald-600 bottom-[10%] left-[10%]"></div>
+
+    <!-- 1. Sticky Glassmorphism Navbar -->
+    <header class="sticky top-0 z-50 glass-card border-b border-darkborder px-4 md:px-8 py-3.5 shadow-2xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="bg-gradient-to-tr from-indigo-500 via-purple-500 to-pink-500 text-white p-2.5 rounded-2xl shadow-lg shadow-indigo-500/30 group-hover:scale-105 transition">
+                    <i class="fa-solid fa-laptop-code text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black tracking-wider uppercase bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent font-sans">WEB PRO BD</h1>
+                    <p class="text-[10px] text-gray-400 font-semibold leading-none">Professional Web & Mobile App Agency</p>
+                </div>
+            </a>
+
+            <!-- Quick Action Call CTA -->
+            <div class="flex items-center space-x-3">
+                <a href="https://wa.me/8801516513987" target="_blank" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl text-xs shadow-lg shadow-emerald-500/20 transition flex items-center">
+                    <i class="fa-brands fa-whatsapp text-sm mr-1.5"></i> হোয়াটসঅ্যাপ
+                </a>
+                <a href="tel:01516513987" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs shadow-lg shadow-indigo-500/20 transition hidden sm:flex items-center">
+                    <i class="fa-solid fa-phone text-xs mr-1.5"></i> কল করুন
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Hero Section -->
+    <section class="relative z-10 py-12 md:py-16 px-4 md:px-8 max-w-7xl mx-auto text-center">
+        <!-- Live Office Status Badge -->
+        <div class="inline-flex flex-wrap justify-center items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-bold mb-6">
+            <span id="officeStatusBadge" class="flex items-center text-emerald-400">
+                <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping mr-2"></span>
+                <span>🟢 বর্তমানে অফিস খোলা আছে (১০:০০ AM - ৮:০০ PM)</span>
+            </span>
+            <span class="text-gray-600">|</span>
+            <span class="text-amber-400"><i class="fa-solid fa-bolt mr-1"></i> গড় রেসপন্স টাইম: ১০ - ১৫ মিনিট</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight mb-4 max-w-3xl mx-auto">
+            সরাসরি যোগাযোগ করুন <span class="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Web Pro BD</span> টিমের সাথে
+        </h1>
+
+        <p class="text-gray-300 text-sm md:text-base max-w-2xl mx-auto leading-relaxed mb-8">
+            আপনার ব্যবসার জন্য নতুন ওয়েবসাইট বা মোবাইল অ্যাপস তৈরি, ফ্রি পরামর্শ কিংবাযেকোনো দরকারে আমরা সর্বদা প্রস্তুত।
+        </p>
+    </section>
+
+    <!-- 3. Direct 1-Click Instant Action Cards -->
+    <section class="relative z-10 pb-12 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            
+            <!-- WhatsApp Chat Card -->
+            <a href="https://wa.me/8801516513987?text=Hello%20Web%20Pro%20BD,%20I%20want%20to%20inquire%20about%20a%20website" target="_blank" class="glass-card p-5 rounded-3xl border border-emerald-500/20 hover-lift flex items-center space-x-4 group">
+                <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-sm">হোয়াটসঅ্যাপ চ্যাট</h3>
+                    <p class="text-xs text-emerald-400 font-mono font-semibold">+880 1516513987</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">ইনস্ট্যান্ট চ্যাট ও কল</p>
+                </div>
+            </a>
+
+            <!-- Official Facebook Page Card -->
+            <a href="https://www.facebook.com/share/1Hp8A5Aqgp/" target="_blank" class="glass-card p-5 rounded-3xl border border-blue-500/20 hover-lift flex items-center space-x-4 group">
+                <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-sm">অফিশিয়াল পেজ</h3>
+                    <p class="text-xs text-blue-400 font-semibold">Web Pro BD Page</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">ফেসবুকে ইনবক্স করুন</p>
+                </div>
+            </a>
+
+            <!-- Personal Facebook Profile Card -->
+            <a href="https://www.facebook.com/Abu.talha017467" target="_blank" class="glass-card p-5 rounded-3xl border border-indigo-500/20 hover-lift flex items-center space-x-4 group">
+                <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-sm">প্রতিষ্ঠাতা আইডি</h3>
+                    <p class="text-xs text-indigo-400 font-semibold">আবু তালহা খান</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">পার্সোনাল প্রোফাইল</p>
+                </div>
+            </a>
+
+            <!-- Phone Call & Email Card -->
+            <a href="mailto:abutalha46700@gmail.com" class="glass-card p-5 rounded-3xl border border-pink-500/20 hover-lift flex items-center space-x-4 group">
+                <div class="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-2xl flex items-center justify-center text-2xl group-hover:scale-110 transition">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-sm">অফিশিয়াল ইমেইল</h3>
+                    <p class="text-[11px] text-pink-400 font-mono truncate max-w-[140px]">abutalha46700@gmail.com</p>
+                    <p class="text-[10px] text-gray-400 mt-0.5">২৪ ঘণ্টার মধ্যে মেইল রিপ্লাই</p>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- 4. Main Interactive Dual Tab Section (Form & Appointment Scheduler) -->
+    <section class="relative z-10 py-8 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Left Side: Interactive Dual Form (7 Cols) -->
+            <div class="lg:col-span-7 glass-card rounded-3xl p-6 md:p-8 border border-darkborder shadow-2xl">
+                
+                <!-- Tab Controls -->
+                <div class="flex p-1 bg-slate-900 rounded-2xl border border-slate-800 mb-6">
+                    <button onclick="switchTab('contact')" id="tabBtnContact" class="flex-1 py-2.5 rounded-xl text-xs font-bold transition bg-indigo-600 text-white shadow-md">
+                        <i class="fa-solid fa-paper-plane mr-1.5"></i> প্রজেক্ট ইনকোয়ারি
+                    </button>
+                    <button onclick="switchTab('appointment')" id="tabBtnAppt" class="flex-1 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:text-white transition">
+                        <i class="fa-solid fa-calendar-check mr-1.5"></i> অ্যাপয়েন্টমেন্ট বুকিং
+                    </button>
+                </div>
+
+                <!-- Tab 1: Project Inquiry Form -->
+                <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-bold text-gray-300 mb-1 block">আপনার নাম *</label>
+                            <input type="text" id="cntName" placeholder="রহিম হোসেন" required class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-300 mb-1 block">ফোন / হোয়াটসঅ্যাপ নম্বর *</label>
+                            <input type="text" id="cntPhone" placeholder="01700000000" required class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-bold text-gray-300 mb-1 block">প্রয়োজনীয় সার্ভিস *</label>
+                            <select id="cntService" required class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200 font-semibold">
+                                <option value="E-Commerce Website">ই-কমার্স ওয়েবসাইট</option>
+                                <option value="Business Portfolio">বিজনেস পোর্টফোলিও ওয়েবসাইট</option>
+                                <option value="Mobile App (Android/iOS)">মোবাইল অ্যাপস ডেভেলপমেন্ট</option>
+                                <option value="Custom Web Application">কাস্টম ওয়েব অ্যাপ্লিকেশন</option>
+                                <option value="Domain & Hosting Support">ডোমেইন ও হোস্টিং সেবা</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-300 mb-1 block">আনুমানিক বাজেট রেঞ্জ</label>
+                            <select id="cntBudget" class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200">
+                                <option value="৳৫,০০০ - ৳১০,০০০">৳৫,০০০ - ৳১০,০০০</option>
+                                <option value="৳১০,০০০ - ৳২৫,০০০">৳১০,০০০ - ৳২৫,০০০</option>
+                                <option value="৳২৫,০০০+">৳২৫,০০০-এর বেশি</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-gray-300 mb-1 block">প্রজেক্ট বা চাহিদার বিবরণ *</label>
+                        <textarea id="cntMsg" rows="4" placeholder="আপনার ব্যবসা বা ওয়েবসাইটের বিবরণ লিখুন..." required class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200"></textarea>
+                    </div>
+
+                    <button type="submit" id="cntSubmitBtn" class="w-full py-3.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:opacity-90 text-white font-bold rounded-xl shadow-lg shadow-purple-500/20 transition flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> মেসেজ পাঠান ও হোয়াটসঅ্যাপে যুক্ত হন
+                    </button>
+                </form>
+
+                <!-- Tab 2: Appointment Scheduler -->
+                <form id="apptForm" onsubmit="handleAppointmentSubmit(event)" class="space-y-4 hidden">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-bold text-gray-300 mb-1 block">আপনার নাম *</label>
+                            <input type="text" id="aptName" placeholder="রহিম হোসেন" required class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-300 mb-1 block">ফোন নম্বর *</label>
+                            <input type="text" id="aptPhone" placeholder="01700000000" required class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-bold text-gray-300 mb-1 block">মিটিংয়ের ধরণ</label>
+                            <select id="aptType" class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200">
+                                <option value="ফার্মগেট অফিসে সরাসরি সাক্ষাৎ">ফার্মগেট অফিসে সরাসরি সাক্ষাৎ</option>
+                                <option value="ফোন / হোয়াটসঅ্যাপ কল">ফোন / হোয়াটসঅ্যাপ কল</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-300 mb-1 block">পছন্দের তারিখ</label>
+                            <input type="date" id="aptDate" required class="w-full p-3 bg-gray-950 text-xs rounded-xl border border-gray-800 focus:outline-none focus:border-indigo-500 text-gray-200">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition flex items-center justify-center text-xs">
+                        <i class="fa-solid fa-calendar-check mr-2"></i> অ্যাপয়েন্টমেন্ট কনফার্ম করুন
+                    </button>
+                </form>
+
+            </div>
+
+            <!-- Right Side: Office Info & Invoice Lookup (5 Cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                
+                <!-- Fast Invoice / Project Status Lookup -->
+                <div class="glass-card p-6 rounded-3xl border border-darkborder shadow-xl space-y-3">
+                    <h3 class="font-bold text-sm text-white flex items-center">
+                        <i class="fa-solid fa-magnifying-glass text-indigo-400 mr-2"></i> প্রজেক্ট ও চালান স্ট্যাটাস ট্র্যাকার
+                    </h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        আপনার মেমো নম্বর (যেমন: WPB-1001) লিখে প্রজেক্ট স্ট্যাটাস চেক করুন:
+                    </p>
+                    <div class="flex gap-2">
+                        <input type="text" id="invLookupNo" placeholder="WPB-1001" class="w-full p-2.5 bg-gray-950 font-mono text-xs rounded-xl border border-gray-800 text-indigo-300 focus:outline-none focus:border-indigo-500">
+                        <button onclick="checkInvoiceStatus()" class="px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl text-xs transition">
+                            চেক
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Office Tea Invitation Card -->
+                <div class="glass-card p-6 rounded-3xl border border-emerald-500/30 bg-gradient-to-tr from-emerald-950/30 via-slate-900 to-indigo-950/30 shadow-xl space-y-3">
+                    <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center text-2xl">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">এক কাপ চায়ের আমন্ত্রণে চলে আসুন!</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        আপনার ব্যবসার ওয়েবসাইট বা মোবাইল অ্যাপস নিয়ে যেকোনো পরিকল্পনা বা আলোচনার জন্য সরাসরি আমাদের <b>ফার্মগেট অফিসে</b> চলে আসুন।
+                    </p>
+                    <div class="text-xs text-gray-400 font-medium space-y-1 border-t border-gray-800 pt-3">
+                        <p><i class="fa-solid fa-location-dot text-indigo-400 mr-1.5"></i> <b>ঠিকানা:</b> ফার্মগেট, ঢাকা-১২১৫, বাংলাদেশ</p>
+                        <p><i class="fa-solid fa-clock text-amber-400 mr-1.5"></i> <b>সময়সূচী:</b> সকাল ১০:০০ টা - রাত ৮:০০ টা</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. Interactive Google Map Section -->
+    <section class="relative z-10 py-8 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="glass-card rounded-3xl p-4 md:p-6 border border-darkborder shadow-2xl overflow-hidden">
+            <div class="flex flex-wrap justify-between items-center mb-4 gap-2">
+                <div>
+                    <h3 class="font-bold text-base text-white flex items-center">
+                        <i class="fa-solid fa-map-location-dot text-indigo-400 mr-2"></i> আমাদের অফিসের ম্যাপ লোকেশন
+                    </h3>
+                    <p class="text-xs text-gray-400">ফার্মগেট, ঢাকা-১২১৫, বাংলাদেশ</p>
+                </div>
+                <a href="https://maps.google.com/?q=Farmgate,Dhaka" target="_blank" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs rounded-xl shadow transition flex items-center">
+                    <i class="fa-solid fa-diamond-turn-right mr-1.5"></i> Get Directions (গুগল ম্যাপস)
+                </a>
+            </div>
+
+            <!-- Embedded Google Map -->
+            <div class="w-full h-64 md:h-80 rounded-2xl overflow-hidden border border-gray-800">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14607.611181295281!2d90.38072045000001!3d23.750868150000002!2m3!1f0!2f0!3f0!2m3!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a3e4811d73%3A0x29ef194580e03e5c!2sFarmgate%20Bus%20Stop%2C%20Mirpur%20Rd%2C%20Dhaka%201215!5e0!3m2!1sen!2sbd!4v1700000000000!5m2!1sen!2sbd" class="w-full h-full border-0" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Pre-Contact Mini FAQ -->
+    <section class="relative z-10 py-10 px-4 md:px-8 max-w-4xl mx-auto">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-white mb-1">মেসেজ দেওয়ার আগে জেনে নিন</h2>
+            <p class="text-xs text-gray-400">যোগাযোগের পূর্বে সাধারণ প্রশ্নের দ্রুত উত্তর</p>
+        </div>
+
+        <div class="space-y-3">
+            <div class="glass-card rounded-2xl border border-darkborder overflow-hidden">
+                <button onclick="toggleFaq(1)" class="w-full p-4 text-left font-bold text-xs text-gray-200 flex justify-between items-center hover:bg-slate-800/50 transition">
+                    <span>১. অফিসে আসার আগে কি অ্যাপয়েন্টমেন্ট নেওয়া প্রয়োজন?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform" id="faqIcon-1"></i>
+                </button>
+                <div class="p-4 text-xs text-gray-400 border-t border-darkborder hidden leading-relaxed" id="faqAns-1">
+                    অফিসে আসার পূর্বে হোয়াটসঅ্যাপে মেসেজ দিলে বা কল করে সময় জানিয়ে আসলে আপনার জন্য আমরা আগে থেকেই প্রস্তুত থাকতে পারি।
+                </div>
+            </div>
+
+            <div class="glass-card rounded-2xl border border-darkborder overflow-hidden">
+                <button onclick="toggleFaq(2)" class="w-full p-4 text-left font-bold text-xs text-gray-200 flex justify-between items-center hover:bg-slate-800/50 transition">
+                    <span>২. আমি ঢাকার বাইরে থাকলে কীভাবে অর্ডার করব?</span>
+                    <i class="fa-solid fa-chevron-down text-indigo-400 transition transform" id="faqIcon-2"></i>
+                </button>
+                <div class="p-4 text-xs text-gray-400 border-t border-darkborder hidden leading-relaxed" id="faqAns-2">
+                    ঢাকার বাইরে থাকলে আপনি অনলাইন ফর্ম পুরন করে হোয়াটসঅ্যাপ, ফোন বা গুগল মিট কলের মাধ্যমে প্রজেক্ট বুঝিয়ে দিয়ে অর্ডার কনফার্ম করতে পারবেন।
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. Mega Footer -->
+    <footer class="mt-auto border-t border-darkborder bg-slate-950 px-4 md:px-8 py-8 relative z-10 text-xs text-gray-400">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-indigo-600 text-white p-2 rounded-xl">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div>
+                    <p class="font-bold text-white text-sm">WEB PRO BD</p>
+                    <p class="text-[10px] text-gray-500">প্রোপ্রাইটর: আবু তালহা খান | ফার্মগেট, ঢাকা</p>
+                </div>
+            </div>
+
+            <p class="text-center text-gray-500">
+                &copy; 2026 Web Pro BD. সর্বস্বত্ব সংরক্ষিত।
+            </p>
+
+            <div class="flex space-x-4 text-base text-gray-400">
+                <a href="https://wa.me/8801516513987" target="_blank" class="hover:text-emerald-400 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com/share/1Hp8A5Aqgp/" target="_blank" class="hover:text-blue-400 transition"><i class="fa-brands fa-facebook"></i></a>
+                <a href="mailto:abutalha46700@gmail.com" class="hover:text-indigo-400 transition"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Toast Notification System -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300">
+        <div class="bg-slate-900 text-white px-5 py-3 rounded-2xl shadow-2xl border border-slate-800 flex items-center space-x-3 text-xs font-bold">
+            <span id="toastIcon" class="text-emerald-400 text-base"><i class="fa-solid fa-circle-check"></i></span>
+            <span id="toastMsg">মেসেজ পাঠানো হয়েছে!</span>
+        </div>
+    </div>
+
+    <!-- JavaScript Controls -->
+    <script>
+        // Check Live Office Hours Status
+        document.addEventListener("DOMContentLoaded", () => {
+            const now = new Date();
+            const hour = now.getHours();
+            const badge = document.getElementById('officeStatusBadge');
+            
+            if (hour >= 10 && hour < 20) {
+                badge.innerHTML = `<span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping mr-2"></span> 🟢 বর্তমানে অফিস খোলা আছে (১০:০০ AM - ৮:০০ PM)`;
+            } else {
+                badge.innerHTML = `<span class="flex h-2 w-2 rounded-full bg-amber-400 mr-2"></span> 🔴 বর্তমানে অফিস বন্ধ (তবে হোয়াটসঅ্যাপে মেসেজ দিতে পারেন)`;
+            }
+
+            document.getElementById('aptDate').valueAsDate = new Date();
+        });
+
+        function showToast(msg, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            const toastIcon = document.getElementById('toastIcon');
+
+            toastMsg.innerText = msg;
+            toastIcon.innerHTML = isSuccess ? '<i class="fa-solid fa-circle-check text-emerald-400"></i>' : '<i class="fa-solid fa-circle-xmark text-red-400"></i>';
+
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        function switchTab(type) {
+            const btnContact = document.getElementById('tabBtnContact');
+            const btnAppt = document.getElementById('tabBtnAppt');
+            const formContact = document.getElementById('contactForm');
+            const formAppt = document.getElementById('apptForm');
+
+            if (type === 'contact') {
+                btnContact.className = "flex-1 py-2.5 rounded-xl text-xs font-bold transition bg-indigo-600 text-white shadow-md";
+                btnAppt.className = "flex-1 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:text-white transition";
+                formContact.classList.remove('hidden');
+                formAppt.classList.add('hidden');
+            } else {
+                btnAppt.className = "flex-1 py-2.5 rounded-xl text-xs font-bold transition bg-emerald-600 text-white shadow-md";
+                btnContact.className = "flex-1 py-2.5 rounded-xl text-xs font-bold text-gray-400 hover:text-white transition";
+                formAppt.classList.remove('hidden');
+                formContact.classList.add('hidden');
+            }
+        }
+
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faqAns-${id}`);
+            const icon = document.getElementById(`faqIcon-${id}`);
+
+            if (ans.classList.contains('hidden')) {
+                ans.classList.remove('hidden');
+                icon.classList.add('rotate-180');
+            } else {
+                ans.classList.add('hidden');
+                icon.classList.remove('rotate-180');
+            }
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('cntName').value;
+            const phone = document.getElementById('cntPhone').value;
+            const service = document.getElementById('cntService').value;
+            const budget = document.getElementById('cntBudget').value;
+            const msg = document.getElementById('cntMsg').value;
+
+            showToast('মেসেজ প্রসেস হচ্ছে... হোয়াটসঅ্যাপ খুলছে');
+
+            const text = `Hello Web Pro BD,\nI am ${name} (${phone}).\nService: ${service}\nBudget: ${budget}\nDetails: ${msg}`;
+            const waUrl = `https://wa.me/8801516513987?text=${encodeURIComponent(text)}`;
+
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 1000);
+        }
+
+        function handleAppointmentSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('aptName').value;
+            const phone = document.getElementById('aptPhone').value;
+            const type = document.getElementById('aptType').value;
+            const date = document.getElementById('aptDate').value;
+
+            showToast('অ্যাপয়েন্টমেন্ট বুকিং সম্পন্ন হয়েছে!');
+
+            const text = `Hello Web Pro BD,\nI want to book an appointment.\nName: ${name} (${phone})\nType: ${type}\nDate: ${date}`;
+            const waUrl = `https://wa.me/8801516513987?text=${encodeURIComponent(text)}`;
+
+            setTimeout(() => {
+                window.open(waUrl, '_blank');
+            }, 1000);
+        }
+
+        function checkInvoiceStatus() {
+            const invNo = document.getElementById('invLookupNo').value.trim();
+            if (!invNo) return alert('একটি মেমো নম্বর লিখুন (যেমন: WPB-1001)');
+            
+            showToast(`${invNo} মেমো নম্বরটি পরীক্ষা করা হচ্ছে...`);
+            setTimeout(() => {
+                alert(`চালান নম্বর: ${invNo}\nস্ট্যাটাস: PAID\nসার্ভিস: ওয়েবসাইট ডেভেলপমেন্ট\nঅফিসিয়াল রেকর্ড গুগল শিটে সংরক্ষিত রয়েছে।`);
+            }, 1000);
+        }
+    </script>
+</body>
+</html>

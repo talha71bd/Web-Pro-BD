@@ -149,16 +149,18 @@
 
                 <!-- Anchor-Based Smooth Navigation Links -->
                 <nav class="hidden lg:flex items-center space-x-1">
-                    <a href="#home" class="nav-link px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Home</a>
-                    <a href="#about" class="nav-link px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">About</a>
-                    <a href="#services" class="nav-link px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Services</a>
-                    <a href="#portfolio" class="nav-link px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Portfolio</a>
-                    <a href="#pricing" class="nav-link px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Pricing</a>
-                    <a href="#calculator" class="nav-link px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Calculator</a>
-                    <a href="#order" class="nav-link px-3 py-2 text-xs font-extrabold text-brandPrimary bg-brandPrimary/10 px-3 py-1.5 rounded-xl">Order Now</a>
-                    <a href="#reviews" class="nav-link px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Reviews</a>
-                    <a href="#faq" class="nav-link px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">FAQ</a>
-                    <a href="#contact" class="nav-link px-3 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Contact</a>
+                    <a href="#home" class="nav-link px-2.5 py-2 text-xs font-bold text-brandPrimary bg-brandPrimary/10 rounded-lg flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brandPrimary animate-ping"></span> Home
+                    </a>
+                    <a href="#about" class="nav-link px-2.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">About</a>
+                    <a href="#services" class="nav-link px-2.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Services</a>
+                    <a href="#portfolio" class="nav-link px-2.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Portfolio</a>
+                    <a href="#pricing" class="nav-link px-2.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Pricing</a>
+                    <a href="#calculator" class="nav-link px-2.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Calculator</a>
+                    <a href="#order" class="nav-link px-2.5 py-2 text-xs font-extrabold text-brandPrimary bg-brandPrimary/10 px-3 py-1.5 rounded-xl">Order Now</a>
+                    <a href="#reviews" class="nav-link px-2.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Reviews</a>
+                    <a href="#faq" class="nav-link px-2.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">FAQ</a>
+                    <a href="#contact" class="nav-link px-2.5 py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-brandPrimary transition rounded-lg">Contact</a>
                 </nav>
 
                 <!-- Header Right CTAs & Theme Switcher -->
@@ -188,26 +190,32 @@
             </div>
         </div>
 
-        <!-- Mobile Drawer Navigation with Anchor Smooth Scrolls & Admin Link at Bottom -->
+        <!-- Mobile Drawer Navigation -->
         <div id="mobileDrawer" class="hidden lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-navyDark/95 backdrop-blur-xl transition-all duration-300">
             <div class="px-4 pt-2 pb-6 space-y-2 text-sm font-semibold">
                 <a href="#home" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-brandPrimary bg-brandPrimary/10 font-bold">🏠 Home</a>
-                <a href="#about" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">👤 About Us</a>
-                <a href="#services" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">🛠️ Services</a>
-                <a href="#portfolio" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">💼 Portfolio Demos</a>
-                <a href="#pricing" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">💰 Pricing</a>
+                <a href="About.html" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">👤 About Us Page</a>
+                <a href="#about" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">📌 About Section</a>
+                <a href="service.html" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">🛠️ Services Page</a>
+                <a href="#services" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">📌 Services Section</a>
+                <a href="Portfolio.html" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">💼 Portfolio Page</a>
+                <a href="#portfolio" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">📌 Portfolio Demos</a>
+                <a href="Pricing.html" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">💰 Pricing Page</a>
+                <a href="#pricing" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">📌 Pricing Section</a>
                 <a href="#calculator" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">🧮 Cost Calculator</a>
-                <a href="#order" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-brandPrimary font-bold bg-blue-50 dark:bg-slate-800">📋 Order / Get Quote</a>
-                <a href="#reviews" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">⭐ Reviews</a>
-                <a href="#faq" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">❓ FAQ</a>
-                <a href="#contact" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">📞 Contact</a>
+                <a href="GetQuote.html" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">📋 Get Quote Page</a>
+                <a href="#order" onclick="toggleMobileMenu()" class="block px-4 py-2 rounded-xl text-brandPrimary font-bold bg-blue-50 dark:bg-slate-800">📋 Order / Inquiry Form</a>
+                <a href="Reviews.html" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">⭐ Reviews Page</a>
+                <a href="Faq.html" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">❓ FAQ & Help Center</a>
+                <a href="Contact.html" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">📞 Contact Page</a>
                 <a href="Dashboard.html" class="block px-4 py-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">👤 Client Login</a>
                 
-                <!-- Special Admin Login Option at Very Bottom of Mobile Drawer -->
+                <!-- Admin Login Modal Trigger at Very Bottom -->
                 <div class="pt-3 border-t border-slate-200 dark:border-slate-800">
-                    <a href="Admin.html" class="block px-4 py-2.5 rounded-xl bg-slate-900 text-amber-400 font-extrabold text-xs shadow">
-                        🔐 Admin Login
-                    </a>
+                    <button onclick="openAdminLoginModal(); toggleMobileMenu();" class="w-full text-left px-4 py-2.5 rounded-xl bg-slate-900 text-amber-400 font-extrabold text-xs shadow flex items-center justify-between">
+                        <span>🔐 Admin Login</span>
+                        <i class="fa-solid fa-lock text-xs"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -328,8 +336,70 @@
         </div>
     </section>
 
+    <!-- ==================== ALL PAGES DIRECTORY OVERVIEW ==================== -->
+    <section class="py-16 bg-lightBg dark:bg-navyDark border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-brandPrimary text-xs font-extrabold uppercase tracking-widest bg-brandPrimary/10 px-3.5 py-1.5 rounded-full">WEBSITE DIRECTORY</span>
+                <h2 class="text-2xl sm:text-3xl font-black text-navyDark dark:text-white mt-3">আমাদের ওয়েবসাইটের পেজ লিংকসমূহ</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mt-1">যেকোনো পেজের ওপর ক্লিক করে সরাসরি সেখানে প্রবেশ করুন:</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 text-xs font-semibold">
+                <a href="service.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-brandPrimary text-sm"><i class="fa-solid fa-briefcase mr-1.5"></i> Services Page</div>
+                    <p class="text-slate-500 text-[11px]">আমাদের সকল ওয়েবসাইট ডেভেলপমেন্ট সেবা</p>
+                </a>
+                <a href="Pricing.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-amber-500 text-sm"><i class="fa-solid fa-tags mr-1.5"></i> Pricing Page</div>
+                    <p class="text-slate-500 text-[11px]">প্যাকেজ মূল্য ও বাজেট ক্যালকুলেটর</p>
+                </a>
+                <a href="Portfolio.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-indigo-500 text-sm"><i class="fa-solid fa-images mr-1.5"></i> Portfolio Page</div>
+                    <p class="text-slate-500 text-[11px]">আমাদের তৈরি ডেমো প্রজেক্ট শোকেস</p>
+                </a>
+                <a href="GetQuote.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-emerald-600 text-sm"><i class="fa-solid fa-calculator mr-1.5"></i> Get a Quote Page</div>
+                    <p class="text-slate-500 text-[11px]">অনলাইন প্রজেক্ট কোটেশন রিকোয়েস্ট</p>
+                </a>
+                <a href="About.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-sky-500 text-sm"><i class="fa-solid fa-user mr-1.5"></i> About Us Page</div>
+                    <p class="text-slate-500 text-[11px]">Web Pro BD ও ওনার পরিচিতি</p>
+                </a>
+                <a href="Reviews.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-amber-400 text-sm"><i class="fa-solid fa-star mr-1.5"></i> Reviews Page</div>
+                    <p class="text-slate-500 text-[11px]">গ্রাহকদের সার্ভিস অভিজ্ঞতা ও রিভিউ</p>
+                </a>
+                <a href="Faq.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-purple-500 text-sm"><i class="fa-solid fa-circle-question mr-1.5"></i> FAQ Page</div>
+                    <p class="text-slate-500 text-[11px]">সাধারণ প্রশ্ন ও সাহায্য কেন্দ্র</p>
+                </a>
+                <a href="Contact.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-red-500 text-sm"><i class="fa-solid fa-headset mr-1.5"></i> Contact Page</div>
+                    <p class="text-slate-500 text-[11px]">হোয়াটসঅ্যাপ, ফোন ও ইমেইল ঠিকানা</p>
+                </a>
+                <a href="Dashboard.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-brandPrimary text-sm"><i class="fa-solid fa-user-check mr-1.5"></i> Customer Dashboard</div>
+                    <p class="text-slate-500 text-[11px]">কাস্টমার প্রজেক্ট ও বিলিং ট্র্যাকিং</p>
+                </a>
+                <a href="Terms.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-slate-700 dark:text-slate-300 text-sm"><i class="fa-solid fa-file-contract mr-1.5"></i> Terms & Conditions</div>
+                    <p class="text-slate-500 text-[11px]">কাজের নিয়ম ও শর্তাবলী</p>
+                </a>
+                <a href="Privacy.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-slate-700 dark:text-slate-300 text-sm"><i class="fa-solid fa-shield-halved mr-1.5"></i> Privacy Policy</div>
+                    <p class="text-slate-500 text-[11px]">ডাটা প্রটেকশন ও প্রাইভেসি পলিসি</p>
+                </a>
+                <a href="Refund.html" class="p-4 bg-white dark:bg-navyCard border rounded-2xl shadow-sm hover:border-brandPrimary transition space-y-1">
+                    <div class="font-extrabold text-emerald-600 text-sm"><i class="fa-solid fa-rotate-left mr-1.5"></i> Refund Policy</div>
+                    <p class="text-slate-500 text-[11px]">প্রজেক্ট ক্যান্সেলেশন ও রিফান্ড নীতি</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- ==================== ABOUT SECTION (#about) ==================== -->
-    <section id="about" class="py-16 bg-lightBg dark:bg-navyDark border-b border-slate-200 dark:border-slate-800 scroll-mt-20">
+    <section id="about" class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 <div class="lg:col-span-7 space-y-4">
@@ -338,15 +408,18 @@
                     <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm leading-relaxed">
                         Web Pro BD-এর লক্ষ্য হলো ব্যবসা, প্রতিষ্ঠান, অনলাইন শপ ও ব্যক্তিগত ব্র্যান্ডের জন্য আধুনিক ও কার্যকর ওয়েব সলিউশন তৈরি করা। আপনার প্রয়োজন বুঝে উপযুক্ত ডিজাইন, ফাংশনালিটি এবং বিজনেস-ফোকাসড সলিউশন দেওয়াই আমাদের মূল উদ্দেশ্য।
                     </p>
-                    <div class="pt-2">
-                        <a href="#contact" class="bg-brandPrimary hover:bg-brandDark text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow inline-flex items-center gap-2">
-                            <span>আমার সাথে কথা বলুন</span>
+                    <div class="pt-2 flex flex-wrap gap-3">
+                        <a href="About.html" class="bg-brandPrimary hover:bg-brandDark text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow inline-flex items-center gap-2">
+                            <span>About Page-এ যান</span>
                             <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-white px-5 py-2.5 rounded-xl text-xs font-bold border">
+                            আমার সাথে কথা বলুন
                         </a>
                     </div>
                 </div>
 
-                <div class="lg:col-span-5 bg-white dark:bg-navyCard border p-6 rounded-3xl shadow-sm text-xs space-y-3">
+                <div class="lg:col-span-5 bg-lightBg dark:bg-navyCard border p-6 rounded-3xl shadow-sm text-xs space-y-3">
                     <div class="flex items-center gap-3 border-b pb-3">
                         <div class="w-12 h-12 rounded-full bg-brandPrimary text-white font-black text-base flex items-center justify-center">AT</div>
                         <div>
@@ -362,55 +435,91 @@
         </div>
     </section>
 
-    <!-- ==================== SERVICES SECTION (#services) ==================== -->
-    <section id="services" class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 scroll-mt-20">
+    <!-- ==================== SERVICES SECTION (#services - 10 CARDS) ==================== -->
+    <section id="services" class="py-16 bg-lightBg dark:bg-navyDark border-b border-slate-200 dark:border-slate-800 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b pb-4">
                 <div>
                     <span class="text-brandPrimary text-xs font-extrabold uppercase tracking-widest bg-brandPrimary/10 px-3.5 py-1.5 rounded-full">OUR SERVICES</span>
-                    <h2 class="text-2xl sm:text-3xl font-black text-navyDark dark:text-white mt-2">আমাদের সেবাসমূহ</h2>
+                    <h2 class="text-2xl sm:text-3xl font-black text-navyDark dark:text-white mt-2">আমাদের ১০টি প্রধান সেবাসমূহ</h2>
                 </div>
                 <a href="service.html" class="bg-brandPrimary text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow">
                     সব সার্ভিস দেখুন &rarr;
                 </a>
             </div>
 
-            <!-- 10 Service Cards Grid -->
+            <!-- Full 10 Service Cards Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <div class="p-6 rounded-3xl bg-lightBg dark:bg-navyCard border card-hover-effect space-y-3 flex flex-col justify-between">
+                <div class="p-6 rounded-3xl bg-white dark:bg-navyCard border card-hover-effect space-y-3 flex flex-col justify-between">
                     <div>
                         <i class="fa-solid fa-briefcase text-2xl text-brandPrimary mb-2 block"></i>
-                        <h3 class="font-bold text-base text-navyDark dark:text-white">Business Website</h3>
+                        <h3 class="font-bold text-base text-navyDark dark:text-white">1. Business Website</h3>
                         <p class="text-slate-500 text-xs leading-relaxed">সাধারণ ব্যবসা ও প্রতিষ্ঠানের জন্য প্রফেশনাল ওয়েবসাইট।</p>
                     </div>
                     <div class="pt-2 border-t flex gap-2">
                         <button onclick="selectServiceAndOrder('Business Website')" class="flex-1 bg-brandPrimary text-white py-2 rounded-xl text-xs font-bold">এই Service নিতে চাই</button>
-                        <button onclick="openHomeServiceModal('Business Website')" class="bg-slate-200 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold">Details</button>
+                        <button onclick="openHomeServiceModal('Business Website')" class="bg-slate-100 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold">Details</button>
                     </div>
                 </div>
 
-                <div class="p-6 rounded-3xl bg-lightBg dark:bg-navyCard border card-hover-effect space-y-3 flex flex-col justify-between">
+                <div class="p-6 rounded-3xl bg-white dark:bg-navyCard border card-hover-effect space-y-3 flex flex-col justify-between">
                     <div>
                         <i class="fa-solid fa-cart-shopping text-2xl text-emerald-500 mb-2 block"></i>
-                        <h3 class="font-bold text-base text-navyDark dark:text-white">E-commerce Website</h3>
+                        <h3 class="font-bold text-base text-navyDark dark:text-white">2. E-commerce Website</h3>
                         <p class="text-slate-500 text-xs leading-relaxed">অনলাইনে পণ্য বিক্রির জন্য পূর্ণাঙ্গ অনলাইন শপ।</p>
                     </div>
                     <div class="pt-2 border-t flex gap-2">
                         <button onclick="selectServiceAndOrder('E-commerce Website')" class="flex-1 bg-brandPrimary text-white py-2 rounded-xl text-xs font-bold">এই Service নিতে চাই</button>
-                        <button onclick="openHomeServiceModal('E-commerce Website')" class="bg-slate-200 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold">Details</button>
+                        <button onclick="openHomeServiceModal('E-commerce Website')" class="bg-slate-100 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold">Details</button>
                     </div>
                 </div>
 
-                <div class="p-6 rounded-3xl bg-lightBg dark:bg-navyCard border card-hover-effect space-y-3 flex flex-col justify-between">
+                <div class="p-6 rounded-3xl bg-white dark:bg-navyCard border card-hover-effect space-y-3 flex flex-col justify-between">
                     <div>
                         <i class="fa-solid fa-rocket text-2xl text-amber-500 mb-2 block"></i>
-                        <h3 class="font-bold text-base text-navyDark dark:text-white">Landing Page</h3>
+                        <h3 class="font-bold text-base text-navyDark dark:text-white">3. Landing Page</h3>
                         <p class="text-slate-500 text-xs leading-relaxed">নির্দিষ্ট প্রোডাক্ট অ্যাড ক্যাম্পেইনের জন্য ল্যান্ডিং পেজ।</p>
                     </div>
                     <div class="pt-2 border-t flex gap-2">
                         <button onclick="selectServiceAndOrder('Landing Page')" class="flex-1 bg-brandPrimary text-white py-2 rounded-xl text-xs font-bold">এই Service নিতে চাই</button>
-                        <button onclick="openHomeServiceModal('Landing Page')" class="bg-slate-200 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold">Details</button>
+                        <button onclick="openHomeServiceModal('Landing Page')" class="bg-slate-100 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold">Details</button>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-white dark:bg-navyCard border card-hover-effect space-y-3 flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-code text-2xl text-purple-500 mb-2 block"></i>
+                        <h3 class="font-bold text-base text-navyDark dark:text-white">4. Web Application</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">কাস্টম ওয়েব অ্যাপ ও সফটওয়্যার অটোমেশন।</p>
+                    </div>
+                    <div class="pt-2 border-t flex gap-2">
+                        <button onclick="selectServiceAndOrder('Web Application')" class="flex-1 bg-brandPrimary text-white py-2 rounded-xl text-xs font-bold">এই Service নিতে চাই</button>
+                        <button onclick="openHomeServiceModal('Web Application')" class="bg-slate-100 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold">Details</button>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-white dark:bg-navyCard border card-hover-effect space-y-3 flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-user-tie text-2xl text-indigo-500 mb-2 block"></i>
+                        <h3 class="font-bold text-base text-navyDark dark:text-white">5. Portfolio Website</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">ব্যক্তিগত পোর্টফোলিও ও কাজের শোকেস।</p>
+                    </div>
+                    <div class="pt-2 border-t flex gap-2">
+                        <button onclick="selectServiceAndOrder('Portfolio Website')" class="flex-1 bg-brandPrimary text-white py-2 rounded-xl text-xs font-bold">এই Service নিতে চাই</button>
+                        <button onclick="openHomeServiceModal('Portfolio Website')" class="bg-slate-100 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold">Details</button>
+                    </div>
+                </div>
+
+                <div class="p-6 rounded-3xl bg-white dark:bg-navyCard border card-hover-effect space-y-3 flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-building text-2xl text-sky-500 mb-2 block"></i>
+                        <h3 class="font-bold text-base text-navyDark dark:text-white">6. Corporate Website</h3>
+                        <p class="text-slate-500 text-xs leading-relaxed">বড় কোম্পানি ও ব্র্যান্ডের কর্পোরেট সাইট।</p>
+                    </div>
+                    <div class="pt-2 border-t flex gap-2">
+                        <button onclick="selectServiceAndOrder('Corporate Website')" class="flex-1 bg-brandPrimary text-white py-2 rounded-xl text-xs font-bold">এই Service নিতে চাই</button>
+                        <button onclick="openHomeServiceModal('Corporate Website')" class="bg-slate-100 text-slate-700 px-3 py-2 rounded-xl text-xs font-bold">Details</button>
                     </div>
                 </div>
 
@@ -418,8 +527,8 @@
         </div>
     </section>
 
-    <!-- ==================== PORTFOLIO DEMOS SECTION (#portfolio) ==================== -->
-    <section id="portfolio" class="py-16 bg-lightBg dark:bg-navyDark border-b border-slate-200 dark:border-slate-800 scroll-mt-20">
+    <!-- ==================== PORTFOLIO DEMOS SECTION (#portfolio - 6 CARDS) ==================== -->
+    <section id="portfolio" class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div class="flex justify-between items-center border-b pb-4">
                 <div>
@@ -434,7 +543,7 @@
             <!-- Demo Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <div class="bg-white dark:bg-navyCard rounded-3xl border p-4 space-y-3">
+                <div class="bg-lightBg dark:bg-navyCard rounded-3xl border p-4 space-y-3">
                     <div class="aspect-video bg-slate-900 rounded-2xl overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
                         <span class="absolute top-2 left-2 bg-emerald-500 text-white text-[9px] font-bold px-2 py-0.5 rounded">DEMO PROJECT</span>
@@ -446,7 +555,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-navyCard rounded-3xl border p-4 space-y-3">
+                <div class="bg-lightBg dark:bg-navyCard rounded-3xl border p-4 space-y-3">
                     <div class="aspect-video bg-slate-900 rounded-2xl overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
                         <span class="absolute top-2 left-2 bg-emerald-500 text-white text-[9px] font-bold px-2 py-0.5 rounded">DEMO PROJECT</span>
@@ -458,7 +567,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white dark:bg-navyCard rounded-3xl border p-4 space-y-3">
+                <div class="bg-lightBg dark:bg-navyCard rounded-3xl border p-4 space-y-3">
                     <div class="aspect-video bg-slate-900 rounded-2xl overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover">
                         <span class="absolute top-2 left-2 bg-emerald-500 text-white text-[9px] font-bold px-2 py-0.5 rounded">DEMO PROJECT</span>
@@ -474,12 +583,55 @@
         </div>
     </section>
 
+    <!-- ==================== HOW IT WORKS (5 STEPS) ==================== -->
+    <section class="py-16 bg-lightBg dark:bg-navyDark border-b border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-brandPrimary text-xs font-extrabold uppercase tracking-widest bg-brandPrimary/10 px-3.5 py-1.5 rounded-full">PROCESS</span>
+                <h2 class="text-2xl sm:text-3xl font-black text-navyDark dark:text-white mt-3">কীভাবে কাজ করে?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <div class="bg-white dark:bg-navyCard p-5 rounded-2xl border text-center space-y-2">
+                    <span class="text-brandPrimary font-mono font-bold text-xs bg-brandPrimary/10 px-2.5 py-1 rounded-full">Step 01</span>
+                    <h3 class="font-bold text-sm text-navyDark dark:text-white">আপনার প্রয়োজন জানান</h3>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">ফর্মে আপনার বাজেট ও চাহিদা দিন।</p>
+                </div>
+                <div class="bg-white dark:bg-navyCard p-5 rounded-2xl border text-center space-y-2">
+                    <span class="text-brandPrimary font-mono font-bold text-xs bg-brandPrimary/10 px-2.5 py-1 rounded-full">Step 02</span>
+                    <h3 class="font-bold text-sm text-navyDark dark:text-white">Requirement আলোচনা</h3>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">হোয়াটসঅ্যাপ বা ফোনে সরাসরি কথা বলবো।</p>
+                </div>
+                <div class="bg-white dark:bg-navyCard p-5 rounded-2xl border text-center space-y-2">
+                    <span class="text-brandPrimary font-mono font-bold text-xs bg-brandPrimary/10 px-2.5 py-1 rounded-full">Step 03</span>
+                    <h3 class="font-bold text-sm text-navyDark dark:text-white">Design তৈরি</h3>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">আপনার পছন্দমতো লেআউট তৈরি করা হবে।</p>
+                </div>
+                <div class="bg-white dark:bg-navyCard p-5 rounded-2xl border text-center space-y-2">
+                    <span class="text-brandPrimary font-mono font-bold text-xs bg-brandPrimary/10 px-2.5 py-1 rounded-full">Step 04</span>
+                    <h3 class="font-bold text-sm text-navyDark dark:text-white">Development & Testing</h3>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">কোডিং, ডাটাবেস ও স্পিড টেস্ট করা হবে।</p>
+                </div>
+                <div class="bg-white dark:bg-navyCard p-5 rounded-2xl border text-center space-y-2">
+                    <span class="text-emerald-600 font-mono font-bold text-xs bg-emerald-100 px-2.5 py-1 rounded-full">Step 05</span>
+                    <h3 class="font-bold text-sm text-navyDark dark:text-white">Final Delivery</h3>
+                    <p class="text-slate-500 text-[11px] leading-relaxed">সাইট লাইভ ও সোর্স ফাইল বুঝিয়ে দেওয়া হবে।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ==================== PRICING SECTION (#pricing) ==================== -->
     <section id="pricing" class="py-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 scroll-mt-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-            <div class="text-center max-w-2xl mx-auto">
-                <span class="text-brandPrimary text-xs font-extrabold uppercase tracking-widest bg-brandPrimary/10 px-3.5 py-1.5 rounded-full">PRICING</span>
-                <h2 class="text-2xl sm:text-3xl font-black text-navyDark dark:text-white mt-3">সহজ ও স্বচ্ছ Pricing</h2>
+            <div class="flex justify-between items-center border-b pb-4">
+                <div>
+                    <span class="text-brandPrimary text-xs font-extrabold uppercase tracking-widest bg-brandPrimary/10 px-3.5 py-1.5 rounded-full">PRICING</span>
+                    <h2 class="text-2xl sm:text-3xl font-black text-navyDark dark:text-white mt-3">সহজ ও স্বচ্ছ Pricing</h2>
+                </div>
+                <a href="Pricing.html" class="bg-brandPrimary text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow">
+                    সব প্যাকেজ দেখুন &rarr;
+                </a>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -708,6 +860,9 @@
                     <a href="https://wa.me/8801516513987" target="_blank" class="bg-emerald-600 text-white font-bold px-5 py-3 rounded-xl text-xs flex items-center gap-2">
                         <i class="fa-brands fa-whatsapp"></i> WhatsApp
                     </a>
+                    <a href="Contact.html" class="bg-navyDark text-white font-bold px-5 py-3 rounded-xl text-xs flex items-center gap-2">
+                        <i class="fa-solid fa-envelope"></i> Contact Page
+                    </a>
                 </div>
 
             </div>
@@ -734,7 +889,7 @@
                 <div>
                     <h4 class="text-white font-bold mb-3 text-sm">Quick Links</h4>
                     <ul class="space-y-1.5">
-                        <li><a href="#home" class="text-brandPrimary font-bold">Home</a></li>
+                        <li><a href="index.html" class="text-brandPrimary font-bold">Home</a></li>
                         <li><a href="About.html" class="hover:text-brandPrimary">About Us</a></li>
                         <li><a href="service.html" class="hover:text-brandPrimary">Services</a></li>
                         <li><a href="Portfolio.html" class="hover:text-brandPrimary">Portfolio</a></li>
@@ -788,6 +943,48 @@
             <div class="flex gap-2">
                 <button id="modalOrderBtn" onclick="" class="flex-1 bg-brandPrimary text-white py-2.5 rounded-xl font-bold text-xs shadow">এই Service নিতে চাই</button>
             </div>
+        </div>
+    </div>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="adminLoginModal" class="fixed inset-0 bg-navyDark/90 backdrop-blur-md hidden items-center justify-center p-4 z-50 animate__animated animate__fadeIn">
+        <div class="bg-white dark:bg-navyCard rounded-3xl max-w-md w-full p-6 sm:p-8 relative shadow-2xl border border-slate-200 dark:border-slate-700">
+            <button onclick="closeAdminLoginModal()" class="absolute top-5 right-5 text-slate-400 hover:text-navyDark dark:hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="text-center mb-6 space-y-2">
+                <div class="w-12 h-12 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center text-2xl mx-auto border border-amber-500/20">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="text-xl font-black text-navyDark dark:text-white">WEB PRO BD • ADMIN PORTAL</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">মাস্টার এডমিন প্যানেলে প্রবেশ করতে অ্যাকাউন্ট তথ্য দিন।</p>
+            </div>
+
+            <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-xs">
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Admin Email / ID *</label>
+                    <input type="email" id="adminEmailInput" required value="admin@webprobd.com" placeholder="admin@webprobd.com" class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-brandPrimary dark:text-white">
+                </div>
+
+                <div>
+                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-1">Admin Password *</label>
+                    <input type="password" id="adminPassInput" required value="••••••••" placeholder="Password" class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:border-brandPrimary dark:text-white">
+                </div>
+
+                <div class="flex justify-between items-center text-[11px] text-slate-500 dark:text-slate-400">
+                    <label class="flex items-center gap-1.5 cursor-pointer">
+                        <input type="checkbox" checked class="rounded text-brandPrimary">
+                        <span>Remember Device</span>
+                    </label>
+                    <span class="text-brandPrimary font-bold">Encrypted Session</span>
+                </div>
+
+                <button type="submit" id="adminLoginSubmitBtn" class="w-full bg-slate-900 hover:bg-black text-amber-400 font-extrabold py-3.5 rounded-xl text-xs shadow-lg transition flex items-center justify-center gap-2">
+                    <span>Login to Admin Panel</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </button>
+            </form>
         </div>
     </div>
 
@@ -897,6 +1094,29 @@
         function closeHomeServiceModal() {
             document.getElementById('homeServiceModal').classList.add('hidden');
             document.getElementById('homeServiceModal').classList.remove('flex');
+        }
+
+        // Admin Login Modal Controls
+        function openAdminLoginModal() {
+            document.getElementById('adminLoginModal').classList.remove('hidden');
+            document.getElementById('adminLoginModal').classList.add('flex');
+        }
+
+        function closeAdminLoginModal() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+            document.getElementById('adminLoginModal').classList.remove('flex');
+        }
+
+        function handleAdminLogin(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('adminLoginSubmitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Authenticating...";
+
+            showToast("Admin session authenticated. Redirecting...");
+            setTimeout(() => {
+                window.location.href = "Admin.html";
+            }, 800);
         }
 
         async function handleHomeOrderSubmit(e) {

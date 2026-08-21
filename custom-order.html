@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>কাস্টম ওয়েবসাইট অর্ডার | Web Pro BD</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Hind Siliguri -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #0F172A;
+            color: #F8FAFC;
+        }
+
+        /* ব্যাকগ্রাউন্ড ও এনিমেশন */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.08); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-glow {
+            animation: pulseGlow 6s infinite ease-in-out;
+        }
+
+        .animate-float {
+            animation: float 4s infinite ease-in-out;
+        }
+
+        .glass-header {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- ================= ১. নেভিগেশন বার ================= -->
+    <nav class="glass-header text-white sticky top-0 z-50 shadow-2xl border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- লোগো -->
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-gradient-to-tr from-teal-500 to-emerald-400 rounded-2xl flex items-center justify-center font-black text-2xl text-slate-900 shadow-lg shadow-teal-500/30 animate-pulse">
+                        W
+                    </div>
+                    <div>
+                        <a href="index.html" class="text-2xl font-extrabold tracking-tight text-white hover:text-teal-400 transition">
+                            Web Pro <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">BD</span>
+                        </a>
+                        <p class="text-[10px] tracking-widest uppercase text-slate-400 font-semibold">Digital Web Agency</p>
+                    </div>
+                </div>
+
+                <!-- মেনু লিঙ্কস -->
+                <div class="hidden md:flex items-center space-x-8 text-base font-medium">
+                    <a href="index.html" class="hover:text-teal-400 transition flex items-center gap-2">
+                        <i class="fa-solid fa-house"></i> হোম পেজ
+                    </a>
+                    <a href="index.html#demos" class="hover:text-teal-400 transition flex items-center gap-2">
+                        <i class="fa-solid fa-laptop-code"></i> ডেমো সাইটসমূহ
+                    </a>
+                    <a href="custom-order.html" class="text-teal-400 font-extrabold flex items-center gap-2 border-b-2 border-teal-400 pb-1">
+                        <i class="fa-solid fa-wand-magic-sparkles text-amber-300"></i> কাস্টম অর্ডার
+                    </a>
+                    <a href="track-order.html" class="hover:text-teal-400 transition flex items-center gap-2">
+                        <i class="fa-solid fa-magnifying-glass"></i> অর্ডার ট্র্যাকিং
+                    </a>
+                </div>
+
+                <!-- ডায়রেক্ট হোয়াটসঅ্যাপ বাটন -->
+                <a href="https://wa.me/8801516513987?text=Hello%20Web%20Pro%20BD" target="_blank" 
+                    class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-emerald-600/30 transition transform hover:scale-105 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> সরাসরি চ্যাট
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ================= ২. হিরো সেকশন (Animated Hero) ================= -->
+    <section class="relative py-16 lg:py-24 overflow-hidden border-b border-slate-800">
+        <!-- গ্লোয়িং ব্যাকগ্রাউন্ড -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal-500/20 rounded-full blur-[140px] pointer-events-none animate-glow"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <span class="inline-flex items-center gap-2 bg-slate-800/80 border border-teal-500/40 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-teal-300 shadow-xl mb-6 animate-float">
+                ✨ আপনার মনমতো কাস্টম ওয়েবসাইট ডিজাইন
+            </span>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight mb-6">
+                আপনার স্বপ্নের ওয়েবসাইটের জন্য <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400">কাস্টম অর্ডার</span> করুন
+            </h1>
+            <p class="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8">
+                আপনার ব্যবসার ধরন অনুযায়ী নির্দিষ্ট কোনো ডিজাইন বা স্পেশাল ফিচার প্রয়োজন? নিচের ফর্মে আপনার রিকোয়ারমেন্ট জানান। আমরা সেরা মানের ওয়েবসাইট তৈরি করে দেব।
+            </p>
+            
+            <div class="flex flex-wrap justify-center gap-4 text-xs sm:text-sm font-medium text-slate-300">
+                <div class="flex items-center gap-2 bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700">
+                    <i class="fa-solid fa-circle-check text-teal-400"></i> ১০০% রেসপন্সিভ
+                </div>
+                <div class="flex items-center gap-2 bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700">
+                    <i class="fa-solid fa-bolt text-teal-400"></i> আল্ট্রা-ফাস্ট লোডিং
+                </div>
+                <div class="flex items-center gap-2 bg-slate-800/80 px-4 py-2 rounded-xl border border-slate-700">
+                    <i class="fa-solid fa-headset text-teal-400"></i> ২৪/৭ ফ্রি সাপোর্ট
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= ৩. মূল ফরম এবং বিস্তারিত সেকশন ================= -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 mb-20 relative z-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- ফরম বামপাশ (৮ কলাম) -->
+            <div class="lg:col-span-8 glass-card p-6 sm:p-10 rounded-3xl shadow-2xl text-slate-800 border border-slate-200">
+                <div class="border-b border-slate-200 pb-6 mb-8">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 flex items-center gap-3">
+                        <i class="fa-solid fa-pen-to-square text-teal-600"></i> কাস্টম প্রজেক্ট রিকোয়েস্ট ফরম
+                    </h2>
+                    <p class="text-slate-500 mt-2 text-sm">নিচের তথ্যগুলো পূরণ করুন। সাবমিট করার সাথে সাথেই গুগল শিটে সেভ হবে এবং আমাদের হোয়াটসঅ্যাপেও বার্তা পেয়ে যাবেন।</p>
+                </div>
+
+                <form id="customOrderForm" class="space-y-6">
+                    <!-- ক্লায়েন্টের নাম ও ফোন -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">আপনার নাম *</label>
+                            <input type="text" id="clientName" required placeholder="যেমন: আবু তালহা" 
+                                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition text-slate-900 font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">ফোন / হোয়াটসঅ্যাপ নম্বর *</label>
+                            <input type="tel" id="clientPhone" required placeholder="01516513987" 
+                                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition text-slate-900 font-medium">
+                        </div>
+                    </div>
+
+                    <!-- ইমেইল ও প্রজেক্টের ধরন -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">ইমেইল এড্রেস</label>
+                            <input type="email" id="clientEmail" placeholder="abutalha46700@gmail.com" 
+                                class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition text-slate-900 font-medium">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">ওয়েবসাইটের ধরন (Project Type) *</label>
+                            <select id="projectType" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition bg-white text-slate-900 font-medium">
+                                <option value="">ওয়েবসাইটের ধরন বেছে নিন</option>
+                                <option value="E-Commerce / Online Shop">অনলাইন শপ / ই-কমার্স</option>
+                                <option value="Educational / School College">শিক্ষা প্রতিষ্ঠান (School/College/Madrasa)</option>
+                                <option value="Matrimonial / Marriage Bio">পাত্র-পাত্রী / বায়োডাটা সাইট</option>
+                                <option value="Personal Portfolio / Agency">ব্যক্তিগত পোর্টফোলিও / এজেন্সি</option>
+                                <option value="Newspaper / Blog">অনলাইন নিউজ / ব্লগ সাইট</option>
+                                <option value="Custom Web Application">কাস্টম ওয়েব অ্যাপ্লিকেশন</option>
+                                <option value="Other">অন্যান্য</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- বাজেট ও সময়সীমা -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">আপনার আনুমানিক বাজেট (টাকায়) *</label>
+                            <select id="budgetRange" required class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition bg-white text-slate-900 font-medium">
+                                <option value="৩,০০০ - ৫,০০০ টাকা">৩,০০০ - ৫,০০০ টাকা</option>
+                                <option value="৫,০০০ - ১০,০০০ টাকা" selected>৫,০০০ - ১০,০০০ টাকা</option>
+                                <option value="১০,০০০ - ২০,০০০ টাকা">১০,০০০ - ২০,০০০ টাকা</option>
+                                <option value="২০,০০০ - ৫০,০০০+ টাকা">২০,০০০ - ৫০,০০০+ টাকা</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">কতদিনের মধ্যে ডেলিভারি চান?</label>
+                            <select id="deliveryTimeline" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition bg-white text-slate-900 font-medium">
+                                <option value="৩ থেকে ৫ দিন">৩ থেকে ৫ দিন (জরুরি)</option>
+                                <option value="৭ দিন">৭ দিন (স্ট্যান্ডার্ড)</option>
+                                <option value="১৫ দিন">১৫ দিন (ডিটেইলড প্রজেক্ট)</option>
+                                <option value="আলোচনা সাপেক্ষে">আলোচনা সাপেক্ষে</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- পছন্দনীয় সাইটের লিংক -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">কোনো পছন্দনীয় ডেমো বা রেফারেন্স সাইটের লিংক (যদি থাকে)</label>
+                        <input type="url" id="referenceUrl" placeholder="যেমন: https://talhastore.vercel.app" 
+                            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition text-slate-900 font-medium">
+                    </div>
+
+                    <!-- প্রয়োজনীয় ফিচার চেকবক্স -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-3">প্রয়োজনীয় বিশেষ ফিচারসমূহ সিলেক্ট করুন:</label>
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                            <label class="flex items-center gap-2 cursor-pointer bg-slate-100 p-3 rounded-xl border hover:bg-teal-50 hover:border-teal-300 transition">
+                                <input type="checkbox" name="feature" value="bKash/Nagad Payment" class="w-4 h-4 text-teal-600 rounded">
+                                <span class="text-xs sm:text-sm font-semibold">বিকাশ/নগদ পেমেন্ট</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-slate-100 p-3 rounded-xl border hover:bg-teal-50 hover:border-teal-300 transition">
+                                <input type="checkbox" name="feature" value="Admin Dashboard" class="w-4 h-4 text-teal-600 rounded">
+                                <span class="text-xs sm:text-sm font-semibold">এডমিন ড্যাশবোর্ড</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-slate-100 p-3 rounded-xl border hover:bg-teal-50 hover:border-teal-300 transition">
+                                <input type="checkbox" name="feature" value="WhatsApp Chat" class="w-4 h-4 text-teal-600 rounded" checked>
+                                <span class="text-xs sm:text-sm font-semibold">হোয়াটসঅ্যাপ চ্যাট</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-slate-100 p-3 rounded-xl border hover:bg-teal-50 hover:border-teal-300 transition">
+                                <input type="checkbox" name="feature" value="Domain & Hosting" class="w-4 h-4 text-teal-600 rounded">
+                                <span class="text-xs sm:text-sm font-semibold">ডোমেইন ও হোস্টিং</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-slate-100 p-3 rounded-xl border hover:bg-teal-50 hover:border-teal-300 transition">
+                                <input type="checkbox" name="feature" value="SEO Friendly" class="w-4 h-4 text-teal-600 rounded" checked>
+                                <span class="text-xs sm:text-sm font-semibold">এসইও অপটিমাইজড</span>
+                            </label>
+                            <label class="flex items-center gap-2 cursor-pointer bg-slate-100 p-3 rounded-xl border hover:bg-teal-50 hover:border-teal-300 transition">
+                                <input type="checkbox" name="feature" value="Bangla Setup" class="w-4 h-4 text-teal-600 rounded" checked>
+                                <span class="text-xs sm:text-sm font-semibold">ফুল বাংলা ফ্রন্টএন্ড</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- প্রজেক্টের বিস্তারিত বিবরণ -->
+                    <div>
+                        <label class="block text-sm font-bold text-slate-700 mb-2">প্রজেক্টের বিস্তারিত বিবরণ লিখুন *</label>
+                        <textarea id="projectDetails" rows="4" required placeholder="আপনার মনমতো বিস্তারিত লিখুন, কী কী পেজ বা ফিচার থাকবে..." 
+                            class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition text-slate-900 font-medium"></textarea>
+                    </div>
+
+                    <!-- সাবমিট বাটন -->
+                    <div>
+                        <button type="submit" id="submitBtn" 
+                            class="w-full bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-black py-4 px-6 rounded-2xl shadow-xl shadow-teal-500/20 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3 text-lg">
+                            <i class="fa-solid fa-paper-plane"></i> অর্ডার কনফার্ম করুন (শিট ও হোয়াটসঅ্যাপে পাঠান)
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- তথ্য ডানপাশ (৪ কলাম) -->
+            <div class="lg:col-span-4 space-y-6">
+                
+                <!-- ডিরেক্ট কন্ট্রাক্ট কার্ড -->
+                <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 sm:p-8 rounded-3xl shadow-2xl border border-slate-700">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2 text-teal-400">
+                        <i class="fa-solid fa-headset"></i> সরাসরি যোগাযোগ
+                    </h3>
+                    <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
+                        ফরম পূরণ করার ঝামেলা ছাড়াই সরাসরি কল বা হোয়াটসঅ্যাপেও আপনার প্রজেক্টের বিবরণ পাঠাতে পারেন।
+                    </p>
+
+                    <div class="space-y-4 text-sm">
+                        <a href="https://wa.me/8801516513987" target="_blank" class="flex items-center gap-3 bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/30 p-3 rounded-xl transition">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            <div>
+                                <p class="text-xs text-slate-400">হোয়াটসঅ্যাপ / ইমো</p>
+                                <p class="font-bold">01516513987</p>
+                            </div>
+                        </a>
+
+                        <a href="mailto:abutalha46700@gmail.com" class="flex items-center gap-3 bg-slate-800 p-3 rounded-xl border border-slate-700 hover:border-teal-500/50 transition">
+                            <i class="fa-solid fa-envelope text-teal-400 text-xl"></i>
+                            <div>
+                                <p class="text-xs text-slate-400">ইমেইল করুন</p>
+                                <p class="font-bold text-xs sm:text-sm">abutalha46700@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-3 bg-slate-800 p-3 rounded-xl border border-slate-700">
+                            <i class="fa-solid fa-location-dot text-teal-400 text-xl"></i>
+                            <div>
+                                <p class="text-xs text-slate-400">আমাদের অফিস লোকেশন</p>
+                                <p class="font-bold text-xs sm:text-sm">ফার্মগেট, ঢাকা, বাংলাদেশ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-6 border-t border-slate-700/60 flex items-center justify-between">
+                        <a href="https://www.facebook.com/profile.php?id=61593558263889" target="_blank" class="text-slate-400 hover:text-teal-400 transition text-xs flex items-center gap-1.5">
+                            <i class="fa-brands fa-facebook text-base"></i> ফেসবুক পেজ
+                        </a>
+                        <a href="https://www.facebook.com/Abu.talha017467" target="_blank" class="text-slate-400 hover:text-teal-400 transition text-xs flex items-center gap-1.5">
+                            <i class="fa-solid fa-user text-xs"></i> এডমিন আইডি
+                        </a>
+                    </div>
+                </div>
+
+                <!-- কেন কাস্টম ওয়েবসাইট বানাবেন -->
+                <div class="bg-white text-slate-800 p-6 rounded-3xl shadow-lg border border-slate-200">
+                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-slate-900">
+                        <i class="fa-solid fa-shield-halved text-teal-600"></i> কেন Web Pro BD বেছে নেবেন?
+                    </h3>
+                    <ul class="space-y-3 text-xs sm:text-sm text-slate-600">
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                            <span><strong>লাইফটাইম ফ্রি হোস্টিং:</strong> Vercel সার্ভারে ০৳ মান্থলি খরচে হোস্টিং সার্ভিস।</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                            <span><strong>সহজ গুগল শিট ব্যাকএন্ড:</strong> জটিল প্যানেল ছাড়াই গুগল শিট দিয়ে কন্ট্রোল।</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                            <span><strong>১০০% সিকিউর:</strong> আধুনিক কোডিং সিকিউরিটিতে তৈরি।</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= ৪. আমাদের সাম্প্রতিক তৈরি লাইভ প্রজেক্টস ================= -->
+    <section class="bg-slate-900 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-teal-400 font-bold uppercase tracking-wider text-xs">আমাদের রিয়েল ওয়ার্ক পোর্টফোলিও</span>
+                <h2 class="text-3xl font-extrabold text-white mt-2">আমাদের তৈরি কিছু জনপ্রিয় লাইভ ওয়েবসাইট</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- প্রজেক্ট ১ -->
+                <div class="bg-slate-800 rounded-2xl overflow-hidden shadow-xl border border-slate-700 transition hover:border-teal-500/50">
+                    <div class="bg-teal-600 text-slate-950 p-4 font-bold text-base flex justify-between items-center">
+                        শিক্ষা ৭১ বিডি <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-slate-300 text-xs mb-4">শিক্ষা প্রতিষ্ঠান ও রেজাল্ট ম্যানেজমেন্ট প্ল্যাটফর্ম।</p>
+                        <a href="https://sikkha71bd.vercel.app" target="_blank" class="inline-block w-full text-center bg-slate-900 hover:bg-teal-500 hover:text-slate-950 text-white py-2 rounded-xl text-xs font-bold transition border border-slate-700">
+                            সাইট দেখুন <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- প্রজেক্ট ২ -->
+                <div class="bg-slate-800 rounded-2xl overflow-hidden shadow-xl border border-slate-700 transition hover:border-indigo-500/50">
+                    <div class="bg-indigo-600 text-white p-4 font-bold text-base flex justify-between items-center">
+                        পাত্র-পাত্রী বায়োডাটা <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-slate-300 text-xs mb-4">ইসলামিক মেট্রিওমোনিয়াল ও বায়োডাটা পোর্টাল।</p>
+                        <a href="https://patro-patri.vercel.app" target="_blank" class="inline-block w-full text-center bg-slate-900 hover:bg-indigo-600 text-white py-2 rounded-xl text-xs font-bold transition border border-slate-700">
+                            সাইট দেখুন <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- প্রজেক্ট ৩ -->
+                <div class="bg-slate-800 rounded-2xl overflow-hidden shadow-xl border border-slate-700 transition hover:border-emerald-500/50">
+                    <div class="bg-emerald-600 text-slate-950 p-4 font-bold text-base flex justify-between items-center">
+                        তালহা স্টোর <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-slate-300 text-xs mb-4">ফুল-ফাংশনাল অনলাইন কেনাকাটার ই-কমার্স শপ।</p>
+                        <a href="https://talhastore.vercel.app" target="_blank" class="inline-block w-full text-center bg-slate-900 hover:bg-emerald-500 hover:text-slate-950 text-white py-2 rounded-xl text-xs font-bold transition border border-slate-700">
+                            সাইট দেখুন <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- প্রজেক্ট ৪ -->
+                <div class="bg-slate-800 rounded-2xl overflow-hidden shadow-xl border border-slate-700 transition hover:border-amber-500/50">
+                    <div class="bg-amber-500 text-slate-950 p-4 font-bold text-base flex justify-between items-center">
+                        তালহা ডিজাইনার <i class="fa-solid fa-palette"></i>
+                    </div>
+                    <div class="p-5">
+                        <p class="text-slate-300 text-xs mb-4">প্রফেশনাল ডিজাইনার ও এজেন্সি পোর্টফোলিও।</p>
+                        <a href="https://talhadesigner.vercel.app" target="_blank" class="inline-block w-full text-center bg-slate-900 hover:bg-amber-500 hover:text-slate-950 text-white py-2 rounded-xl text-xs font-bold transition border border-slate-700">
+                            সাইট দেখুন <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= ৫. সাধারণ প্রশ্নাবলী (FAQ) ================= -->
+    <section class="max-w-4xl mx-auto px-4 py-16">
+        <h2 class="text-3xl font-extrabold text-center text-white mb-10">সাধারণ প্রশ্নাবলী (FAQ)</h2>
+        <div class="space-y-4">
+            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                <h3 class="font-bold text-base text-teal-400">১. কাস্টম ওয়েবসাইট বানাতে কতদিন সময় লাগবে?</h3>
+                <p class="text-slate-300 mt-2 text-xs sm:text-sm">সাধারণত প্রজেক্টের টাইপ অনুযায়ী ৩ থেকে ৭ দিনের মধ্যে সম্পূর্ণ কাজ শেষ করে ডেলিভারি দেওয়া হয়।</p>
+            </div>
+            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                <h3 class="font-bold text-base text-teal-400">২. পেমেন্ট নিয়ম কী?</h3>
+                <p class="text-slate-300 mt-2 text-xs sm:text-sm">কাজ শুরুর সময় ৫০% অ্যাডভান্স পেমেন্ট করতে হবে এবং সম্পূর্ণ কাজ লাইভ প্রাকদর্শন (Preview) করার পর বাকি ৫০% পেমেন্ট করবেন।</p>
+            </div>
+            <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                <h3 class="font-bold text-base text-teal-400">৩. ডেলিভারির পর সাপোর্ট পাব তো?</h3>
+                <p class="text-slate-300 mt-2 text-xs sm:text-sm">হ্যাঁ! আমরা বিনামূল্যে ১ বছরের ফ্রি সাপোর্ট দিয়ে থাকি। যেকোনো সমস্যায় হোয়াটসঅ্যাপে হেল্প পাবেন।</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= ৬. ফুটার সেকশন ================= -->
+    <footer class="bg-slate-950 text-slate-400 py-10 border-t border-slate-800 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h3 class="text-white text-lg font-bold mb-3">Web Pro BD</h3>
+                <p class="text-slate-400 leading-relaxed">আমরা অতি কম খরচে আধুনিক, রেসপন্সিভ এবং গুগল শিট চালিত ওয়েবসাইট তৈরি করে থাকি।</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">দ্রুত লিঙ্কসমূহ</h4>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:text-teal-400">হোম পেজ</a></li>
+                    <li><a href="index.html#demos" class="hover:text-teal-400">ডেমো সাইটসমূহ</a></li>
+                    <li><a href="custom-order.html" class="hover:text-teal-400">কাস্টম অর্ডার</a></li>
+                    <li><a href="track-order.html" class="hover:text-teal-400">অর্ডার ট্র্যাকিং</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-3">অফিস ঠিকানা</h4>
+                <p>ফার্মগেট, ঢাকা, বাংলাদেশ</p>
+                <p class="mt-1">হোয়াটসঅ্যাপ: 01516513987</p>
+                <p>ইমেইল: abutalha46700@gmail.com</p>
+            </div>
+        </div>
+        <div class="text-center text-slate-600 border-t border-slate-900 pt-6">
+            &copy; 2026 Web Pro BD. All Rights Reserved. Developed by Abu Talha.
+        </div>
+    </footer>
+
+
+    <!-- ================= ৭. জাভাস্ক্রিপ্ট কোড (Updated API & WhatsApp Redirect) ================= -->
+    <script>
+        // আপডেট হওয়া নতুন ব্যাকএন্ড API URL
+        const API_URL = "https://script.google.com/macros/s/AKfycbwmNwqbSdj13ATEE-AqPVA3XgVHf7oCk0XDBZPgyaSjmEjuqUWJZ9Joyq350z33Nx33/exec";
+        const WHATSAPP_NUMBER = "8801516513987";
+
+        document.getElementById('customOrderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> গুগল শিটে সেভ হচ্ছে এবং হোয়াটসঅ্যাপে পাঠানো হচ্ছে...`;
+
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const email = document.getElementById('clientEmail').value || 'দেওয়া হয়নি';
+            const projectType = document.getElementById('projectType').value;
+            const budget = document.getElementById('budgetRange').value;
+            const timeline = document.getElementById('deliveryTimeline').value;
+            const referenceUrl = document.getElementById('referenceUrl').value || 'নেই';
+            const details = document.getElementById('projectDetails').value;
+
+            // সিলেক্ট করা ফিচারসমূহ
+            const selectedFeatures = [];
+            document.querySelectorAll('input[name="feature"]:checked').forEach(cb => {
+                selectedFeatures.push(cb.value);
+            });
+            const featuresText = selectedFeatures.length > 0 ? selectedFeatures.join(', ') : 'সাধারণ ফিচার';
+
+            // ১. গুগল শিট API পে-লোড
+            const payload = {
+                action: "createCustomRequest",
+                name: name,
+                phone: phone,
+                email: email,
+                projectType: projectType,
+                budget: budget,
+                details: `সময়সীমা: ${timeline} | ফিচার: ${featuresText} | রেফারেন্স: ${referenceUrl} | বিবরণ: ${details}`
+            };
+
+            // ২. গুগল শিটে ডেটা সাবমিট
+            fetch(API_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                redirectToWhatsApp();
+            })
+            .catch(error => {
+                console.error("Sheet Post Error:", error);
+                redirectToWhatsApp();
+            });
+
+            // ৩. হোয়াটসঅ্যাপে মেসেজ পাঠানোর ফাংশন
+            function redirectToWhatsApp() {
+                const whatsappMessage = `*🚨 নতুন কাস্টম প্রজেক্ট রিকোয়েস্ট (Web Pro BD)*\n` +
+                    `----------------------------------\n` +
+                    `👤 *নাম:* ${name}\n` +
+                    `📞 *ফোন:* ${phone}\n` +
+                    `📧 *ইমেইল:* ${email}\n` +
+                    `💻 *টাইপ:* ${projectType}\n` +
+                    `💰 *বাজেট:* ${budget}\n` +
+                    `⏱ *সময়সীমা:* ${timeline}\n` +
+                    `🔗 *রেফারেন্স সাইট:* ${referenceUrl}\n` +
+                    `✨ *ফিচারসমূহ:* ${featuresText}\n` +
+                    `📝 *বিস্তারিত:* ${details}\n` +
+                    `----------------------------------\n` +
+                    `ওয়েবসাইট থেকে সরাসরি অর্ডার করা হয়েছে।`;
+
+                const encodedMsg = encodeURIComponent(whatsappMessage);
+                const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMsg}`;
+
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> অর্ডার সফল হয়েছে!`;
+
+                // হোয়াটসঅ্যাপে ওপেন করা
+                window.open(waUrl, '_blank');
+            }
+        });
+    </script>
+</body>
+</html>

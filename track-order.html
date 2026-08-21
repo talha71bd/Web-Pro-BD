@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অনলাইন অর্ডার ট্র্যাকিং | Web Pro BD</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Hind Siliguri -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #0F172A;
+            color: #F8FAFC;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.08); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .animate-glow { animation: pulseGlow 6s infinite ease-in-out; }
+        .animate-float { animation: float 4s infinite ease-in-out; }
+
+        .glass-header {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(16px);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(20, 184, 166, 0.5);
+            box-shadow: 0 20px 30px -10px rgba(20, 184, 166, 0.2);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen justify-between overflow-x-hidden">
+
+    <!-- ================= ১. মেনুবার / নেভিগেশন ================= -->
+    <nav class="glass-header text-white sticky top-0 z-50 shadow-2xl border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- লোগো -->
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 bg-gradient-to-tr from-teal-500 to-emerald-400 rounded-2xl flex items-center justify-center font-black text-2xl text-slate-900 shadow-lg shadow-teal-500/30 animate-pulse">
+                        W
+                    </div>
+                    <div>
+                        <a href="index.html" class="text-2xl font-extrabold tracking-tight text-white hover:text-teal-400 transition">
+                            Web Pro <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">BD</span>
+                        </a>
+                        <p class="text-[10px] tracking-widest uppercase text-slate-400 font-semibold">Digital Web Agency</p>
+                    </div>
+                </div>
+
+                <!-- মেনু লিঙ্কস (সব পেজের সংযোগ সহ) -->
+                <div class="hidden md:flex items-center space-x-8 text-base font-medium">
+                    <a href="index.html" class="hover:text-teal-400 transition flex items-center gap-2">
+                        <i class="fa-solid fa-house"></i> হোম পেজ
+                    </a>
+                    <a href="demos.html" class="hover:text-teal-400 transition flex items-center gap-2">
+                        <i class="fa-solid fa-laptop-code"></i> ডেমো সাইটসমূহ
+                    </a>
+                    <a href="custom-order.html" class="hover:text-amber-300 text-amber-400 font-semibold flex items-center gap-1.5 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> কাস্টম অর্ডার
+                    </a>
+                    <a href="track-order.html" class="text-teal-400 font-extrabold flex items-center gap-2 border-b-2 border-teal-400 pb-1">
+                        <i class="fa-solid fa-magnifying-glass"></i> অর্ডার ট্র্যাকিং
+                    </a>
+                </div>
+
+                <!-- হোয়াটসঅ্যাপ চ্যাট বাটন -->
+                <a href="https://wa.me/8801516513987?text=Hello%20Web%20Pro%20BD" target="_blank" 
+                    class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-emerald-600/30 transition transform hover:scale-105 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> সরাসরি চ্যাট
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- ================= ২. হিরো ও সার্চ সেকশন ================= -->
+    <main class="mb-auto">
+        <section class="relative py-16 lg:py-24 text-center overflow-hidden border-b border-slate-800">
+            <!-- গ্লোয়িং ব্যাকগ্রাউন্ড -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-teal-500/20 rounded-full blur-[140px] pointer-events-none animate-glow"></div>
+
+            <div class="max-w-4xl mx-auto px-4 relative z-10">
+                <span class="inline-flex items-center gap-2 bg-slate-800/80 border border-teal-500/40 px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-teal-300 shadow-xl mb-6 animate-float">
+                    🔍 রিয়েল-টাইম অর্ডার স্ট্যাটাস চেকার
+                </span>
+
+                <h1 class="text-3xl sm:text-5xl font-black mb-4 leading-tight">
+                    আপনার অর্ডারের <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-emerald-400 to-cyan-400">বর্তমান অবস্থা</span> জানুন
+                </h1>
+
+                <p class="text-slate-300 text-sm sm:text-base mb-8 max-w-2xl mx-auto leading-relaxed">
+                    অর্ডার করার সময় যে মোবাইল নম্বর বা অর্ডার আইডি পেয়েছিলেন, সেটি লিখে নিচে সার্চ করুন। আপনার ওয়েবসাইটের কাজের অগ্রগতি লাইভ দেখতে পাবেন।
+                </p>
+
+                <!-- সার্চ বক্স -->
+                <div class="bg-slate-900/90 p-2 sm:p-3 rounded-2xl border border-slate-700 shadow-2xl max-w-2xl mx-auto flex flex-col sm:flex-row gap-2">
+                    <div class="relative flex-1">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400"></i>
+                        <input type="text" id="trackInput" placeholder="আপনার ফোন নম্বর (যেমন: 01516513987) বা আইডি লিখুন..." 
+                            class="w-full pl-11 pr-4 py-3 text-white placeholder-slate-400 bg-slate-800 rounded-xl outline-none border border-slate-700 focus:border-teal-500 text-sm sm:text-base font-medium">
+                    </div>
+                    <button onclick="searchOrder()" id="searchBtn" 
+                        class="bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 px-8 py-3 rounded-xl font-black shadow-lg transition flex items-center justify-center gap-2 text-base">
+                        <i class="fa-solid fa-search"></i> সার্চ করুন
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= ৩. রেজাল্ট ডিসপ্লে সেকশন ================= -->
+        <section class="max-w-4xl mx-auto px-4 py-12">
+            <!-- লোডিং স্পিনার -->
+            <div id="loading" class="hidden text-center py-12">
+                <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-teal-500 border-t-transparent mb-4"></div>
+                <p class="text-slate-300 font-semibold">গুগল শিট থেকে অর্ডারের ডাটা খোঁজা হচ্ছে...</p>
+            </div>
+
+            <!-- রেজাল্ট কন্টেইনার -->
+            <div id="resultContainer" class="space-y-6">
+                <!-- প্রাথমিক ডিফল্ট কার্ড -->
+                <div class="glass-card p-8 rounded-3xl text-center text-slate-400 border border-slate-800">
+                    <i class="fa-solid fa-receipt text-6xl text-slate-600 mb-4 animate-bounce"></i>
+                    <h3 class="text-lg font-bold text-slate-200 mb-2">কোনো অর্ডার খোঁজ করা হয়নি</h3>
+                    <p class="text-xs sm:text-sm max-w-md mx-auto">উপরে আপনার মোবাইল নম্বর বা অর্ডার আইডি (যেমন: WPB-1001) লিখে সার্চ বাটনে ক্লিক করুন।</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= ৪. কীভাবে ট্র্যাকিং কাজ করে ================= -->
+        <section class="max-w-5xl mx-auto px-4 py-12 border-t border-slate-800">
+            <div class="text-center mb-10">
+                <span class="text-teal-400 font-bold text-xs uppercase tracking-widest">সহজ গাইড</span>
+                <h2 class="text-2xl sm:text-4xl font-black text-white mt-1">ট্র্যাকিং কীভাবে কাজ করে?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-sm">
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-12 h-12 bg-teal-500/20 text-teal-400 rounded-xl flex items-center justify-center font-bold text-xl mx-auto mb-3 border border-teal-500/30">১</div>
+                    <h4 class="font-bold text-white mb-1">অর্ডার সাবমিট</h4>
+                    <p class="text-xs text-slate-400">অর্ডার করার সাথে সাথে সিস্টেমে অটোমেটিক একটি অনন্য অর্ডার আইডি তৈরি হয়।</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-xl flex items-center justify-center font-bold text-xl mx-auto mb-3 border border-emerald-500/30">২</div>
+                    <h4 class="font-bold text-white mb-1">ডেভেলপমেন্ট আপডেট</h4>
+                    <p class="text-xs text-slate-400">আমাদের ডেভেলপার টিম প্রজেক্টের কাজ কতটুকু শেষ করেছে তা গুগল শিটে আপডেট করে।</p>
+                </div>
+
+                <div class="glass-card p-6 rounded-2xl text-center">
+                    <div class="w-12 h-12 bg-cyan-500/20 text-cyan-400 rounded-xl flex items-center justify-center font-bold text-xl mx-auto mb-3 border border-cyan-500/30">৩</div>
+                    <h4 class="font-bold text-white mb-1">লাইভ রেজাল্ট</h4>
+                    <p class="text-xs text-slate-400">এখানে নম্বর দিলেই শিট থেকে রিয়েল-টাইমে আপনার কাজের স্ট্যাটাস স্ক্রিনে দেখাবে।</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= ৫. কাস্টমার সাপোর্ট সেকশন ================= -->
+        <section class="max-w-4xl mx-auto px-4 pb-16">
+            <div class="bg-gradient-to-br from-slate-900 to-slate-800 p-8 rounded-3xl border border-slate-700 shadow-2xl text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-2 flex items-center gap-2 justify-center sm:justify-start">
+                        <i class="fa-solid fa-headset text-teal-400"></i> আপনার অর্ডার খুঁজে পাচ্ছেন না?
+                    </h3>
+                    <p class="text-slate-300 text-xs sm:text-sm">কোনো সমস্যা হলে সরাসরি আমাদের সাথে হোয়াটসঅ্যাপে যোগাযোগ করুন। আমরা সাহায্য করব।</p>
+                </div>
+                <a href="https://wa.me/8801516513987?text=আমার%20অর্ডার%20ট্র্যাক%20করতে%20সমস্যা%20হচ্ছে,%20হেল্প%20করুন" target="_blank" 
+                    class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-6 py-3 rounded-2xl text-sm transition shadow-lg flex items-center gap-2 whitespace-nowrap">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> হোয়াটসঅ্যাপে সাহায্য নিন
+                </a>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ================= ৬. ফুটার সেকশন ================= -->
+    <footer class="bg-slate-950 text-slate-500 py-10 border-t border-slate-900 text-xs text-center">
+        <div class="max-w-7xl mx-auto px-4 space-y-3">
+            <p class="text-slate-300 font-bold text-sm">Web Pro BD - ফার্মগেট, ঢাকা, বাংলাদেশ</p>
+            <p>হোয়াটসঅ্যাপ: 01516513987 | ইমেইল: abutalha46700@gmail.com</p>
+            <div class="flex justify-center gap-6 pt-2 text-slate-400">
+                <a href="index.html" class="hover:text-teal-400">হোম পেজ</a>
+                <a href="demos.html" class="hover:text-teal-400">ডেমো সাইটসমূহ</a>
+                <a href="custom-order.html" class="hover:text-teal-400">কাস্টম অর্ডার</a>
+                <a href="track-order.html" class="hover:text-teal-400">অর্ডার ট্র্যাকিং</a>
+            </div>
+            <p class="text-slate-600 pt-3">&copy; 2026 Web Pro BD. All Rights Reserved. Developed by Abu Talha.</p>
+        </div>
+    </footer>
+
+
+    <!-- ================= ৭. আপডেটকৃত স্মার্ট জাভাস্ক্রিপ্ট ================= -->
+    <script>
+        // আপডেট হওয়া ব্যাকএন্ড API URL
+        const API_URL = "https://script.google.com/macros/s/AKfycbwmNwqbSdj13ATEE-AqPVA3XgVHf7oCk0XDBZPgyaSjmEjuqUWJZ9Joyq350z33Nx33/exec";
+
+        function searchOrder() {
+            let query = document.getElementById('trackInput').value.trim();
+            const resultContainer = document.getElementById('resultContainer');
+            const loading = document.getElementById('loading');
+
+            if (!query) {
+                alert("অনুগ্রহ করে আপনার মোবাইল নম্বর বা অর্ডার আইডি লিখুন!");
+                return;
+            }
+
+            // UI আপডেট
+            resultContainer.innerHTML = '';
+            loading.classList.remove('hidden');
+
+            // API কল করা (Encode URI)
+            fetch(`${API_URL}?action=checkOrder&query=${encodeURIComponent(query)}`)
+            .then(res => res.json())
+            .then(data => {
+                loading.classList.add('hidden');
+
+                if (data.success && data.orders && data.orders.length > 0) {
+                    renderOrders(data.orders);
+                } else {
+                    renderNotFound(query);
+                }
+            })
+            .catch(err => {
+                loading.classList.add('hidden');
+                console.error("Tracking Error:", err);
+                renderError();
+            });
+        }
+
+        function renderOrders(orders) {
+            const resultContainer = document.getElementById('resultContainer');
+            
+            orders.forEach(order => {
+                const st = String(order.status || '').toLowerCase().trim();
+                
+                let statusBadge = '';
+                let step1Class = 'bg-slate-700 text-slate-400 border-slate-600';
+                let step2Class = 'bg-slate-700 text-slate-400 border-slate-600';
+                let step3Class = 'bg-slate-700 text-slate-400 border-slate-600';
+
+                if (st === 'completed') {
+                    statusBadge = `<span class="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5"><i class="fa-solid fa-circle-check"></i> Completed (ডেলিভারি সম্পন্ন)</span>`;
+                    step1Class = 'bg-emerald-500 text-slate-950 font-bold';
+                    step2Class = 'bg-emerald-500 text-slate-950 font-bold';
+                    step3Class = 'bg-emerald-500 text-slate-950 font-bold';
+                } else if (st === 'processing') {
+                    statusBadge = `<span class="bg-blue-500/20 text-blue-400 border border-blue-500/40 px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5"><i class="fa-solid fa-spinner fa-spin"></i> Processing (কাজ চলছে)</span>`;
+                    step1Class = 'bg-emerald-500 text-slate-950 font-bold';
+                    step2Class = 'bg-blue-500 text-slate-950 font-bold animate-pulse';
+                } else {
+                    statusBadge = `<span class="bg-amber-500/20 text-amber-400 border border-amber-500/40 px-3.5 py-1.5 rounded-full text-xs font-bold flex items-center gap-1.5"><i class="fa-solid fa-clock"></i> Pending (অর্ডার গৃহীত)</span>`;
+                    step1Class = 'bg-amber-500 text-slate-950 font-bold animate-pulse';
+                }
+
+                // জিরো যাতে গায়েব না হয়ে সুন্দর দেখায়
+                let displayPhone = String(order.phone || '');
+                if (displayPhone && !displayPhone.startsWith('0') && displayPhone.length === 10) {
+                    displayPhone = '0' + displayPhone;
+                }
+
+                let formattedDate = order.date ? new Date(order.date).toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' }) : 'তারিখ নেই';
+
+                const cardHtml = `
+                    <div class="glass-card p-6 sm:p-8 rounded-3xl shadow-2xl border border-slate-800 transition hover:border-teal-500/40 text-white">
+                        
+                        <!-- টপ হেডার -->
+                        <div class="flex flex-wrap justify-between items-center border-b border-slate-800 pb-4 mb-6 gap-3">
+                            <div>
+                                <span class="text-xs text-slate-400 font-bold uppercase tracking-wider">অর্ডার ট্র্যাকিং আইডি</span>
+                                <h3 class="text-2xl font-black text-teal-400 mt-0.5">${order.orderId}</h3>
+                            </div>
+                            <div>
+                                ${statusBadge}
+                            </div>
+                        </div>
+
+                        <!-- কাজের প্রোগ্রেস টাইমলাইন -->
+                        <div class="mb-8 bg-slate-900/80 p-5 rounded-2xl border border-slate-800">
+                            <p class="text-xs font-bold text-slate-400 mb-4">প্রজেক্টের কাজের সময়রেখা (Timeline):</p>
+                            <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center mb-1 text-sm ${step1Class}">১</div>
+                                    <span class="text-slate-300 font-semibold">অর্ডার প্রাপ্তি</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center mb-1 text-sm ${step2Class}">২</div>
+                                    <span class="text-slate-300 font-semibold">ডিজাইন ও কোডিং</span>
+                                </div>
+                                <div class="flex flex-col items-center">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center mb-1 text-sm ${step3Class}">৩</div>
+                                    <span class="text-slate-300 font-semibold">সাইট লাইভ</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- বিস্তারিত গ্রিড -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm mb-6 bg-slate-900/50 p-5 rounded-2xl border border-slate-800/80">
+                            <div>
+                                <p class="text-slate-400 text-xs">গ্রাহকের নাম:</p>
+                                <p class="font-bold text-white text-base">${order.name}</p>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 text-xs">ফোন নম্বর:</p>
+                                <p class="font-bold text-teal-300 text-base">${displayPhone}</p>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 text-xs">নির্বাচিত ডেমো/প্যাকেজ:</p>
+                                <p class="font-bold text-amber-300 text-base">${order.packageName}</p>
+                            </div>
+                            <div>
+                                <p class="text-slate-400 text-xs">মোট মূল্য:</p>
+                                <p class="font-bold text-emerald-400 text-base">৳${order.amount}</p>
+                            </div>
+                        </div>
+
+                        <!-- অ্যাকশন বাটন -->
+                        <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+                            <span class="text-xs text-slate-400">তারিখ: ${formattedDate}</span>
+                            <a href="https://wa.me/8801516513987?text=হ্যালো,%20আমার%20অর্ডার%20আইডি%20${order.orderId}%20সম্পর্কে%20জানতে%20চাই" target="_blank" 
+                                class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold px-5 py-2.5 rounded-xl flex items-center gap-2 transition shadow-lg">
+                                <i class="fa-brands fa-whatsapp"></i> এই প্রজেক্ট নিয়ে হোয়াটসঅ্যাপে কথা বলুন
+                            </a>
+                        </div>
+                    </div>
+                `;
+
+                resultContainer.innerHTML += cardHtml;
+            });
+        }
+
+        function renderNotFound(query) {
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = `
+                <div class="glass-card p-8 rounded-3xl text-center border border-red-500/30">
+                    <i class="fa-solid fa-circle-exclamation text-5xl text-red-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">কোনো তথ্য পাওয়া যায়নি!</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 mb-6 max-w-md mx-auto">
+                        আপনার দেওয়া তথ্যটি (<strong>${query}</strong>) দিয়ে কোনো অর্ডার গুগল শিটে পাওয়া যায়নি। সঠিক মোবাইল নম্বর বা আইডি লিখে আবার চেষ্টা করুন।
+                    </p>
+                    <a href="https://wa.me/8801516513987?text=আমার%20অর্ডার%20খুঁজে%20পাচ্ছি%20না,%20নম্বর:%20${query}" target="_blank" 
+                        class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-lg">
+                        <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে সাহায্য নিন
+                    </a>
+                </div>
+            `;
+        }
+
+        function renderError() {
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = `
+                <div class="glass-card p-8 rounded-3xl text-center border border-amber-500/30">
+                    <i class="fa-solid fa-triangle-exclamation text-5xl text-amber-400 mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-2">নেটওয়ার্ক বা সার্ভারে সমস্যা দেখা দিয়েছে</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 mb-6">সরাসরি হোয়াটসঅ্যাপে নক দিয়ে আপনার অর্ডারের স্ট্যাটাস জেনে নিন।</p>
+                    <a href="https://wa.me/8801516513987" target="_blank" 
+                        class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-xl font-bold text-xs sm:text-sm transition">
+                        <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে মেসেজ দিন
+                    </a>
+                </div>
+            `;
+        }
+
+        // Enter কী চাপলে সার্চ হবে
+        document.getElementById("trackInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                searchOrder();
+            }
+        });
+    </script>
+</body>
+</html>about.html
